@@ -1,0 +1,29 @@
+<ij-site-subheader></ij-site-subheader>
+<header id="page-header">
+    <div class="jumbo">
+        <h1>Projects</h1>
+    </div>
+    <nav class="tabs">
+        <div class="title">
+            <span>Projects</span>
+        </div>
+        <ul>
+            <!-- <li><span>Projects</span></li> -->
+            <li>
+                <a routerLinkActive="active" routerLink="/project/all">All Jobs</a>
+            </li>
+            <li>
+                <a routerLinkActive="active" routerLink="/project/offers">Offers</a>
+            </li>
+            <li>
+                <a routerLinkActive="active" routerLink="/project/accepted">Accepted Jobs</a>
+            </li>
+            <li>
+                <a routerLinkActive="active" routerLink="/project/previous">Previous Jobs</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<div class="projects-container">
+    <router-outlet></router-outlet>
+</div>

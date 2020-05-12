@@ -1,0 +1,81 @@
+<ng-container *ngIf="dialogVisible">
+    <p-dialog autoAlign="true" blockScroll="true" modal="true" ngClass="custom-dialog" [resizable]="false" [closable]="false" (onShow)="onShow()" [(visible)]="dialogVisible">
+        <p-header ngClsass="popup-header">
+            <h2>Referral</h2>
+            <span class="ij icon x-icon" (click)="hideDialog()"></span>
+        </p-header>
+        <article class="dialog-container">
+            <form ij-form-validation #f="ngForm" (ngSubmit)="onSubmit(f)" (keydown.enter)="$event.preventDefault()" novalidate>
+                <header *ngIf="model.header">
+                    <ij-dialog-header [model]="model.header"></ij-dialog-header>
+                    <ij-industry-score [score]="model.header.industryScore" color="#333"></ij-industry-score>
+                </header>
+
+                <div class="dialog-body">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <label>Refer {{model.header.fullName}} to an Industry Colleague</label>
+                                <ij-member-selector 
+                                    #selector 
+                                    (componentHasValue)="hasUserFromSystem($event)" 
+                                    [forceSelection]="false" 
+                                    [required]="true"
+                                    [preventSelf]="true" 
+                                    [multipleSelection]="false" 
+                                    [skipProfileSysId]="model.currentProfileSysId"></ij-member-selector>
+                                <p class="help-block no-mar-btm">
+                                    Please select an Industry Jump profile or enter the name of a colleague.
+                                </p>
+                            </div>
+                        </div>
+                        <div *ngIf="model.showEmail" class="row">
+                            <div class="col-sm-12 form-group">
+                                <label for="emails">Email Address</label>
+                                <input 
+                                    id="emails" 
+                                    name="emails" 
+                                    [(ngModel)]="model.emails" 
+                                    type="text" 
+                                    ij-multi-email maxlength="256" 
+                                    required 
+                                    [ij-input-validation]="'Please enter an email.'"
+                                    class="form-control" />
+                                <p class="help-block no-mar-btm">
+                                    Please enter an email address of a colleague.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <label for="message">Message</label>
+                                <textarea 
+                                    id="message" 
+                                    name="message" 
+                                    required 
+                                    maxlength="512" 
+                                    rows="5" 
+                                    [ij-input-validation]="'Please enter a message.'"
+                                    [(ngModel)]="model.message" 
+                                    class="form-control" #message></textarea>
+                                    <ij-character-counter [element]="message"></ij-character-counter>
+                                <p class="help-block no-mar-btm">
+                                    Please share your experience working with {{model.header.fullName}}.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <footer>
+                    <input [disabled]="disableSubmit" type="submit" class="refferal-btn" value="Send Referral" />
+                    <div class="mar-20 alert alert-danger" *ngIf="showSaveErrored">
+                        <ul>
+                            <li *ngFor="let error of errors">{{error}}</li>
+                        </ul>
+                    </div>
+                </footer>
+            </form>
+        </article>
+    </p-dialog>
+</ng-container>

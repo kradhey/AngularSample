@@ -1,0 +1,36 @@
+@input-height: 40px;
+@input-padding: 6px 12px;
+
+html {
+    -webkit-overflow-scrolling: touch;
+}
+.ng-spinner{
+    display:none!important;
+}
+.ij-dropdown {
+    button {
+        .no-mar();
+        background: transparent;
+        border: none;
+    }
+
+    &.open .dropdown-toggle {
+        box-shadow: none;
+    }
+
+    .dropdown-menu {
+        border-radius: 0;
+        margin-top: 5px;
+    }
+}
+
+.ij-input.form-control:not(textarea) {
+    padding: @input-padding;
+    height: @input-height;
+}
+
+.alert.alert-success {
+    color: #fff;
+    background: @primary-blue;
+    border-color: @primary-blue;
+}

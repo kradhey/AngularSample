@@ -1,0 +1,37 @@
+<div id="hero-qsearch">
+<div class="container">
+<div class="row">
+<div class="col-xs-12">
+    <p-autoComplete
+        class="ac-profile"
+        #autocomplete
+        placeholder="Quick Search for Crew by Name..."
+        autoHighlight="true"
+        forceSelection="true"
+        maxlength="32"
+        field="fullName"
+        [(ngModel)]="input"
+        [suggestions]="suggestions"
+        (onSelect)="onSelect($event)"
+        (completeMethod)="onKeyDown($event)">
+
+        <ng-template let-value pTemplate="item">
+            <div class="ac-profile-item">
+                <img src="{{value.thumbnailImageUrl}}"  />
+                <div>
+                    <p class="name">{{value.fullName}}</p>
+                    <p class="roles">{{value.hireableCrewRoles}}</p>
+                </div>
+            </div>
+        </ng-template>
+
+        <ng-template let-value pTemplate="selectedItem">
+            {{value.fullName}}
+        </ng-template>
+
+    </p-autoComplete>
+    <span id="hero-qsearch-icon" class="ij icon search-gray"></span>
+</div>
+</div>
+</div>
+</div>

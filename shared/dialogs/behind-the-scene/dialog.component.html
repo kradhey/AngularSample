@@ -1,0 +1,45 @@
+<ng-container *ngIf="dialogVisible">
+    <p-dialog appendTo="body" modal="true" styleClass="custom-img-dialog behind-The-Scene" width="" [resizable]="false" [(visible)]="dialogVisible">
+        <article class="dialog-container">
+            <p>
+                <label class="dlgheader">Select  BTS Photo </label>
+            </p>
+            <!-- <input type="file" (change)="onFileChange($event)" /> -->
+
+
+            <!-- <p-fileUpload name="myfile[]" url="./upload.php" multiple="multiple"></p-fileUpload>
+            <! <div> -->
+                <!-- <image-cropper 
+                    [imageChangedEvent]="imageChangedEvent" 
+                    [maintainAspectRatio]="false" 
+                    [resizeToWidth]="1000"
+                    [imageQuality]="100"
+                    format="jpeg" 
+                    (imageCroppedBase64)="imageCropped($event)" 
+                    (imageLoaded)="imageLoaded()" 
+                    (loadImageFailed)="loadImageFailed()"></image-cropper>
+            </div> --> 
+            
+    <p-fileUpload name="myfile[]" customUpload="true" (uploadHandler)="onSave($event)"
+     multiple="multiple" accept="image/*" >
+    <ng-template pTemplate="content">
+        <ul *ngIf="uploadedFiles?.length">
+            <li *ngFor="let file of uploadedFiles">{{file.name}} - {{file.size}} bytes</li>
+        </ul>
+        <ul *ngIf="errorList">
+            <li class="mar-20 alert alert-danger" *ngFor="let error of behineSceneErrors">{{error}}</li>
+        </ul>
+     </ng-template>
+ 
+     </p-fileUpload>
+
+
+
+        </article>
+            
+ 
+    </p-dialog>
+
+
+</ng-container>
+<!-- <ngx-spinner></ngx-spinner> -->

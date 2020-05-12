@@ -1,0 +1,35 @@
+<ng-container *ngIf="dialogVisible">
+    <p-dialog autoAlign="true" blockScroll="true" modal="true" ngClass="custom-dialog" [resizable]="false" [(visible)]="dialogVisible"
+        [closable]="false">
+        <p-header ngClsass="popup-header">
+            <h2>Please Review</h2>
+            <span class="ij icon x-icon" (click)="hideDialog()"></span>
+        </p-header>
+        <article class="dialog-container">
+
+            <header *ngIf="model.header">
+                <ij-dialog-header [model]="model.header"></ij-dialog-header>
+            </header>
+
+            <footer>
+                <div id="verify-id-container" *ngIf="!isLoggedIn">
+                    <div id="verify-id">
+                        <a (click)="verifyWithIJ()" class="button button-ij">
+                            <span class="ij icon ij-white"></span> Verify with Industry Jump
+                        </a>
+                        
+                        <span class="or">OR</span>
+
+                        <a (click)="verifyByFacebook()" class="button button-fb">
+                            <i class="fa fa-facebook-official" aria-hidden="true"></i>
+                            Verify with Facebook
+                        </a>
+                    </div>
+                    <p class="help-txt">Please help us curate a vetted community of filmmakers by verifying your identity</p>
+                    <p>before leaving a review. If you do not have an Industry account, please verify with Facebook.</p>
+                </div>
+            </footer>
+
+        </article>
+    </p-dialog>
+</ng-container>

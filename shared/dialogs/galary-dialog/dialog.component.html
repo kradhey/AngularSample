@@ -1,0 +1,15 @@
+<ng-container *ngIf="true">
+    <p-dialog modal="true" modal="modal" class="galary" width="auto"  [resizable]="false" [closable]="false" [(visible)]="dialogVisible">
+        <p-header ngClsass="popup-header">
+          
+            <span class="ij icon x-icon floatRight" (click)="hideDialog()"></span>
+        </p-header>
+        <article class="dialog-container">
+            <div class="dialog-body">
+                <!-- <ngx-image-viewer  [src]="images"></ngx-image-viewer> -->
+                <p-galleria  [images]="images" panelWidth="500" autoPlay="false" panelHeight="313" [showCaption]="false"></p-galleria>
+            </div>
+        </article>
+     
+    </p-dialog>
+</ng-container>

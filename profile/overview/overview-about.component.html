@@ -1,0 +1,110 @@
+<section id="about">
+    <div class="budgets">
+      <div class="default-budget" *ngIf="model.defaultBudget">
+        <div class="img-container cellContent">
+            <span class="firstCell">
+          <img src="../assets/images/icon-budget.png" alt="{{model.defaultBudget}}" />
+        </span>
+          <span class="budget-text">{{model.defaultBudget}}</span>
+        </div>
+       
+        <div *ngIf="loginFreelancer" class="img-container cellContent">
+                <span class="firstCell">
+          <img [src]="model.unionImgSrc" alt="{{model.unionTypeName}}" />
+          </span>
+          <span class="union-text">{{model.unionTypeName ? model.unionTypeName : 'Non-Union'}}</span>
+        </div>
+        <div *ngIf="loginCompany" class="img-container  cellContent">
+         <span class="firstCell">
+          <img [src]="model.specialityImgSrc" alt="{{model.speciality}}" />
+          </span>
+          <span class="union-text">{{model.speciality ? model.speciality : 'Production'}}</span>
+        </div>
+        <div class="img-container cellContent lastRow" [class.lastRow1]="loginFreelancer" >
+          <span class="firstCell" *ngIf="loginCompany && model.organizations.length>0" >
+            <img class="universityLogo" src="../../assets/images/Organizational Icon.png" />
+          </span>
+          <span>
+          <!--start(Organization slider)-->   
+         <div class="thumbnail dataCell">
+            <div id="DemoCarousel" class="carousel slide" data-ride="carousel" data-interval="5000">
+              <ol class="carousel-indicators " [class.left50]="loginFreelancer" *ngIf="model.organizations.length > 1">
+                <li data-target="#DemoCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#DemoCarousel" data-slide-to="1" ></li>
+                <li data-target="#DemoCarousel" *ngIf="model.organizations.length >= 3" data-slide-to="2"></li>
+              </ol>
+              <div class="carousel-inner">
+                <div *ngFor="let x of model.organizations;let count=index" class="item" [class.active]="count==0">
+                  <div class="carousel-caption" [class.imgLeft]="loginFreelancer">
+                    <div class="imgspan" *ngIf="loginFreelancer">
+                            <img *ngIf="!x.type" class="universityLogo" src="../../assets/images/male-university-graduate-silhouette-with-the-cap.png" />
+                            <img *ngIf="x.type" class="universityLogo" src="../../assets//images//Organizational Icon.png" />
+                    </div>
+                    <p>{{x.organizationName}}</p>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+ 
+          <!--End-->
+        </span>
+        </div>
+
+
+
+      </div>
+        <div *ngIf="!model.defaultBudget">
+            The user has not selected a budget.
+        </div>
+    </div>
+
+    <div class="bio">
+        <div *ngIf="model.biography; then bio else nobio"></div>
+    </div>
+
+    <ng-template #bio>
+        {{model.biography}}
+    </ng-template>
+   
+      
+    <ng-template #nobio>
+        <div *ngIf="model.isOwnProfile">
+            <p>In order to bring your profile public, you must complete each of the following:</p>
+            <ol class="todo">
+                <li>Create a biography. You can do this on the
+                    <a routerLink="/profile/settings">settings page</a>.</li>
+                <li>Add 2 portfolio pieces.</li>
+                <li>Receive one review.</li>
+            </ol>
+            <p>Once all of these are complete, your profile will then be visible in public search results for filmmakers to
+                find and hire you.</p>
+        </div>
+        <div *ngIf="!model.isOwnProfile">
+            The user has not created a bio, yet.
+        </div>
+    </ng-template>
+
+    <div class="scores">
+        <p>
+            <ij-rating [rating]="model.reliability"></ij-rating>
+            <label>Reliability</label>
+        </p>
+
+        <p>
+            <ij-rating [rating]="model.craftsmanship"></ij-rating>
+            <label>Craftsmanship</label>
+        </p>
+
+        <p>
+            <ij-rating [rating]="model.communication"></ij-rating>
+            <label>Communication</label>
+        </p>
+
+        <p>
+            <ij-rating [rating]="model.attitude"></ij-rating>
+            <label>Attitude</label>
+        </p>
+    </div>
+</section>

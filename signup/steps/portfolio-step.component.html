@@ -1,0 +1,110 @@
+<p class="page-desc">
+    It’s time to add some secret sauce to your profile
+</p>
+
+<section id="portfolio" class="form-widget">
+    <form #f="ngForm" (ngSubmit)="onSignup(f.form)" novalidate autocomplete="off">
+        <div class="offset">
+            <!-- imdb -->
+            <div class="group">
+                <span class="ij icon imdb-white"></span>
+                <input #imdb="ngModel" [ij-focus]="true" name="imdb" type="text" placeholder="IMDb Link" [pattern]="imdbRegex" [(ngModel)]="model.imdb" maxlength="128" />
+
+                <div class="coach-marks">
+                    Example: https://www.imdb.com/name/nm5244876/
+                </div>
+
+                <div class="validation-summary text-left" *ngIf="submitted && imdb.invalid">
+                    Please enter a valid IMDb url.
+                </div>
+            </div>
+
+            <!-- personal website -->
+            <div class="group">
+                <span class="ij icon extlink-white"></span>
+                <input #personalWebSite="ngModel" name="personalWebSite" type="url" placeholder="Personal Website" url [(ngModel)]="model.personalWebSite" maxlength="128" />
+
+                <div class="coach-marks">
+                    The URL should start with http://
+                </div>
+
+                <div class="validation-summary text-left" *ngIf="submitted && personalWebSite.invalid">
+                    Please enter a valid url.
+                </div>
+            </div>
+
+            <!-- reel -->
+            <div class="group">
+                <span class="ij icon extlink-white"></span>
+                <input #reel="ngModel" name="reel" type="url" placeholder="Reel (YouTube / Vimeo Link)" url ij-video-url [(ngModel)]="model.reel" maxlength="128" />
+
+                <div class="coach-marks">
+                    A video to showcase your talents to a potential employer.
+                    <br>Example: https://www.youtube.com/watch?v=_yJq9SeGLhg
+                </div>
+
+                <div class="validation-summary text-left" *ngIf="submitted && reel.invalid">
+                    Please enter a valid YouTube or Vimeo URL.
+                </div>
+            </div>
+
+            <!-- resume -->
+            <div class="group">
+                <button type="button" class="btn-transparent" (click)="resume.click()">
+                    <span class="ij icon file-white"></span>
+                    <span>Resume (Click to upload)</span>
+                </button>
+                <input type="file" accept="application/pdf" style="display: none;" (change)="onFileChange($event, 'resume')" #resume>
+                <div class="coach-marks">
+                    Only pdfs accepted.
+                    <br>
+                    <span *ngIf="model.resume">&#10004; Resume selected.</span>
+                    <span *ngIf="model.resume" class="pointer" (click)="onFileRemove(resume, 'resume')">(Click to remove.)</span>
+                </div>
+            </div>
+
+            <!-- Gear List -->
+            <div class="group">
+                <button type="button" class="btn-transparent" (click)="gear.click()">
+                    <span class="ij icon extlink-white"></span>
+                    <span>Gear List (Click to upload)</span>
+                </button>
+                <input type="file" accept="application/pdf" style="display: none;" (change)="onFileChange($event, 'gear')" #gear>
+                <div class="coach-marks">
+                    Only pdfs accepted.
+                    <br>
+                    <span *ngIf="model.gear">&#10004; Gear selected.</span>
+                    <span *ngIf="model.gear" class="pointer" (click)="onFileRemove(gear, 'gear')">(Click to remove.)</span>
+                </div>
+            </div>
+
+            <div class="group">
+                <div class="custom-checkbox">
+                    <input type="checkbox" id="c1" name="cb" [(ngModel)]="acceptTerms">
+                    <label for="c1">Do you accept our</label>
+                    <span (click)="showTermsDialog()" class="bold-text">Terms of Service</span>
+                    <label for="c1">and</label>
+                    <span (click)="showPrivatePolicyDialog()" class="bold-text">Privacy Policy?</span>
+                </div>
+                <div class="validation-summary text-left" *ngIf="submitted && !acceptTerms">
+                    Please accept Terms of Service.
+                </div>
+            </div>
+        </div>
+
+        <p class="required-desc">* Denotes a required field.</p>
+
+        <div *ngIf="model.errors" class="group signup-errors">
+            <ul>
+                <li *ngFor="let error of model.errors">{{error}}</li>
+            </ul>
+        </div>
+
+        <footer class="group">
+            <button type="button" (click)="onBack()" class="secondary"><< Back</button>
+            <button type="submit" id="input-button">
+                Sign Up
+            </button>
+        </footer>
+    </form>
+</section>

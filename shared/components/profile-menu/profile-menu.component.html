@@ -1,0 +1,12 @@
+<div *ngIf="isLoggedIn" class="ij-dropdown btn-group">
+    <button type="button" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <img class="camera-shutter-blue" *ngIf="!isSiteHeader" src="../../../assets/images/camera-shutter.png" />
+        <img class="camera-shutter-white" *ngIf="isSiteHeader" src="../../../assets/images/camera-shutter-white.png" />
+    </button>
+    <ul class="dropdown-menu dropdown-menu-right">
+        <li *ngIf="freelancerLogin"><a routerLink="/profile/settings">Profile Settings</a></li>
+        <li *ngIf="companyLogin"><a routerLink="/profile/company-settings">Profile Settings </a></li>
+        <li role="separator" class="divider"></li>
+        <li><a (click)="logout()">Log Out</a></li>
+    </ul>
+</div>

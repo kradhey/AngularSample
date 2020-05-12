@@ -1,0 +1,129 @@
+@import './variables/all';
+@import './mixins/all';
+@import './overrides/all';
+
+@import './auth';
+@import './icons';
+@import './validation';
+@import './utils';
+@import './dialogs';
+
+html, body {
+    height: 100%;
+}
+
+* { outline: 0; }
+
+body {
+    font-family: 'Lato', sans-serif;
+    .font-regular();
+}
+
+h1, h2, h3, h4, h5, h6 {
+    .font-regular();
+}
+
+.container {
+    z-index: 2;
+    position: relative;
+}
+
+#bg {
+    position: fixed; 
+    top: -50%; 
+    left: -50%; 
+    width: 200%; 
+    height: 200%;
+}
+
+#bg img {
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    right: 0; 
+    bottom: 0; 
+    margin: auto; 
+    min-width: 50%;
+    min-height: 50%;
+}
+
+#page-header {
+    .bg(@height) {
+        background-color: #0A5FA0;
+        background-image: url("../../assets/images/jumbotron-blue-bg.jpg");
+        height: @height;
+        
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    .jumbo {
+        .bg(280px);
+        
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        h1 {
+            margin: 0;
+            font-size: 50px;
+            color: #fff;
+            letter-spacing: 0;
+            text-transform: uppercase;
+        }
+    }
+
+    .mini {
+        .bg(160px);
+
+        .container {
+            display: flex;
+            align-items: center;
+            height: 100%;
+            justify-content: center;
+        }
+
+        h1 {
+            font-size: 36px;
+            color: #fff;
+            letter-spacing: 0;
+        }
+    }
+}
+
+/*
+    <nav class="tabs">
+        <ul>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Industry Score</a></li>
+            <li><a class="active" href="#">Our Team</a></li>
+            <li><a href="#">Contact Us</a></li>
+        </ul>
+    </nav>
+*/
+nav.tabs {
+    border-bottom: 2px solid #F0F0F0;
+
+    ul {
+        .ul-nav-defaults();
+        text-align: center;
+
+        li {
+            a {
+                display: inline-block;
+                padding: @nav-padding-bottom 50px;
+                .font-bold();
+
+                &.active,
+                &:hover {
+                    color: @primary-orange;
+                    text-decoration: none;
+
+                    border-bottom: @nav-border-bottom solid @primary-orange;
+                    padding-bottom: (@nav-padding-bottom - @nav-border-bottom);
+                }
+            }
+        }
+    }
+}

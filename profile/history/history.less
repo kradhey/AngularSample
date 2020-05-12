@@ -1,0 +1,81 @@
+@import '../styles/common';
+
+@avatar-width: 84px;
+@blue: #3F93F4;
+@light-gray: #888888;
+@dark-gray: #4A4A4A;
+@mobile-spacing: 15px;
+@item-spacing: 75px;
+
+.history{
+    .history-container{
+        .list-group-item{
+            padding: 15px 10px 15px 40px;
+            .event-date{
+                text-transform: uppercase;
+                font-size: 14px;
+                color: @light-gray;
+                font-weight: 700;
+                margin-right: 15px;
+            }
+
+            .hired-by-img{
+                margin-right: 15px;
+            }
+
+            .label-history-types{
+                margin-right: 15px;
+                text-transform: uppercase;
+                border-radius: 10px;
+                padding: 5.5px 6px;
+            }
+
+            .label-hired{
+                background: @blue;
+                padding: 5.5px 9px;
+            }
+
+            .label-referral{
+                background: @btn-refer-color;
+                font-size: 8px;
+            }
+
+            .referral-img{
+                width: 25px;
+                height: 25px;
+                margin-left: 13px;
+                margin-top: 4px;
+                margin-bottom: 2px;
+            }
+
+            img{
+                width: 59px;
+                height: 59px;
+                border-radius: 50%;
+            }
+
+            .hired-info{
+                color: @dark-gray;
+                font-size: 17px;
+            }
+
+            .text-bold{
+                font-weight: 700;
+            }
+
+            .hired-div{
+                margin-top: 16px;
+            }
+
+            .history-text{
+                float: left;
+                margin-top: 15px;
+                max-width: 70%;
+            }
+        }
+    }
+}
+
+footer{
+    margin-top:10px;
+}

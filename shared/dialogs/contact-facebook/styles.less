@@ -1,0 +1,51 @@
+@import '../../styles/variables/all';
+@import '../styles/common';
+
+.custom-dialog ::ng-deep .ui-dialog {
+    max-width: 575px;
+
+    .ui-dialog-titlebar{
+        border-top: 8px solid @primary-orange-light;
+    }
+}
+
+input[type="submit"] {
+    background: @primary-orange-light;
+}
+article {
+    display: flex;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+
+    img {
+        width: @profile-pic-md-width;
+        height: @profile-pic-md-height;
+        border-radius: 100%;
+        margin-right: @profile-pic-spacing;
+        display: inline-block;
+    }
+
+    .details {
+        h1 {
+            color: @primary-blue;
+            .font-bold();
+            
+            margin: 0;
+            font-size: 19px;
+            letter-spacing: 0;
+            text-align: left !important;
+        }
+        .loc {
+            margin: 0;
+            letter-spacing: 0;
+        }
+        padding-top: 7px;
+    }
+    .social-user-header
+    {
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;        
+    }
+}

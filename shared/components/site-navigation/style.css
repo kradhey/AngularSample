@@ -1,0 +1,372 @@
+.font-name {
+  font-family: 'Lato', sans-serif;
+}
+.font-light {
+  font-weight: 300;
+}
+.font-regular {
+  font-weight: 400;
+}
+.font-bold {
+  font-weight: 700;
+}
+.font-xbold {
+  font-weight: 900;
+}
+.show-on-desktop {
+  display: block !important;
+}
+.hide-on-desktop {
+  display: none !important;
+}
+@media screen and (max-width: 1024px) {
+  .show-on-desktop {
+    display: none !important;
+  }
+  .hide-on-desktop {
+    display: block !important;
+  }
+}
+.select-arrow {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  -webkit-border-radius: 0px;
+  background-repeat: no-repeat;
+  text-overflow: '';
+}
+.select-arrow::-ms-expand {
+  display: none;
+}
+.beta-version {
+  padding: 3px 4px;
+  margin-top: 3px;
+  color: #fff;
+  border-radius: 10px;
+  background: #f28c35;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-size: 10px;
+  font-family: 'Lato';
+}
+a.no-outline {
+  outline: 0;
+  text-decoration: none;
+}
+a.no-outline:hover,
+a.no-outline:focus,
+a.no-outline:active {
+  outline: 0;
+  text-decoration: none;
+}
+.no-select {
+  -webkit-touch-callout: none;
+  /* iOS Safari */
+  -webkit-user-select: none;
+  /* Safari */
+  -khtml-user-select: none;
+  /* Konqueror HTML */
+  -moz-user-select: none;
+  /* Firefox */
+  -ms-user-select: none;
+  /* Internet Explorer/Edge */
+  user-select: none;
+  /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}
+.no-mar-top {
+  margin-top: 0 !important;
+}
+.no-mar-btm {
+  margin-bottom: 0 !important;
+}
+.mar-20 {
+  margin-top: 20px;
+}
+.mar-30 {
+  margin-top: 30px;
+}
+.mar-10-ver {
+  margin: 10px 0;
+}
+.no-mar {
+  margin: 0;
+  padding: 0;
+}
+.show-on-desktop {
+  display: block;
+}
+.hide-on-desktop {
+  display: none;
+}
+@media screen and (max-width: 992px) {
+  .show-on-desktop {
+    display: none;
+  }
+  .hide-on-desktop {
+    display: block;
+  }
+}
+li {
+  margin-right: 20px;
+  vertical-align: middle;
+}
+.mt-5 {
+  margin-top: 5px;
+}
+.align-bottom {
+  vertical-align: -webkit-baseline-middle;
+}
+ul li {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 0;
+}
+ul a {
+  color: #555;
+  text-decoration: none;
+  font-size: 16px;
+  letter-spacing: .4px;
+  font-weight: 600;
+}
+.notification-menu .drop-number {
+  border-radius: 50%;
+  background: #f28b31;
+  padding: 3.5px 8px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 300;
+}
+.notification-menu .message-menu {
+  line-height: 2;
+}
+.notification-menu .dropdown-toggle {
+  padding-bottom: 2px;
+}
+.notification-menu .btn {
+  box-shadow: none;
+}
+.notification-menu .notification-active {
+  border-radius: 50%;
+  background: #4392ef;
+  width: 34px;
+  display: inline-block;
+  text-align: center;
+  height: 34px;
+}
+@media only screen and (max-width: 992px) {
+  .notification-menu .message-nav {
+    right: -165px;
+  }
+}
+@media only screen and (max-width: 992px) {
+  .notification-menu .message-nav {
+    max-width: 350px;
+  }
+}
+@media only screen and (max-width: 992px) {
+  .notification-menu .message-nav:before {
+    right: 185px;
+  }
+}
+@media only screen and (max-width: 992px) {
+}
+.notification-menu ul {
+  border-radius: 0;
+  right: 0;
+  left: auto;
+  border: none;
+  margin-top: 12px;
+  padding: 0;
+}
+@media only screen and (max-width: 992px) {
+  .notification-menu ul {
+    right: -115px;
+  }
+}
+@media only screen and (max-width: 992px) {
+  .notification-menu ul {
+    right: -128px;
+    max-width: 350px;
+  }
+}
+.notification-menu ul:before {
+  border: #ddd solid 9px;
+  content: "";
+  top: -18px;
+  position: absolute;
+  right: 0px;
+  border-color: transparent transparent #ddd transparent;
+}
+@media only screen and (max-width: 992px) {
+  .notification-menu ul:before {
+    right: 114px;
+  }
+}
+@media only screen and (max-width: 992px) {
+  .notification-menu ul:before {
+    right: 128px;
+  }
+}
+.notification-menu ul .header {
+  padding: 7px 20px;
+  color: #4A4A4A;
+}
+.notification-menu ul li::ng-deep a .bold {
+  font-weight: 600;
+}
+.notification-menu ul li::ng-deep a .wrap-text {
+  white-space: nowrap;
+  overflow: hidden;
+  width: 42%;
+  display: inline-block;
+  text-overflow: ellipsis;
+  font-weight: 400;
+  font-size: 14px;
+}
+.notification-menu ul li::ng-deep a .activity-icon {
+  height: 10px;
+  width: 11px;
+  border-radius: 50%;
+  margin-top: 16px;
+  margin-left: 5px;
+  margin-bottom: 0;
+}
+.notification-menu ul li::ng-deep a .online-icon {
+  background: #70CF3F;
+}
+.notification-menu ul li::ng-deep a .offline-icon {
+  background: #F82A03;
+}
+.notification-menu ul li::ng-deep a span {
+  float: none;
+  text-align: left;
+  font-weight: 500;
+  white-space: normal;
+  font-size: 14px;
+  letter-spacing: .5px;
+}
+.notification-menu ul li::ng-deep a .notification-time {
+  font-size: 10px;
+  font-weight: 300;
+}
+.notification-menu ul li::ng-deep a .message-time {
+  display: inline-block;
+  text-align: right;
+  width: 35%;
+  font-size: 10px;
+  font-weight: 300;
+}
+.notification-menu ul li::ng-deep .notification-message {
+  padding: 0;
+  display: inline;
+  cursor: pointer;
+  text-decoration: none;
+}
+.notification-menu ul .body::ng-deep {
+  max-height: 340px;
+  overflow-y: auto;
+  clear: both;
+}
+.notification-menu ul .footer a {
+  font-size: 10px !important;
+  color: #3F93F4 !important;
+  cursor: pointer;
+}
+.notification-menu ul .footer .loader-img {
+  text-align: center;
+  padding-top: 5px;
+}
+.notification-menu .icon {
+  cursor: pointer;
+}
+.notificationText {
+  padding: 10px 20px;
+  font-size: 14px;
+  border-bottom: 1px solid #4392EF;
+  width: 100%;
+}
+.notification-message {
+  padding: 0;
+  display: inline;
+  cursor: pointer;
+  text-decoration: none;
+}
+.loader-center {
+  float: left;
+  width: 100%;
+  padding: 5px 0;
+}
+.loader-center img {
+  display: block;
+  margin: 0 auto;
+}
+.scrollbar {
+  max-height: 210px;
+  width: 405px;
+  background: #F5F5F5;
+  overflow-y: scroll;
+}
+.scrollbar .unread {
+  background: #F5F5F5 !important;
+}
+.scrollbar li {
+  display: list-item;
+  padding: 0 20px;
+}
+.scrollbar li .clickable {
+  cursor: pointer;
+}
+.scrollbar li .avatar {
+  width: 48px;
+  margin: 10px 25px 10px 5px;
+  height: 48px;
+  border-radius: 50%;
+  float: left;
+}
+.scrollbar .messages {
+  background: #fff;
+  border-bottom: 1px solid #ccc;
+}
+@media only screen and (max-width: 992px) {
+  .scrollbar {
+    max-width: 350px;
+  }
+}
+.force-overflow {
+  min-height: 0px;
+}
+#scroll::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  background-color: #F5F5F5;
+}
+#scroll::-webkit-scrollbar {
+  width: 6px;
+  background-color: #F5F5F5;
+}
+#scroll::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #4392EF;
+}
+.markRight {
+  margin-left: 64px;
+  color: #4A4A4A;
+  font-weight: 700;
+}
+.notificationT {
+  color: #4A4A4A;
+  float: left;
+}
+.menu-item {
+  text-decoration: none;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  color: #555555;
+  font-size: 16px;
+  cursor: pointer;
+}
+.text-white {
+  color: #fff;
+  font-weight: 400;
+}

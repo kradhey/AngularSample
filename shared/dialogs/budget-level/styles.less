@@ -1,0 +1,105 @@
+@import '../../styles/variables/all';
+@import '../styles/common';
+@import url('https://fonts.googleapis.com/css?family=Lato');
+@import '../../styles/mixins/responsive';
+
+.dialog-container
+{
+    header
+    {
+        ij-dialog-header{
+            margin: 0 auto;
+        }
+    }
+}
+.ui-dialog-titlebar h2
+        {
+            font-family: 'Lato', sans-serif;
+        }
+
+        ul{
+            padding:0;
+            display: inline-block;
+            text-align: initial;
+          } 
+.dialog-body{
+  h4{
+text-align: center;
+font-weight: 700;
+color: #4A4A4A;
+  }
+
+  ul{
+    li{
+    list-style: none;
+    position: relative;
+    font-size: 14px;
+    font-weight: 700;
+    font-family: 'Lato', sans-serif;
+    line-height: 38px;
+    color: #4A4A4A;
+    span{
+      position: absolute;
+      left: 155px;
+    }
+    p{
+    display: inline;
+    font-weight: 100;
+    font-size: 14px;
+    color: #9B9B9B;
+    font-family: 'Lato', sans-serif;
+    }
+    }
+  }
+}
+
+
+.redirectprofile {
+    text-decoration:none;
+}
+#rate{
+    background: #eee;
+    padding: 10px;
+}
+.custom-dialog ::ng-deep .ui-dialog {
+     min-width: 555px!important;
+    // max-height: 700px;
+    // overflow-y:auto;  
+    .on-mini-small-mobile({
+        min-width: 0px!important; 
+    });
+    .ui-dialog-titlebar {
+        border-top: 8px solid #3F93F5;
+    }
+}
+
+input[type="submit"] {
+    background: @btn-hire-color;
+}
+
+.deny {
+    background: orange!important;
+}
+
+.dialog-container {
+    a{
+        text-decoration:none!important;
+    }
+}
+
+.ui-widget-overlay {
+    z-index: 1200 !important;
+}
+
+.contactcard {
+    padding-bottom: 18px;
+}
+
+.contactcardmsg {
+    padding-left: 10px  !important;
+}
+
+.controlborder
+{
+border: none;
+}

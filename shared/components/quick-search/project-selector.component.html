@@ -1,0 +1,13 @@
+<p-autoComplete autoHighlight="true"
+                [(ngModel)]="selected"
+                (onSelect)="onSelect($event)"
+                (onUnselect)="onClear($event)"
+                [suggestions]="suggestions"
+                (completeMethod)="onKeyDown($event)"
+                field="projectName" [size]="30"
+                placeholder="Project Title"
+                (keyup)="onKey($event)"
+                [minLength]="1">
+
+</p-autoComplete>
+

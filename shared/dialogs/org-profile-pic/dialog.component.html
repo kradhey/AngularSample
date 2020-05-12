@@ -1,0 +1,29 @@
+<ng-container *ngIf="dialogVisible">
+    <p-dialog appendTo="body" modal="true" styleClass="custom-img-dialog" width="auto" [resizable]="false" [(visible)]="dialogVisible">
+        <article class="dialog-container">
+            <p>
+                <label class="dlgheader">Select Profile Picture</label>
+            </p>
+            <input type="file" (change)="onFileChange($event)" />
+
+            <div>
+                <image-cropper 
+                    [imageChangedEvent]="imageChangedEvent" 
+                    [maintainAspectRatio]="true" 
+                    [aspectRatio]="1 / 1" 
+                    [resizeToWidth]="256"
+                    [imageQuality]="100"
+                    format="jpeg" 
+                    (imageCroppedBase64)="imageCropped($event)" 
+                    (imageLoaded)="imageLoaded()" 
+                    (loadImageFailed)="loadImageFailed()"></image-cropper>
+            </div>
+
+            <footer>
+                <input type="submit" value="Save" (click)="onSave($event)" />
+                <div class="mar-20 alert alert-danger" *ngIf="showSaveErrored">{{errors}}</div>
+            </footer>
+        </article>
+    </p-dialog>
+</ng-container>
+<!-- <ngx-spinner></ngx-spinner> -->

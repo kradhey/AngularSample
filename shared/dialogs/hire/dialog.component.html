@@ -1,0 +1,253 @@
+<ng-container *ngIf="dialogVisible">
+    <p-dialog autoAlign="true" blockScroll="true" modal="true" ngClass="custom-dialog" [closable]="false" [resizable]="false" [(visible)]="dialogVisible">
+        <p-header ngClsass="popup-header">
+            <h2>New Hire</h2>
+            <span class="ij icon x-icon" (click)="hideDialog()"></span>
+        </p-header>
+        <article class="dialog-container">
+            <form ij-form-validation #f="ngForm" (ngSubmit)="onSubmit(f)" (keydown.enter)="$event.preventDefault()" novalidate>
+                <header *ngIf="model.header">
+                    <ij-dialog-header [model]="model.header"></ij-dialog-header>
+                    <ij-industry-score [score]="model.header.industryScore" color="#333"></ij-industry-score>
+                </header>
+                <div class="dialog-body">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-sm-12 form-group">
+                                <label for="projectType">Project Type</label>
+                                <p-autoComplete 
+                                    id="projectType" 
+                                    name="projectType" 
+                                    placeholder="Commercial, Film..." 
+                                    autoHighlight="true" 
+                                    dropdown="true" 
+                                    required="true"
+                                    forceSelection="true" 
+                                    [(ngModel)]="model.projectType"
+                                    [suggestions]="projectTypeSuggestions" 
+                                    (onSelect)="selectProjectType($event)"
+                                    (completeMethod)="onProjectTypesKeyDown($event)"
+                                    [ij-input-validation]="'Select a project type.'">
+                                    </p-autoComplete>
+                            </div>
+                        </div>
+                        <div class="row" *ngIf="projectType=='Music Video'">
+                            <div class="col-sm-12 form-group">
+                                <label for="songTitle">Song Title</label>
+                                <p-autoComplete 
+                                    id="songTitle" 
+                                    name="songTitle" 
+                                    (onSelect)="selectSongTitle($event)" 
+                                    field="songTitle" 
+                                    placeholder="Song title" 
+                                    autoHighlight="true" 
+                                    required="true" 
+                                    forceSelection="true" 
+                                    [(ngModel)]="songTitle" 
+                                    [suggestions]="songTitleSuggestions"
+                                    (completeMethod)="onSongTitleKeyDown($event)"
+                                    [ij-input-validation]="'Select a song title.'">
+                                </p-autoComplete>
+                                <span (click)="onClear()" class="ij icon x-icon autocomplete-cross"></span>
+                            </div>
+                        </div>
+                        <div class="row" *ngIf="projectType=='Music Video'">
+                            <div class="col-sm-12 form-group">
+                                <label for="artistTitle">Artist Title</label>
+                                <input 
+                                    id="artistTitle" 
+                                    name="artistTitle" 
+                                    #focusable [(ngModel)]="model.artistTitle"
+                                    required maxlength="256" 
+                                    [ij-input-validation]="'Enter an artist title.'"
+                                    type="text" class="form-control"
+                                    (componentBindValue)="hasUserFromSystem($event)" />
+                            </div>
+                        </div>
+
+                        <div class="row" *ngIf="projectType=='Web Series' || projectType=='Television Show'">
+                            <div class="col-sm-12 form-group">
+                                <label for="episodeTitle">Episode Title</label>
+                                <p-autoComplete 
+                                    autoHighlight="true" 
+                                    name="episodeTitle" 
+                                    [(ngModel)]="episodeTitle" 
+                                    (onSelect)="selectEpisodeTitle($event)" 
+                                    [suggestions]="episodeTitleSuggestions" 
+                                    (completeMethod)="onEpisodeTitleKeyDown($event)" 
+                                    field="episodeTitle" placeholder="Episode title"
+                                    [ij-input-validation]="'Select a Episode title.'">
+                                </p-autoComplete>
+                                <span (click)="onClear()" class="ij icon x-icon autocomplete-cross"></span>
+                            </div>
+                        </div>
+                        <div class="row" *ngIf="projectType=='Web Series' || projectType=='Television Show'">
+                            <div class="col-sm-12 form-group">
+                                <label for="seriesTitle">Series Title</label>
+                                <input 
+                                    id="seriesTitle" 
+                                    name="seriesTitle" 
+                                    #focusable [(ngModel)]="model.seriesTitle" 
+                                    required maxlength="256" 
+                                    [ij-input-validation]="'Enter series title.'" 
+                                    type="text" class="form-control" 
+                                    (componentBindValue)="hasUserFromSystem($event)" />
+                            </div>
+                        </div>
+
+                        <div class="row" *ngIf="projectType!='Web Series' && projectType!='Television Show' && projectType!='Music Video' && projectType!='empty'">
+                            <div class="col-sm-12 form-group">
+                                <label for="projectTitle">Project Title </label>
+                                <p-autoComplete 
+                                    id="projectTitle" 
+                                    name="projectTitle" 
+                                    [(ngModel)]="projectTitle" 
+                                    (onSelect)="onSelect($event)" 
+                                    [suggestions]="suggestions" 
+                                    (completeMethod)="onKeyDown($event)" 
+                                    field="projectName" [size]="30" 
+                                    placeholder="Project Title" [minLength]="1"
+                                    (keyup)="onKey($event)" [ij-input-validation]="'Select a project title.'">
+                                </p-autoComplete>
+                                <span (click)="onClear()" class="ij icon x-icon autocomplete-cross"></span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 form-group">
+                                <label for="crewRoles">Project Role(s)</label>
+                                <p-autoComplete 
+                                    id="crewRoles" 
+                                    name="crewRoles" 
+                                    placeholder="Director, Producer..." 
+                                    autoHighlight="true" required="true" 
+                                    forceSelection="true" dropdown="true" 
+                                    [(ngModel)]="model.crewRoles" [suggestions]="crewRoleSuggestions" 
+                                    (completeMethod)="onCrewRolesKeyDown($event)"
+                                    [multiple]="true" [ij-input-validation]="'Select up to 3 roles.'">
+                                </p-autoComplete>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 form-group">
+                                <label for="productionCompany">Production Company</label>
+                                <input 
+                                    id="productionCompany"
+                                    name="productionCompany" #focusable
+                                    [(ngModel)]="model.productionCompany"
+                                    required maxlength="256" [ij-input-validation]="'Enter a production company.'"
+                                    type="text" class="form-control" (componentBindValue)="hasUserFromSystem($event)" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 form-group">
+                                <label for="dates">Dates</label>
+                                <div>
+                                    <p-calendar 
+                                        id="dates" 
+                                        name="dates" 
+                                        appendTo="body" 
+                                        selectionMode="multiple" 
+                                        readonlyInput="readonlyInput" 
+                                        placeholder="Select..." 
+                                        required 
+                                        [ij-input-validation]="'Please select one or more dates.'" 
+                                        [(ngModel)]="model.dates">
+                                    </p-calendar>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6 form-group">
+                                <label for="rate">Rate</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon">$</span>
+                                    <input  
+                                        id="rate" 
+                                        name="rate" 
+                                        type="text" 
+                                        class="ij-input form-control" 
+                                        required 
+                                        [ij-input-validation]="'Please enter a rate.'"
+                                        [textMask]="{mask: rateMask}" 
+                                        [(ngModel)]="model.rate">
+                                    <span class="input-group-addon">.00</span>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 form-group">
+                                <label for="rateType">Rate Schedule</label>
+                                <select 
+                                    id="rateType" 
+                                    name="rateType" 
+                                    required [ij-input-validation]="'Please select a rate schedule.'" 
+                                    [(ngModel)]="model.rateType" class="ij-input form-control">
+                                    <option disabled  value="">Select Schedule</option>
+                                    <option>Daily</option>
+                                    <option>Weekly</option>
+                                    <option>Flat</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6 form-group">
+                                <label for="city">City</label>
+                                <input 
+                                    id="city" 
+                                    name="city" 
+                                    type="text" 
+                                    class="form-control" 
+                                    placeholder="City" 
+                                    #focusable
+                                    [ngModel]="model.city | titlecase"
+                                    (ngModelChange)="model.city=$event"
+                                    required 
+                                    [ij-input-validation]="'Enter a city name.'" 
+                                    minlength="2" 
+                                    maxlength="128" />
+                            </div>
+
+                            <div class="col-sm-6 form-group">
+                                <label for="state">State</label>
+                                <select 
+                                    id="state" 
+                                    name="state" 
+                                    class="form-control" 
+                                    required 
+                                    [ij-input-validation]="'Select a state.'" 
+                                    placeholder="State" 
+                                    [(ngModel)]="model.state">
+                                        <option *ngFor="let s of states"
+                                                [disabled]="s.abbreviation == ''"
+                                                [ngValue]="s.abbreviation">{{s.name}}</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <label>Message</label>
+                                <textarea 
+                                    id="message" 
+                                    name="message" 
+                                    class="form-control" 
+                                    rows="5" 
+                                    [ij-input-validation]="'Your message is too long.'" 
+                                    maxlength="512" 
+                                    [(ngModel)]="model.message" #message></textarea>
+                                    <ij-character-counter [element]="message"></ij-character-counter>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <footer>
+                    <input [disabled]="disableSubmit" type="submit" value="Hire" />
+                    <div class="mar-20 alert alert-danger" *ngIf="showSaveErrored">
+                        <ul>
+                            <li *ngFor="let error of errors">{{error}}</li>
+                        </ul>
+                    </div>
+                </footer>
+            </form>
+        </article>
+    </p-dialog>
+</ng-container>

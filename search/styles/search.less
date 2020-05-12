@@ -1,0 +1,112 @@
+@import '../../shared/styles/variables/all';
+@import '../../shared/styles/mixins/all';
+
+@break-size: 1000px;
+@section-spacing: 50px; 
+@results-max-width: 910px;
+@results-letter-spacing: 0.35px;
+
+.subtitle {
+    .font-light();
+    font-size: 42px;
+    color: #656565;
+    letter-spacing: 1.05px;
+    text-align: center;
+    text-transform: uppercase;
+    margin: @section-spacing 0 0;
+}
+
+/*
+    <div class="filters">
+        <button class="active">Search by Industry Score</button><!--
+        --><button>Search by Budget</button><!--
+        --><button>Search by Groups</button><!--
+        --><button>Search by Recent Network Hires</button>
+    </div>
+*/
+.filters {
+    margin-top: (@section-spacing / 2);
+    text-align: center;
+
+    button {
+        @curve: 5px;
+
+        font-size: 14px;
+        letter-spacing: @results-letter-spacing;
+
+        background: #fff;
+        border: 1px solid #dcdcdc;
+        padding: 10px 25px;
+
+        &.active {
+            background: #f3f3f3;
+        }
+
+        @media screen and (min-width: @break-size) {
+            &:not(:last-of-type) {
+                border-right: none;
+            }
+
+            &:first-of-type {
+                border-top-left-radius: @curve;
+                border-bottom-left-radius: @curve;
+            }
+
+            &:last-of-type {
+                border-top-right-radius: @curve;
+                border-bottom-right-radius: @curve;
+            }
+        }
+    }
+}
+
+.alert {
+    text-align: center;
+    margin: 50px 0;
+    
+    &.nodata {
+        margin: 100px 0;
+    }
+}
+
+.results-summary {
+    margin-top: @section-spacing;
+    text-align: center;
+    letter-spacing: @results-letter-spacing;
+
+    .filtered {
+        color: @primary-orange;
+        letter-spacing: @results-letter-spacing;
+        line-height: 17px;
+    }
+}
+
+.results {
+    max-width: @results-max-width;
+    margin: (@section-spacing / 2) auto 0;
+
+    .card {
+        display: inline-block;
+        margin: (@section-spacing / 2);
+    }
+}
+
+@media screen and (max-width: 991px) {
+    .results {
+        text-align: center;
+    }    
+
+    .search-card {
+        text-align: left;
+    }
+}
+
+footer {
+    // accounting for the last row search cards that have an existing margin.
+    margin: (@section-spacing / 2) 0 @section-spacing;
+    text-align: center;
+
+    button.more {
+        .more();
+    }
+}

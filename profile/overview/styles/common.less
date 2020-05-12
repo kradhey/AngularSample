@@ -1,0 +1,68 @@
+@import '../../styles/header-common';
+
+@avatar-size: 84px;
+
+@new-btn-size: 25px;
+@new-btn-mar: 5px;
+@card-name-color: #3F93F4;
+
+@card-height: 271px;
+@card-gap: 50px;
+@card-gap-tab : 40px;
+@desktop-card-width: 320px;
+@desktop-thumbnail-height: 180px;
+
+@tablet-card-width: 285px;
+@tablet-thumbnail-height: 140px;
+
+@mobile-card-width: 280px;
+@role-width-difference: 120px;
+.new-button {
+    background-color: @primary-blue;
+    width: @new-btn-size;
+    height: @new-btn-size;
+    line-height: @new-btn-size;
+    margin-left: @new-btn-mar;
+    font-family: initial;
+    color: #fff;
+    border-radius: 100%;
+}
+
+.card {
+    display: inline-block;
+    box-shadow: 0 3px 7px 0 rgba(0,0,0,0.11);
+    text-align: left;
+    background: #fff;
+    vertical-align: top;
+}
+
+.no-results {
+    text-align: center;
+    min-height: 20px;
+    padding: 19px;
+    background-color: #f5f5f5;
+}
+
+@media screen and (max-width: @area-break-point) {
+    .cards {
+        .card:last-of-type {
+            margin-bottom: 0 !important;
+        }
+    }
+}
+
+.card {
+    .on-mobile({
+        margin: 5px !important;
+    });
+
+    @media screen and (max-width: @area-break-point) {
+        margin-bottom: 15px !important;
+    }
+}
+
+.col-reviews {
+    .on-mobile({
+        margin-top: 25px;
+    })
+}

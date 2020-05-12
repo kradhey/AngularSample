@@ -1,0 +1,53 @@
+<header id="profile-header-mobile">
+    <nav>
+        <div class="dropdown">
+            <button class="dropbtn">Overview</button>
+            <div class="dropdown-content">
+                <a routerLink="../overview" routerLinkActive="active">Overview</a>
+                <a routerLink="../general" routerLinkActive="active">General</a>
+                <a routerLink="../biography" routerLinkActive="active">Biography</a>
+                <a *ngIf="hasImdb" (click)="gotoExternalSite(model.imdbUrl)" class="pointer">IMDb</a>
+                <a routerLink="../reviews" routerLinkActive="active">Reviews</a>
+                <a *ngIf="hasResume" routerLink="../resume" routerLinkActive="active">Resume</a>
+                <a *ngIf="hasGear" routerLink="../gear" routerLinkActive="active">Gear</a>
+                <a *ngIf="model.reel" data-lity [attr.href]="model.reel">Reel</a>
+                <a *ngIf="model.personalWebSite" (click)="gotoExternalSite(model.personalWebSite)" class="pointer">Personal Web Site</a>
+            </div>
+        </div>
+    </nav>
+
+    <img class="avatar" src="{{getProfileImageUrl()}}" alt="{{model.fullName}}" />
+
+    <div class="who">
+        <h1>{{model.fullName}}</h1>
+        <h2>{{model.hireableCrewRoles}}</h2>
+        <h2>{{model.location}}</h2>
+    </div>
+
+    <footer>
+        <div *ngIf="model.defaultBudget" class="budget">
+            <img src="../assets/images/icon-budget.png" alt="{{model.defaultBudget}}" />
+            <p>{{model.defaultBudget}}</p>
+        </div>
+
+        <div class="industryscore">
+            <span class="num">{{model.industryScore}}</span>
+            <p>Industry Score</p>
+        </div>
+    </footer>
+</header>
+
+<div class="header-action-buttons">
+    <ul *ngIf="!model.isOwnProfile" class="actions">
+        <li *ngIf="model.showRefer">
+            <button (click)="onRefer()" class="action refer">Refer</button>
+        </li>
+        <li *ngIf="model.showContactMe">
+            <button (click)="onContact()" class="action contact">Contact</button>
+        </li>
+        <li *ngIf="model.showHireMe">
+            <button (click)="onHire()" class="action hire">Hire</button>
+        </li>
+    </ul>
+</div>
+<p-confirmDialog ngClass="custom-confirm" acceptLabel="Ok" appendTo="body"></p-confirmDialog>

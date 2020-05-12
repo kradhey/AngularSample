@@ -1,0 +1,177 @@
+.font-name {
+  font-family: 'Lato', sans-serif;
+}
+.font-light {
+  font-weight: 300;
+}
+.font-regular {
+  font-weight: 400;
+}
+.font-bold {
+  font-weight: 700;
+}
+.font-xbold {
+  font-weight: 900;
+}
+.show-on-desktop {
+  display: block !important;
+}
+.hide-on-desktop {
+  display: none !important;
+}
+@media screen and (max-width: 1024px) {
+  .show-on-desktop {
+    display: none !important;
+  }
+  .hide-on-desktop {
+    display: block !important;
+  }
+}
+.select-arrow {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  -webkit-border-radius: 0px;
+  background-repeat: no-repeat;
+  text-overflow: '';
+}
+.select-arrow::-ms-expand {
+  display: none;
+}
+.beta-version {
+  padding: 3px 4px;
+  margin-top: 3px;
+  color: #fff;
+  border-radius: 10px;
+  background: #f28c35;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-size: 10px;
+  font-family: 'Lato';
+}
+a.no-outline {
+  outline: 0;
+  text-decoration: none;
+}
+a.no-outline:hover,
+a.no-outline:focus,
+a.no-outline:active {
+  outline: 0;
+  text-decoration: none;
+}
+.no-select {
+  -webkit-touch-callout: none;
+  /* iOS Safari */
+  -webkit-user-select: none;
+  /* Safari */
+  -khtml-user-select: none;
+  /* Konqueror HTML */
+  -moz-user-select: none;
+  /* Firefox */
+  -ms-user-select: none;
+  /* Internet Explorer/Edge */
+  user-select: none;
+  /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}
+.no-mar-top {
+  margin-top: 0 !important;
+}
+.no-mar-btm {
+  margin-bottom: 0 !important;
+}
+.mar-20 {
+  margin-top: 20px;
+}
+.mar-30 {
+  margin-top: 30px;
+}
+.mar-10-ver {
+  margin: 10px 0;
+}
+.no-mar {
+  margin: 0;
+  padding: 0;
+}
+.calculator {
+  background-color: white;
+  border-radius: 5px;
+  padding: 45px;
+}
+.role-field {
+  padding: 10px;
+}
+.calculator-header {
+  font-size: 20px;
+  font-weight: 700;
+}
+#textbox {
+  border-top: 0px;
+  border-left: 0px;
+  border-right: 0px;
+  margin-bottom: 20px;
+  width: 100%;
+}
+.average-rate-text {
+  padding: 15px;
+}
+.price {
+  font-size: 31px;
+  font-weight: 800;
+  margin-right: 10px;
+}
+.daily-avg {
+  font-size: 16px;
+  font-weight: 400;
+}
+.btn-infoo {
+  background-color: #4a90e2;
+  color: white;
+}
+.btn-txt {
+  margin-right: 66px;
+  margin-left: 66px;
+}
+#cal-set {
+  top: 11em;
+  right: 5em;
+  position: absolute;
+}
+@media only screen and (max-width: 768px) {
+  #cal-set {
+    left: auto;
+    right: auto;
+    top: 16em;
+  }
+}
+@media (max-width: 318px) {
+  #textbox {
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    margin-bottom: 20px;
+    width: 100%;
+  }
+  .btn-infoo {
+    background-color: #4a90e2;
+    color: white;
+    /* font-size: 22px; */
+  }
+}
+@media (max-width: 318px) {
+  #cal-set {
+    margin-bottom: 99px;
+  }
+}
+@media (max-width: 320px) {
+  #textbox {
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    margin-bottom: 20px;
+    width: 100%;
+  }
+  .btn-infoo {
+    background-color: #4a90e2;
+    color: white;
+  }
+}

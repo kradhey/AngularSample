@@ -1,0 +1,41 @@
+<h1 class="area-title">
+    Projects (<span class="count" data-test-id="op-project-count">{{model.projects.pager.totalResults}}</span>)
+    <button *ngIf="model.isOwnProfile" (click)="onNewProject()" class="new-project" data-test-id="op-project-new"><span>+</span></button>
+</h1>
+<section class="cards projects biography">
+    <ng-container *ngIf="hasProjects">
+        <article *ngFor="let project of model.projects.cards; trackBy: trackCard" class="card project">
+            <span data-test-id="op-project-favorite-ico" *ngIf="isFavorite(project)" class="favorite ij icon profile-video-star"></span>
+            <a data-test-id="op-project-thumb" [attr.href]="project.video" [ngClass]="{'video-unavailable':!project.isActive}" data-lity>
+                <img class="thumb" [attr.src]="project.thumbnail" alt="{{project.title}}" [pTooltip]="project.fullProjectTitle" tooltipPosition="bottom" showDelay="600" hideDelay="10"/>
+            </a>
+            <footer>
+                <div class="top">
+                    <p data-test-id="op-project-title" class="title"matTooltip="project.fullProjectTitle" >{{project.fullProjectTitle}}</p>
+                    <div class="actions">
+                        <div *ngIf="model.isOwnProfile" class="ij-dropdown btn-group" data-test-id="op-project-actions">
+                            <button type="button" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <img src="assets/images/profile/icon-info.png" />
+                            </button>
+                            <ul class="pointer dropdown-menu dropdown-menu-right">
+                                <li><a data-test-id="op-project-edit" (click)="onEditProject(project)">Edit</a></li>
+                                <li><a data-test-id="op-project-favorte" (click)="onToggleFavorite(project)">{{getFavoriteLabel(project)}}</a></li>
+                                <li><a data-test-id="op-project-delete" (click)="onDeleteProject(project)">Delete</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <p class="role" data-test-id="op-project-desc">{{project.crewRoles}} | {{project.projectType}} | {{project.year}}</p>
+            </footer>
+        </article>
+        <footer class="area-footer">
+            <button data-test-id="op-project-view-more" *ngIf="hasMoreProjects" (click)="onViewMoreClicked()" class="more">View More</button>
+        </footer>
+    </ng-container>
+    <ng-container *ngIf="!hasProjects">
+        <article class="no-projects">
+            No projects have been created, yet.
+        </article>
+    </ng-container>
+</section>
+<p-confirmDialog [acceptLabel]="confirmAcceptLabel" appendTo="body"></p-confirmDialog>

@@ -1,0 +1,203 @@
+<ng-container *ngIf="dialogVisible">
+    <p-dialog autoAlign="true" blockScroll="true" modal="true" ngClass="custom-dialog" [closable]="false" [resizable]="false" (onShow)="onShow()" [(visible)]="dialogVisible">
+        <p-header ngClsass="popup-header">
+            <h2>Hire Request</h2>
+            <span class="ij icon x-icon" (click)="hideDialog()"></span>
+        </p-header>
+        <article class="dialog-container">
+            <form ij-form-validation (keydown.enter)="$event.preventDefault()" novalidate>
+                <header *ngIf="model.header">
+                    <a target="_blank" href="/profile/{{modeldata.profileHireSysID}}/overview">
+                        <ij-dialog-header [model]="model.header"></ij-dialog-header>
+                    </a>
+                    <ij-industry-score [score]="model.header.industryScore" color="#333"></ij-industry-score>
+                </header>
+
+                <div class="dialog-body container-fluid">
+                    <div class="row">
+                        <div class="col-sm-6 form-group" *ngIf="modeldata.projectType">
+                            <label id="projectType">Project Type</label>
+                            <input 
+                                disabled 
+                                id="projectType" 
+                                name="projectType" 
+                                type="text" 
+                                class="ij-input form-control controlborder" 
+                                [value]="modeldata.projectType">
+                        </div>
+
+                        <div class="col-sm-6 form-group">
+                            <label for="rate">Rate</label>
+                            <span 
+                                id="rate" 
+                                class="ij-input form-control controlborder">{{modeldata.rate |currency}}/{{modeldata.rateType}}</span>
+                        </div>
+                    </div>
+                    <div class="row" *ngIf="modeldata.projectName">
+                        <div class="col-sm-12 form-group">
+                            <label id="projectName">Project Title</label>
+                            <input 
+                                class="ij-input form-control controlborder" 
+                                disabled 
+                                id="projectName" 
+                                name="projectName" 
+                                type="text" 
+                                [value]="modeldata.projectName" />
+                        </div>
+                    </div>
+                    <div class="row" *ngIf="modeldata.songTitle">
+                        <div class="col-sm-6 form-group">
+                            <label for="rate">Song Title</label>
+                            <input 
+                                  class="ij-input form-control controlborder" 
+                                  disabled id="songTitle" 
+                                  name="songTitle" 
+                                  type="text" 
+                                  [value]="modeldata.songTitle" />
+                        </div>
+                        <div class="col-sm-6 form-group">
+                            <label id="artistTitle">Artist Title</label>
+                            <input 
+                                class="ij-input form-control controlborder" 
+                                disabled 
+                                id="artistTitle" 
+                                name="artistTitle" 
+                                type="text" 
+                                [value]="modeldata.artistTitle" />
+                        </div>
+                    </div>
+
+                    <div class="row" *ngIf="modeldata.episodeTitle">
+                        <div class="col-sm-6 form-group">
+                            <label for="episodeTitle">Episode Title</label>
+                            <input  
+                                class="ij-input form-control controlborder" 
+                                disabled 
+                                id="episodeTitle" 
+                                name="episodeTitle" 
+                                type="text" 
+                                [value]="modeldata.episodeTitle" />
+                        </div>
+                        <div class="col-sm-6 form-group">
+                            <label id="seriesTitle">Series Title</label>
+                                <input 
+                                    class="ij-input form-control controlborder" 
+                                    disabled 
+                                    id="seriesTitle" 
+                                    name="seriesTitle" 
+                                    type="text" 
+                                    [value]="modeldata.seriesTitle" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 form-group">
+                            <label id="productionCompany">Production Company</label> 
+                                <input 
+                                    class="ij-input form-control controlborder" 
+                                    disabled 
+                                    id="productionCompany" 
+                                    name="productionCompany" 
+                                    type="text" 
+                                    [value]="modeldata.productionCompany" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6 form-group">
+                            <label id="crewRoles">Role</label>
+                            <input  
+                                disabled
+                                id="crewRoles" 
+                                name="crewRoles" 
+                                [value]="modeldata.crewRoles" 
+                                class="ij-input form-control controlborder">
+
+                        </div>
+                        <div class="col-sm-6 form-group">
+                            <label for="dates">Dates</label>
+                            <div>
+                                <input   
+                                    date='dd-MM-yyyy' 
+                                    disabled 
+                                    id="dates" 
+                                    name="dates" 
+                                    [value]="modeldata.dates | date:'MM-dd-yyyy'" 
+                                    class="ij-input form-control controlborder">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-6 form-group">
+                            <label for="city">City</label>
+                            <input 
+                                disabled 
+                                id="city" 
+                                name="city" 
+                                type="text" 
+                                [value]="modeldata.city" 
+                                class="ij-input form-control controlborder" 
+                                required>
+                        </div>
+                        <div class="col-sm-6 form-group">
+                            <label for="state">State</label>
+                            <input 
+                                disabled 
+                                id="state" 
+                                class="ij-input form-control controlborder" 
+                                [value]="modeldata.state">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <label for="message">Message</label>
+                            <textarea     
+                                disabled 
+                                id="message" 
+                                name="message" 
+                                class="form-control controlborder" 
+                                rows="7" 
+                                maxlength="512" #message>{{ modeldata.message }}</textarea>
+                                <ij-character-counter [element]="message"></ij-character-counter>
+                        </div>
+                    </div>
+                </div>
+
+                <footer *ngIf="IsRemoveButton==false && modeldata.isAcceptRequest==null">
+                    <div class="row">
+                        <div class="col-sm-12 contactcard">
+                            <span><input type="radio" value="agree" (click)="onAcceptContactCard('accept')"></span>
+                            <span class="contactcardmsg control-label">Send contact card upon accepting hire request</span>
+                        </div>
+                    </div>
+
+                    <input [disabled]="disableSubmit" (click)="onAcceptRequest(modeldata.id,modeldata)" type="submit" value="Accept" />
+                    <input [disabled]="disableSubmit" (click)="onDeniedRequest(modeldata.id,modeldata)" class="deny" type="submit" value="Deny" />
+                    <div class="mar-20 alert alert-danger" *ngIf="showSaveErrored">
+                        <ul>
+                            <li *ngFor="let error of errors">{{error}}</li>
+                        </ul>
+                    </div>
+                </footer>
+                <footer *ngIf="IsRemoveButton">
+                    <div class="row">
+                        <div class="col-sm-12" *ngIf="modeldata.isAcceptRequest==null">
+                            Hire Request Sent. Decision Pending.
+                        </div>
+                        <div class="col-sm-12" *ngIf="modeldata.isAcceptRequest!=null">
+                            Hire Request {{modeldata.isAcceptRequest}}
+                        </div>
+                    </div>
+                </footer>
+
+                <footer *ngIf="IsRemoveButton==false && (modeldata.isAcceptRequest=='Denied' || modeldata.isAcceptRequest=='Accepted')">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            Hire Request {{modeldata.isAcceptRequest}}
+                        </div>
+                    </div>
+                </footer>
+            </form>
+        </article>
+    </p-dialog>
+</ng-container>

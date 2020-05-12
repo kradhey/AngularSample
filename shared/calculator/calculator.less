@@ -1,0 +1,103 @@
+@import '../styles/mixins/all';
+
+
+.calculator{
+    background-color: white;
+    border-radius: 5px;
+    padding: 45px;
+}
+.role-field{
+    padding: 10px;
+
+    &::ng-deep .ac-role{
+        .ui-inputtext {
+            box-shadow: none !important;
+            background: transparent !important;
+        
+            .ui-autocomplete-token {
+                background: #fff;
+                border: 0;
+                color: #1b75bd;
+            }
+        }
+        input{
+            border-top: 0px;
+            border-left: 0px;
+            border-radius: 0;
+            border-width: 2px;
+            padding-left: 0;
+            padding-right: 0;
+            border-right: 0px;
+        }
+
+        .ui-autocomplete-dd {
+            .ui-button{
+                display: none;
+            }
+        }
+    }
+}
+.calculator-header{
+    font-size: 20px;
+    font-weight: 700;
+}
+input{
+    border-top: 0px;
+    border-left: 0px;
+    padding: 9px 0;
+    border-radius: 0;
+    width: 100%;
+    border-bottom: 2px solid #d6d6d6;
+    border-right: 0px;
+}
+
+input.ng-dirty.ng-invalid{
+    border-bottom-color: #f44336
+}
+
+input:focus{
+    border-color: #66afe9 !important;
+    outline: 0;
+}
+
+.average-rate-text{
+    padding: 15px;
+    span{
+        display: inline-block;
+    }
+}
+.price{
+    font-size: 31px;
+    font-weight: 800;
+    margin-right: 10px;
+}
+.daily-avg{
+    font-size: 16px;
+    font-weight: 400;
+}
+.btn-infoo{
+    background-color: #4a90e2;
+    color: white;
+    width: 100%;
+}
+.btn-txt{
+    margin-right: 66px;
+    margin-left: 66px;
+}
+
+#cal-set{
+    top: 11em;
+    right: 5em;
+    position: absolute;
+    margin-right: 13%;
+
+    .on-tablet-down({
+        margin: 0 auto;
+        left: 0;
+        right: 0;
+        top: 17em;
+    });
+    .on-small-mobile({
+        top: 22em;
+      });
+}

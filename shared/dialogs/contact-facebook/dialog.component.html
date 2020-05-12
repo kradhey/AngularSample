@@ -1,0 +1,45 @@
+<ng-container *ngIf="dialogVisible">
+    <p-dialog autoAlign="true" blockScroll="true" modal="true" ngClass="custom-dialog" [resizable]="false" [closable]="false" [(visible)]="dialogVisible">
+        <p-header ngClsass="popup-header">
+            <h2>New Message</h2>
+            <span class="ij icon x-icon" (click)="hideDialog()"></span>
+        </p-header>
+        <article class="dialog-container">
+            <form ij-form-validation #f="ngForm" (ngSubmit)="onSend(f)" (keydown.enter)="$event.preventDefault()" novalidate>
+                <header *ngIf="model.header">
+                    <div class ="social-user-header">
+                        <img src="{{model.header?.profileImageUrl}}" alt="{{model.header?.fullName}}" />
+                        <div class="details">
+                            <h1>{{model.header?.fullName}}</h1>
+                            <p class="loc">{{model.header?.location}}</p>
+                        </div>
+                    </div>
+                </header>
+                <div class="dialog-body">
+                    <label for="message">Message</label>
+                    <textarea 
+                        id="message" 
+                        name="message" 
+                        #focusable 
+                        required 
+                        maxlength="512"
+                        cols="60" 
+                        rows="10" 
+                        [ij-input-validation]="'Please enter a message.'"
+                        [(ngModel)]="model.message" 
+                        class="form-control" #message></textarea>
+                        <ij-character-counter [element]="message"></ij-character-counter>
+                </div>
+
+                <footer>
+                    <input [disabled]="disableSubmit" type="submit" value="Contact" />
+                    <div class="mar-20 alert alert-danger" *ngIf="showSaveErrored">
+                        <ul>
+                            <li *ngFor="let error of errors">{{error}}</li>
+                        </ul>
+                    </div>
+                </footer>
+            </form>
+        </article>
+    </p-dialog>
+</ng-container>

@@ -1,0 +1,77 @@
+<li class="hide-when-loggedOut dropdown notification-menu">
+    <a [ngClass]="{'text-white': isSiteHeader}" class="dropdown-toggle menu-item message-menu" data-toggle="dropdown" aria-haspopup="true"
+        aria-expanded="false" (click)="readMessageNotifications()">
+        Messages
+        <span *ngIf="newMessageNotifications">
+            <span class="drop-number" *ngIf="messageNoticationCount > 0 && messageNoticationCount <= 9">{{messageNoticationCount}}</span>
+            <span class="drop-number" *ngIf="messageNoticationCount > 9">9+</span>
+        </span>
+    </a>
+    <ul class="dropdown-menu message-nav">
+        <li class="notificationText">
+            <span class="notificationT">Notifications </span>
+            <span *ngIf="messageNoticationCount > 0">({{messageNoticationCount}})</span>
+        </li>
+        <div infiniteScroll [infiniteScrollDistance]="3" [infiniteScrollThrottle]="10" [scrollWindow]="false" (scrolled)="getMessageNotifications()"
+            class="messages-container scrollbar" id="scroll">
+            <li class="messages" *ngFor="let message of messageNotications" [ngClass]="{'read': message.isRead, 'unread': !message.isRead}">
+                <a class="clickable" (click)="openMessenger(message);">
+                    <img class="avatar" src="{{getProfileImageUrl(message.fromUserProfileImage)}}" />
+                    <div>
+                        <span class="bold" [innerHTML]="message.fromUser"></span>
+                        <label class="activity-icon" [ngClass]="{'online-icon': message.isOnline, 'offline-icon': !message.isOnline}"></label>
+                    </div>
+                    <div class="wrap-text pull-left" [innerHTML]="message.message"></div>
+                    <div class="message-time">{{ message.messageSendTime | amFromUtc | amLocal | amCalendar:nextDay }}</div>
+                    <div class="clearfix"></div>
+                </a>
+            </li>
+            <li *ngIf="!loadingMessages && (!messageNotications || messageNotications.length == 0)">
+                <a class="text-center">
+                    <span>No new messages</span>
+                </a>
+            </li>
+        </div>
+        <div *ngIf="loadingMessages" class="loader-img loader-center">
+            <img src="../../assets/images/chat/loader.gif">
+        </div>
+    </ul>
+</li>
+
+
+
+
+
+
+<li class="hide-when-loggedOut dropdown notification-menu mt-5">
+    <span class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+        aria-expanded="false" (click)="readUserNotifications()">
+        <span *ngIf="isSiteHeader" class="ij icon flash-white" [ngClass]="{'flash-orange': newUserNotifications }"></span>
+        <span *ngIf="!isSiteHeader" [ngClass]="{'flash-orange': newUserNotifications}"
+            class="ij icon flash-gray"></span>
+    </span>
+    <ul class="dropdown-menu">
+        <li class="notificationText">
+            <span class="notificationT">Notifications </span>
+            <span *ngIf="messageNoticationCount > 0">({{userNotificationCount}})</span>
+        </li>
+        <div infiniteScroll [infiniteScrollDistance]="3" [infiniteScrollThrottle]="10" [scrollWindow]="false" (scrolled)="getUserNotifications()"
+            class="scrollbar" id="scroll">
+            <li *ngFor="let notification of userNotifications" (click)="onHire(notification.referredProfileSysId)">
+                <a>
+                    <span [innerHTML]="notification.message"></span>
+                    <br/>
+                    <span class="notification-time">{{notification.createdDate}}</span>
+                </a>
+            </li>
+            <li *ngIf="!loadingNotifications && (!userNotifications || userNotifications.length == 0)">
+                <a class="text-center">
+                    <span>No new notification</span>
+                </a>
+            </li>
+        </div>
+        <div *ngIf="loadingNotifications" class="loader-img loader-center">
+            <img src="../../assets/images/chat/loader.gif">
+        </div>
+    </ul>
+</li>

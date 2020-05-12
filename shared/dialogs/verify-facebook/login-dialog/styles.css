@@ -1,0 +1,227 @@
+.font-name {
+  font-family: 'Lato', sans-serif;
+}
+.font-light {
+  font-weight: 300;
+}
+.font-regular {
+  font-weight: 400;
+}
+.font-bold {
+  font-weight: 700;
+}
+.font-xbold {
+  font-weight: 900;
+}
+.show-on-desktop {
+  display: block !important;
+}
+.hide-on-desktop {
+  display: none !important;
+}
+@media screen and (max-width: 1024px) {
+  .show-on-desktop {
+    display: none !important;
+  }
+  .hide-on-desktop {
+    display: block !important;
+  }
+}
+.select-arrow {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  -webkit-border-radius: 0px;
+  background-repeat: no-repeat;
+  text-overflow: '';
+}
+.select-arrow::-ms-expand {
+  display: none;
+}
+.beta-version {
+  padding: 3px 4px;
+  margin-top: 3px;
+  color: #fff;
+  border-radius: 10px;
+  background: #f28c35;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-size: 10px;
+  font-family: 'Lato';
+}
+a.no-outline {
+  outline: 0;
+  text-decoration: none;
+}
+a.no-outline:hover,
+a.no-outline:focus,
+a.no-outline:active {
+  outline: 0;
+  text-decoration: none;
+}
+.no-select {
+  -webkit-touch-callout: none;
+  /* iOS Safari */
+  -webkit-user-select: none;
+  /* Safari */
+  -khtml-user-select: none;
+  /* Konqueror HTML */
+  -moz-user-select: none;
+  /* Firefox */
+  -ms-user-select: none;
+  /* Internet Explorer/Edge */
+  user-select: none;
+  /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}
+.no-mar-top {
+  margin-top: 0 !important;
+}
+.no-mar-btm {
+  margin-bottom: 0 !important;
+}
+.mar-20 {
+  margin-top: 20px;
+}
+.mar-30 {
+  margin-top: 30px;
+}
+.mar-10-ver {
+  margin: 10px 0;
+}
+.no-mar {
+  margin: 0;
+  padding: 0;
+}
+.validation-summary {
+  color: #F27601;
+}
+.ratings {
+  margin-bottom: 25px;
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+}
+.ratings label {
+  font-weight: 400;
+}
+@media only screen and (max-width: 600px) {
+  .ratings {
+    flex-direction: column;
+  }
+  .ratings ::ng-deep .ui-rating {
+    font-size: 1.3em;
+    letter-spacing: .1em;
+  }
+  .ratings .rating:not(:last-of-type) {
+    margin-bottom: 1em;
+  }
+}
+.custom-dialog ::ng-deep .ui-dialog {
+  border: none;
+}
+.custom-dialog ::ng-deep .ui-dialog .ui-dialog-titlebar {
+  padding: 0px;
+  border-radius: 0px;
+}
+.custom-dialog ::ng-deep .ui-dialog .ui-dialog-titlebar h2 {
+  font-weight: 700;
+  margin-bottom: 40px;
+  color: #4A4A4A;
+  text-align: center;
+}
+.custom-dialog ::ng-deep .ui-dialog .ui-dialog-titlebar .x-icon {
+  cursor: pointer;
+  position: absolute;
+  right: .5em;
+  top: .7em;
+}
+.custom-dialog ::ng-deep .ui-dialog .alert-warning {
+  background-color: #ff930d52;
+  border: none;
+  color: #222222;
+}
+.custom-dialog ::ng-deep .ui-dialog .reviewing-project {
+  text-align: center;
+  font-size: 1.2em;
+  margin-bottom: 25px;
+}
+.custom-dialog ::ng-deep .ui-dialog {
+  max-width: 700px;
+}
+.custom-dialog ::ng-deep .ui-dialog .ui-dialog-titlebar {
+  border-top: 8px solid #FF8410;
+}
+.custom-dialog ::ng-deep .ui-dialog .ui-dialog-content header ij-dialog-header {
+  margin: 0 auto;
+}
+input[type="submit"] {
+  background: #FF8410;
+}
+footer #verify-id-container {
+  margin-bottom: 25px;
+}
+footer #verify-id {
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+footer #verify-id .or {
+  margin: 0 1em;
+  letter-spacing: .03em;
+  color: #868686;
+}
+footer #verify-id .button {
+  color: #fff;
+  border: 0;
+  padding: 10px 12px;
+  width: 215px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+footer #verify-id .button i {
+  font-size: 20px;
+  margin-right: 5px;
+}
+footer #verify-id .button-fb {
+  background: #267AC0;
+}
+footer #verify-id .button-ij {
+  width: 215px;
+  background: #4392EF;
+}
+footer .review:disabled {
+  opacity: 0.6;
+}
+footer .ij-white {
+  position: relative;
+  top: 2px;
+  margin-right: 5px;
+}
+footer a:hover {
+  text-decoration: none;
+}
+.custom-dialog ::ng-deep .ui-dialog {
+  max-width: 700px;
+}
+.custom-dialog ::ng-deep .ui-dialog .ui-dialog-titlebar {
+  border-top: 8px solid #3F93F5;
+}
+.custom-dialog ::ng-deep .ui-dialog .ui-dialog-titlebar h2 {
+  margin-bottom: 40px;
+  text-align: center;
+}
+.custom-dialog ::ng-deep .ui-dialog .ui-dialog-content .dialog-container {
+  padding: 0 40px 0px 40px;
+}
+.custom-dialog ::ng-deep .ui-dialog .ui-dialog-content .dialog-container .project-detail {
+  font-weight: 600;
+  margin: 10px 0;
+}
+.custom-dialog ::ng-deep .ui-dialog .ui-dialog-content .dialog-container .dialog-body {
+  margin-bottom: 10px;
+  text-align: center;
+}
+.custom-dialog ::ng-deep .ui-dialog .ui-dialog-footer {
+  text-align: center;
+}

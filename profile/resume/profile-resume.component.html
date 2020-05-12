@@ -1,0 +1,11 @@
+<div class="gradient">
+    <div class="container show-on-desktop">
+        <ij-profile-header-desktop></ij-profile-header-desktop>
+    </div>
+
+    <ij-profile-header-mobile class="hide-on-desktop"></ij-profile-header-mobile>
+
+    <div class="container">
+        <iframe [src]="resumeUrl | safe" class="pdf-container"></iframe>
+    </div>
+</div>

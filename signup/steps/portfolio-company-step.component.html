@@ -1,0 +1,101 @@
+<p class="page-desc">
+    It’s time to add some secret sauce to your profile
+</p>
+
+<section id="companyportfolio" class="form-widget">
+    <form #f="ngForm" (ngSubmit)="onCompanySignup(f.form)" novalidate autocomplete="off">
+        <div class="offset">
+            <!-- imdb -->
+            <div class="group">
+                <span class="ij icon imdb-white"></span>
+                <input 
+                    #imdb="ngModel" 
+                    [ij-focus]="true" 
+                    name="imdb" 
+                    type="text" 
+                    placeholder="IMDb Link" 
+                    [pattern]="imdbRegex" 
+                    [(ngModel)]="model.imdb" 
+                    maxlength="128" />
+
+                <div class="coach-marks">
+                    Example: https://www.imdb.com/name/nm5244876/
+                </div>
+
+                <div class="validation-summary text-left" *ngIf="submitted && imdb.invalid">
+                    Please enter a valid IMDb url.
+                </div>
+            </div>
+
+            <!-- personal website -->
+            <div class="group">
+                <span class="ij icon extlink-white"></span>
+                <input 
+                    #companyWebSite="ngModel" 
+                    name="CompanyWebSite" 
+                    type="url" 
+                    placeholder="Company Website" 
+                    url 
+                    [(ngModel)]="model.companyWebSite" 
+                    maxlength="128" />
+
+                <div class="coach-marks">
+                    The URL should start with http://
+                </div>
+
+                <div class="validation-summary text-left" *ngIf="submitted && companyWebSite.invalid">
+                    Please enter a valid url.
+                </div>
+            </div>
+
+            <!-- reel -->
+            <div class="group">
+                <span class="ij icon extlink-white"></span>
+                <input 
+                    #reel="ngModel" 
+                    name="reel" 
+                    type="url" 
+                    placeholder="Reel (YouTube / Vimeo Link)" 
+                    url 
+                    ij-video-url 
+                    [(ngModel)]="model.reel" 
+                    maxlength="128" />
+
+                <div class="coach-marks">
+                    A video to showcase your talents to a potential employer.
+                    <br>Example: https://www.youtube.com/watch?v=_yJq9SeGLhg
+                </div>
+
+                <div class="validation-summary text-left" *ngIf="submitted && reel.invalid">
+                    Please enter a valid YouTube or Vimeo URL.
+                </div>
+            </div>
+
+            <div class="group">
+                <div class="custom-checkbox">
+                    <input type="checkbox" id="c1"  name="acceptTerms" [(ngModel)]="model.acceptTerms" >
+                    <label for="c1">Do you accept our</label>
+                    <span (click)="showTermsDialog()" class="bold-text">Terms of Service</span>
+                    <label for="c1">and</label>
+                    <span (click)="showPrivatePolicyDialog()" class="bold-text">Privacy Policy?</span>
+                </div>
+                <div class="validation-summary text-left" *ngIf="submitted && !model.acceptTerms">
+                    Please accept Terms of Service.
+                </div>
+            </div>
+        </div>
+
+        <p class="required-desc">* Denotes a required field.</p>
+
+        <div *ngIf="model.errors" class="group signup-errors">
+            <ul>
+                <li *ngFor="let error of model.errors">{{error}}</li>
+            </ul>
+        </div>
+
+        <footer class="group">
+            <button type="button" (click)="onBackStep()" class="secondary"><< Back</button>
+            <input type="submit" id="input-button" value="Sign Up" />
+        </footer>
+    </form>
+</section> 

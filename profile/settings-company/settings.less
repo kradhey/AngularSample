@@ -1,0 +1,459 @@
+@import '../styles/common';
+
+@gray: #555555;
+@blue: #1283D7;
+@orange: #FF930D;
+@orange-darker: #ea880d;
+@error-color: #a94442;
+@input-ver-padding: 9px;
+@fieldset-spacing: 50px;
+@input-height: 40px;
+@input-padding: 6px 12px;
+@info-padding: 5px;
+
+#page-header .tabs {
+    .no-select();
+    cursor: pointer;
+}
+
+
+
+.notes {
+  font-size: 14px;
+  color: #666;
+  padding: 3px 1px;
+  display: inline-block !important;
+}
+
+
+
+
+form {
+  margin-top: 35px;
+
+  .validation-summary {
+    color: @error-color;
+    margin-top: 5px;
+  }
+
+  .help-block.small {
+    font-size: .9em;
+  }
+
+  button.submit,
+  input[type="submit"] {
+    .input-btn();
+    background: @orange;
+    color: #fff;
+    border: none;
+
+    &:hover {
+      background: @orange-darker;
+    }
+  }
+
+  .on-tablet( {
+    [class*="col-"] {
+      margin-bottom: 15px;
+    }
+  }
+
+  );
+
+  .form-control:not(textarea) {
+    padding: @input-padding;
+    height: @input-height;
+  }
+
+  textarea {
+    resize: none;
+  }
+
+  small {
+    .font-regular();
+    color: @gray;
+    font-size: 13px;
+    font-style: italic;
+  }
+
+  fieldset {
+    margin-bottom: @fieldset-spacing;
+
+    legend {
+      .font-bold();
+      color: @blue;
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      font-size: 20px;
+      letter-spacing: 0;
+
+      small {
+        margin-left: @info-padding;
+      }
+    }
+
+    & > .row + .row {
+      margin-top: 20px;
+    }
+  }
+
+  label {
+    color: @gray;
+    margin-bottom: 8px;
+    display: block;
+
+    small {
+      margin-left: @info-padding;
+    }
+  }
+
+  & > footer {
+    margin-bottom: 80px;
+
+    input[type="reset"] {
+      .input-btn();
+      background: #fff;
+      border: 1px solid #D3D3D3;
+      margin-left: 20px;
+
+      &:hover {
+        background: #f9f9f9;
+      }
+    }
+
+    .alert {
+      margin-top: @fieldset-spacing;
+    }
+  }
+
+  .upload {
+    small {
+      margin: @info-padding 0 0;
+      display: block;
+    }
+  }
+
+  .removeBorder {
+    border: none;
+    font-size: 14px;
+    font-weight: 100;
+    width: 55%;
+    color: #555555;
+  }
+
+  #btnOrganization {
+    background-position: center 9px;
+    background-repeat: no-repeat;
+    background-image: url('/assets/images/icons8-checkmark-48.png?v=1');
+    width: 35px;
+    background-color: #4392EF;
+    height: 40px;
+    border: none;
+    position: absolute;
+    right: 14px;
+    top: 59px;
+    background-size: 20px;
+    border-radius: 0 4px 4px 0;
+  }
+
+  .h25 {
+    line-height: 26px;
+    margin-top: 10px;
+    font-weight: 700;
+    color: #555555;
+  }
+
+  .orgBtn {
+    background-position: center 4px;
+    background-repeat: no-repeat;
+    background-image: url(/assets/images/icons8-delete-filled-50.png?v=1);
+    width: 25px;
+    background-color: #f00;
+    height: 25px;
+    border: none;
+    float: left;
+    background-size: 17px;
+    margin-right: 8px;
+    border-radius: 100%;
+  }
+
+  .blueBtn {
+    /*background-position: center 3px;
+    background-repeat: no-repeat;
+    background-image: url(/assets/images/icons8-checkmark-48.png?v=1);*/
+    width: 22px;
+    background-color: #4392EF;
+    height: 22px;
+    border: none;
+    float: left;
+    background-size: 17px;
+    margin-right: 8px;
+    border-radius: 100%;
+    font: normal normal normal 14px/1 FontAwesome;
+    text-decoration: none;
+    cursor: pointer
+  }
+
+  .blueBtn:before {
+    content: "\f00c";
+    color: #fff;
+    top: 4px;
+    position: relative;
+    left: 4px;
+    font-size: 14px;
+  }
+
+  .blueBtn:hover:before {
+    content: "\f00d";
+    left: 6px
+  }
+
+  .blueBtn:hover {
+    /* background-position: center 4.5px;
+    background-image: url(/assets/images/icons8-delete-filled-50.png?v=1);*/
+    background-color: #f00;
+  }
+
+  .help-block-cust{font-weight:700;font-size:14px;color:#333}
+  .rates {
+    @toggle-ver-spacing: 20px;
+    margin-bottom: (@fieldset-spacing - @toggle-ver-spacing);
+
+    .toggles {
+      display: flex;
+      flex-direction: row;
+      flex-flow: wrap;
+      justify-content: space-between;
+
+      .ij-toggle {
+        display: block;
+        width: 11em;
+        margin-bottom: @toggle-ver-spacing;
+        padding: @input-ver-padding 0;
+      }
+    }
+  }
+
+
+  .alerts {
+    white-space: nowrap;
+
+    [styleClass="ij-checkbox"] {
+      display: block;
+      margin-bottom: 15px;
+
+      .ui-chkbox-label {
+        display: inline-block;
+        margin-bottom: 0;
+        cursor: pointer;
+      }
+
+      ::ng-deep .ui-label-disabled {
+        color: #ccc;
+      }
+    }
+  }
+
+  .working-cities{
+    .row{
+      margin-bottom: 10px !important;
+    }
+  }
+
+  .new-button{
+    background-color: #4392EF;
+    width: 25px;
+    height: 25px;
+    line-height: 25px;
+    margin-left: 5px;
+    font-family: initial;
+    color: #fff;
+    border-radius: 50%;
+  }
+
+  .minus-button{
+    margin-top: 7px;
+  }
+
+  .add-button{
+    margin-left: 0;
+    float: left;
+    margin-right: 10px;
+    margin-top: 3px;
+  }
+
+  .ui-autocomplete .ui-autocomplete-multiple-container {
+    height: @input-height;
+  }
+
+  footer .alert.alert-danger {
+    ul {
+      list-style: none;
+    }
+  }
+
+  .toggle-slider {
+    .toggle {
+      max-width: 144px;
+      -webkit-appearance: none;
+      appearance: none;
+      width: 40%;
+      height: 34px;
+      display: inline-block;
+      position: relative;
+      border-radius: 3px;
+      overflow: hidden;
+      outline: none;
+      border: none;
+      cursor: pointer;
+      background-color: @primary-blue;
+      transition: background-color ease 0.3s;
+    }
+
+    .toggle:before {
+      content: " ";
+      display: block;
+      position: absolute;
+      z-index: 2;
+      width: 70px;
+      height: 30px;
+      background: #fff;
+      border-radius: 3px;
+      top: 2px;
+      left: 2px;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-image: url('/assets/images/toggle-x-icon.png?v=1');
+      text-shadow: -1px -1px rgba(0, 0, 0, 0.15);
+      white-space: nowrap;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+      transition: all cubic-bezier(0.3, 1.5, 0.7, 1) 0.3s;
+    }
+
+    .toggle:after {
+      content: "Active Inactive";
+      display: block;
+      position: absolute;
+      width: 70px;
+      height: 36px;
+      left: 2px;
+      top: 6px;
+      font: 16px 'lato';
+      text-indent: 10px;
+      word-spacing: 20px;
+      color: #fff;
+      text-shadow: -1px -1px rgba(0, 0, 0, 0.15);
+      white-space: nowrap;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+      transition: all cubic-bezier(0.3, 1.5, 0.7, 1) 0.3s;
+    }
+
+    .toggle:checked {
+      background-color: @primary-blue;
+    }
+
+    .toggle:checked:before {
+      left: 73px;
+      background-image: url('/assets/images/toggle-tick-icon.png?v=1') !important;
+    }
+
+    p {
+      width: 90%;
+    }
+  }
+  /* Reset Select */
+  .selectOtn select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    appearance: none;
+    outline: 0;
+    box-shadow: none;
+    border: 1px solid #d6d6d6 !important;
+    background: #ffffff;
+    background-image: none;
+  }
+  /* Custom Select */
+  .selectOtn {
+    position: relative;
+    display: block;
+    height: 40px;
+    line-height: 3;
+    background: #fff;
+    overflow: hidden;
+    border-radius: .25em;
+    font: normal normal normal 14px/1 FontAwesome
+  }
+
+  .selectOtn select {
+    font-family: "Roboto", "Trebuchet MS", Arial, Helvetica, sans-serif;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0 0 0 .5em;
+    line-height: 40px;
+    cursor: pointer;
+  }
+
+  .selectOtn select .option {
+    padding: 10px;
+    height: 60px;
+    font-size: 1.1em;
+  }
+
+  .selectOtn select option:disabled {
+    background: rgb(199, 199, 199);
+  }
+
+  .selectOtn select::-ms-expand {
+    display: none;
+  }
+  /* Arrow */
+  .selectOtn::after {
+    content: '\f0d7';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    padding: 0 10px;
+    background: #4392EF;
+    pointer-events: none;
+    color: #ffffff;
+    line-height: 40px
+  }
+  /* Transition */
+  .selectOtn::after {
+    -webkit-transition: .25s all ease;
+    -o-transition: .25s all ease;
+    transition: .25s all ease;
+  }
+
+  .selectOtn:focus, .selectOtn select:focus {
+    border-color: #66afe9 !important;
+    -webkit-box-shadow: 0px 0px 5px #c0c0c0;
+    box-shadow: 0px 0px 5px #c0c0c0;
+  }
+
+  ::ng-deep .intl-tel-input{
+    width: 100%;
+    input{
+      padding-left: 50px !important;
+    }
+    .flag-container{
+      li{
+          span{
+              color: #4A4A4A;
+          }
+      }
+
+      .highlight{
+          background: #4392EF;
+          span{
+              color: #fff;
+          }
+      }
+  }
+  }
+}
+
+

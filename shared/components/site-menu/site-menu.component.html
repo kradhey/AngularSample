@@ -1,0 +1,118 @@
+<nav>
+  <ul>
+    <!-- search -->
+    <!-- <li *ngIf="isSiteHeader">
+      <a [ngClass]="{'text-white': isSiteHeader}" class="menu-item hide-when-loggedOut searchByName" (click)="onToggleQuickSearch()">Search</a>
+    </li> -->
+    <li>
+      <ij-search-menu [isWhiteColor]="isSiteHeader ? true : false" (quickSearchEvent)="onToggleQuickSearch()"></ij-search-menu>
+    </li>
+    <!-- end search -->
+
+    <!-- messages -->
+    <!-- <li class="dropdown hide-when-loggedOut">
+      <button class="drop-toogle" type="button" (click)="showMyNotifications();">
+        Messages
+        <span class="drop-number" *ngIf="messageNoticationCount > 0 && messageNoticationCount <= 9">{{messageNoticationCount}}</span>
+        <span class="drop-number" *ngIf="messageNoticationCount > 9">9+</span>
+      </button> -->
+
+      <!-- <ul class="dropdown-menu" *ngIf="showNotification">
+        <li class="notificationText">
+          <span class="notificationT">Messages ({{messageNoticationCount}})</span>
+        </li>
+        <div class="scrollbar" id="scroll">
+          <li *ngFor="let notifyMsg of messageNotications">
+            <a *ngIf="notifyMsg.isRead" class="read" (click)="clickFilter(notifyMsg.notificationId);">
+              {{notifyMsg.message}}
+              <span class="time-date">{{ notifyMsg.messageSendTime | amFromUtc | amLocal | amCalendar:nextDay }}</span>
+            </a>
+            <a *ngIf="!notifyMsg.isRead" class="unread" (click)="clickFilter(notifyMsg.notificationId);">{{notifyMsg.message }}
+              <span class="time-date">{{ notifyMsg.messageSendTime | amFromUtc | amLocal | amCalendar:nextDay }}</span>
+            </a>
+          </li>
+        </div>
+      </ul> -->
+    <!-- </li> -->
+    <!-- end messages -->
+    <!-- user notifications -->
+    <!-- <li class="hide-when-loggedOut dropdown notification-menu">
+      <span [ngClass]="{'notification-active': newUserNotifications}" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+        aria-expanded="false" (click)="readUserNotifications()">
+        <span *ngIf="isSiteHeader" class="ij icon flash-white"></span>
+        <span *ngIf="!isSiteHeader" [ngClass]="{'flash-white': newUserNotifications}" class="ij icon flash-gray"></span>
+      </span>
+      <ul class="dropdown-menu">
+        <li class="notificationText">
+          <span class="notificationT">Notifications ({{userNotificationCount}})</span>
+        </li>
+        <div infiniteScroll [infiniteScrollDistance]="3" [infiniteScrollThrottle]="10" [scrollWindow]="false" (scrolled)="getUserNotifications()"
+          class="scrollbar" id="scroll">
+          <li *ngFor="let notification of userNotifications" (click)="onHire(notification.referredProfileSysId)">
+            <a [ngClass]="[notification.isRead ? 'read' : 'unread']">
+              <span [innerHTML]="notification.message"></span>
+              <br/>
+              <span class="notification-time">{{notification.createdDate}}</span>
+            </a>
+          </li>
+          <li *ngIf="!loadingNotifications && (!userNotifications || userNotifications.length == 0)">
+            <a class="read text-center">
+              <span>No new notification</span>
+            </a>
+          </li>
+        </div>
+        <div *ngIf="loadingNotifications" class="loader-img loader-center">
+          <img src="../../assets/images/chat/loader.gif">
+        </div>
+      </ul>
+    </li> -->
+    <ng-container *ngIf="isLoggedIn">
+      <ij-site-navigation [menuWhiteColor]="menuWhiteColor"></ij-site-navigation>
+    </ng-container>
+    <!-- end user notifications -->
+
+    <!-- avatar -->
+    <li class="hide-when-loggedOut">
+      <ij-avatar-menu></ij-avatar-menu>
+    </li>
+    <!-- end avatar -->
+
+    <!-- profile -->
+    <li class="hide-when-loggedOut">
+      <ij-profile-menu [menuWhiteColor]="menuWhiteColor"></ij-profile-menu>
+    </li>
+    <!-- end profile -->
+
+    <!-- signup / login -->
+
+    <li class="hide-when-loggedIn">
+      <a [ngClass]="{'text-white': isSiteHeader}" routerLink="/login">Login</a>
+    </li>
+    <li class="hide-when-loggedIn">
+      <a [routerLink]="['/signup']">
+        <button [ngClass]="{'text-white': isSiteHeader}" class="secondary" type="button">Sign Up</button>
+      </a>
+    </li>
+    <!-- <li class="hide-when-loggedIn">
+      <a [ngClass]="{'text-white': isSiteHeader}" routerLink="/signup">Sign Up</a>
+    </li> -->
+    <!-- <li class="hide-when-loggedIn">
+      <a [routerLink]="['/company']">
+        <button class="secondary" type="button">Hire Crew</button>
+      </a>
+    </li> -->
+    <!-- end signup / login -->
+
+    <!-- quick search icons -->
+    <!-- <li *ngIf="isSiteHeader" class="qs pointer hide-when-loggedOut" (click)="onToggleQuickSearch()">
+      <span class="ij icon search-white"></span>
+    </li>
+
+    <li *ngIf="!isSiteHeader" class="qs-profile pointer hide-when-loggedOut" (click)="onToggleQuickSearch()">
+      <span class="fa fa-search"></span>
+    </li> -->
+    <!-- end quick search icons -->
+
+  </ul>
+
+</nav>

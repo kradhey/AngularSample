@@ -1,0 +1,65 @@
+<ng-container *ngIf="dialogVisible">
+    <p-dialog autoAlign="true" blockScroll="true" modal="true" ngClass="custom-dialog" [resizable]="false" (onShow)="onShow()" [(visible)]="dialogVisible" [closable]="false">
+        <p-header ngClsass="popup-header">
+            <h2>Request a Review</h2>
+            <span class="ij icon x-icon" (click)="hideDialog()"></span>
+        </p-header>
+        <article class="dialog-container">
+            <form ij-form-validation #f="ngForm" (ngSubmit)="onSubmit(f)" (keydown.enter)="$event.preventDefault()" novalidate>
+                <header *ngIf="model.header">
+                    <ij-dialog-header class="center" [model]="model.header"></ij-dialog-header>
+                </header>
+                <div class="dialog-body">
+                    <div class="container-fluid">
+
+                        <div class="row">
+                            <div class="col-sm-12 form-group">
+                                <label>Full Name</label>
+                                <ij-member-selector 
+                                    (componentHasValue)="hasUserFromSystem($event)" 
+                                    [forceSelection]="false" 
+                                    #selector 
+                                    [required]="true" 
+                                    [preventSelf]="true"
+                                    [multipleSelection]="false"></ij-member-selector>
+                                <p class="help-block no-mar-btm">
+                                  This person does not need an Industry Jump account to review you.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div *ngIf="model.showEmail" class="row">
+                            <div class="col-sm-12 form-group">
+                                <label for="email">Email</label>
+                                <input 
+                                    name="email" 
+                                    type="text" 
+                                    class="form-control" 
+                                    required 
+                                    maxlength="256" 
+                                    [ij-input-validation]="'Please enter an email.'"
+                                    [(ngModel)]="model.email" />
+                            </div>
+                        </div>
+
+                        <!-- <div class="row">
+                            <div class="col-sm-12 form-group">
+                                <label for="project">Project they worked on with you?</label>
+                                <select id="project" name="project" class="form-control" required [ij-input-validation]="'Please select a project.'" [(ngModel)]="model.projectId">
+                                    <option *ngFor="let p of model.projects" [ngValue]="p.value">{{p.label}}</option>
+                                </select>
+                                <p class="help-block no-mar-btm">
+                                   Only people that have worked on the project listed above can review you.
+                                </p>
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+                <footer>
+                    <input type="submit" value="Send Review Request" />
+                    <div class="mar-20 alert alert-danger" *ngIf="showSaveErrored">{{errors}}</div>
+                </footer>
+            </form>
+        </article>
+    </p-dialog>
+</ng-container>

@@ -1,0 +1,23 @@
+@import '../../styles/variables/all';
+@import '../styles/common';
+
+.custom-dialog ::ng-deep .ui-dialog {
+    max-width: 400px;
+    .ui-dialog-titlebar{
+        border-top: 8px solid #3F93F5;
+        h2{
+            width: 78%; 
+        }
+    }
+    .ui-dialog-content{
+        header{
+            margin-left:31%;
+        }
+        .dialog-container{
+            padding: 0 40px 0px 40px;
+            .dialog-body{
+                margin-bottom: 10px;
+            }
+        }
+    }
+}

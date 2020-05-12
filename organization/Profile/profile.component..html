@@ -1,0 +1,75 @@
+<org-header></org-header>
+<header id="page-header">
+    <div class="mini">
+        <div class="container">
+            <h1 class="text-center main-heading">ORGANIZATION SETTINGS</h1>
+        </div>
+    </div>
+</header>
+<header id="page-header">
+    <nav class="tabs">
+        <ul>
+
+            <li>
+                <a (click)="onTab('personal')" [ngClass]="{'active': activeTab == 'personal'}">Profle Settings</a>
+            </li>
+            <li>
+                <a (click)="onTab('password')" [ngClass]="{'active': activeTab == 'password'}">Change Password</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+<div class="container" [ngSwitch]="activeTab">
+    <ng-container *ngSwitchCase="'personal'">
+
+        <form #f1="ngForm" (ngSubmit)="portfolioSave(f1.form)" (keydown.enter)="$event.preventDefault()" novalidate>
+            <fieldset>
+                <legend>Organization Info
+                    <small>(Info will be shared with employers)</small>
+                </legend>
+                <div class="row">
+                    <div class="col-lg-4">
+                        <label for="fname">Organization Name</label>
+                        <input id="fname" name="fname" type="text" class="form-control" [ngModel]="model?.organizationName | titlecase"
+                            (ngModelChange)="model.organizationName=$event" readonly />
+                    </div>
+
+                    <div class="col-lg-4">
+                        <label for="passCode">Student Pass Code</label>
+                        <input id="passCode" name="passCode" type="text" class="form-control" [ngModel]="model?.organizationPassCode | titlecase"
+                            (ngModelChange)="model.organizationPassCode=$event" readonly />
+                    </div>
+
+                    <div class="col-lg-4">
+                        <label for="organizationPassCodeAlumni">Alumni Pass Code</label>
+                        <input id="organizationPassCodeAlumni" name="organizationPassCodeAlumni" type="text" class="form-control"
+                            [ngModel]="model?.organizationPassCodeAlumni | titlecase" (ngModelChange)="model.organizationPassCodeAlumni=$event"
+                            readonly />
+                    </div>
+                </div>
+            </fieldset>
+            <div class="row">
+                <div class="col-lg-4">
+                    <fieldset class="upload">
+                        <legend>User Name</legend>
+                        <input id="userName" name="userName" type="text" class="form-control" [ngModel]="model?.userName | titlecase"
+                            (ngModelChange)="model.userName=$event" readonly />
+                    </fieldset>
+                </div>
+                <div class="col-lg-4">
+                    <fieldset class="upload">
+                        <legend>Profile Picture</legend>
+                        <button type="button" pButton label="Choose Image" icon="fa-plus" iconPos="left" (click)="onProfilePicClicked($event)"></button>
+                        <ij-Orgprofilepic-dialog></ij-Orgprofilepic-dialog>
+                    </fieldset>
+                </div>
+            </div>
+        </form>
+    </ng-container>
+
+    <ng-container *ngSwitchCase="'password'">
+        <ij-change-password></ij-change-password>
+    </ng-container>
+    <a class="blue-btn" routerLink="/organization/home">Back To List</a>
+</div>

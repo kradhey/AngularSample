@@ -1,0 +1,169 @@
+<div class="container fh" role="main">
+    <div class="abscenter">
+        <header class="sm welcome">
+            <a routerLink="/">
+                <img src="../assets/images/ij-white.png" alt="Industry Jump" />
+                <h1>Welcome to Industry Jump</h1>
+            </a>
+            <!-- <div *ngIf="!saveCompleted" class="mar-20 text-center">Please fill in the information below. When space opens up, we will contact you. Thank you!</div> -->
+            <div *ngIf="!saveCompleted" class="mar-30 text-center">Please fill in the information below. Once we launch woldwide,<br> you will be the first to know!</div>
+        </header>
+
+        <ij-save-indicator ngClass="mar-20" message="Your request has been sent." [visible]="saveCompleted"></ij-save-indicator>
+
+        <section *ngIf="!saveCompleted" id="fields" class="form-widget">
+            <form #f="ngForm" (ngSubmit)="onSubmit(f.form)" novalidate autocomplete="off">
+                <!-- fname & lname -->
+                <div class="inline-group">
+                    <div class="group" [ngClass]="{invalid: submitted && firstName.invalid}">
+                        <span class="ij icon user-white"></span>
+                        <input
+                            #firstName="ngModel"
+                            name="firstName" 
+                            type="text" 
+                            [ngModel]="model.firstName | titlecase" 
+                            (ngModelChange)="model.firstName=$event"
+                            [ij-focus]="true"
+                            placeholder="First Name *" 
+                            required
+                            maxlength="32"
+                            [pattern]="nameRegex" />
+                    </div>
+                    <div class="group" [ngClass]="{invalid: submitted && lastName.invalid}">
+                        <input 
+                            #lastName="ngModel" 
+                            name="lastName"
+                            type="text" 
+                            [ngModel]="model.lastName | titlecase"
+                            (ngModelChange)="model.lastName=$event"
+                            placeholder="Last Name *" 
+                            required 
+                            maxlength="32"
+                            [pattern]="nameRegex" />
+                    </div>
+                </div>
+        
+                <!-- email -->
+                <div class="group" [ngClass]="{invalid: submitted && email.invalid}">
+                    <span class="ij icon email-white"></span>
+                    <input 
+                        type="email" 
+                        #email="ngModel" 
+                        [(ngModel)]="model.email" 
+                        name="email" 
+                        placeholder="Email *" 
+                        required 
+                        email
+                        maxlength="64" />
+                    <div class="validation-summary text-left" *ngIf="submitted && email.errors?.email && !email.errors.required">
+                        <span>Please enter a valid email address.</span>
+                    </div>
+                </div>
+        
+                <!-- roles -->
+                <div class="group"  [ngClass]="{invalid: submitted && roles.invalid}">
+                    <p-autoComplete
+                        #roles="ngModel"
+                        id="roles"
+                        name="roles"
+                        placeholder="Roles *"
+                        autoHighlight="true"
+                        required="true"
+                        forceSelection="true"
+                        dropdown="true"
+                        [ngClass]="'ac-signup'"
+                        [(ngModel)]="model.roles"
+                        [suggestions]="roleSuggestions"
+                        (completeMethod)="onRolesKeyDown($event)"
+                        [multiple]="true">
+                    </p-autoComplete>
+                    <div class="coach-marks">Only the top 3 roles you want to be hired for.</div>
+                </div>
+        
+                <!-- <fieldset
+                    #address="ijAddress"
+                    ngModelGroup="address" 
+                    ij-address
+                    [ij-city]="city"
+                    [ij-state]="state"
+                    [ij-zipcode]="zipcode">
+                  
+                    <div class="group" [ngClass]="{invalid: submitted && (city.invalid || address.invalid)}">
+                        <span class="ij icon pindrop-white"></span>
+                        <input 
+                            name="city" 
+                            #city="ngModel" 
+                            type="text"
+                            [ngModel]="model.city | titlecase"
+                            (ngModelChange)="model.city=$event"
+                            placeholder="City *" 
+                            required
+                            minlength="2"
+                            maxlength="128" />
+                    </div>
+        
+                 
+                    <div class="inline-group">
+                        <div class="group" [ngClass]="{invalid: submitted && (state.invalid || address.invalid)}">
+                            <span class="ij icon pindrop-white"></span>
+                            <select required name="state" #state="ngModel" [(ngModel)]="model.state">
+                                <option 
+                                    *ngFor="let s of states"
+                                    [disabled]="s.abbreviation == ''"
+                                    [ngValue]="s.abbreviation">{{s.name}}</option>
+                            </select>
+                        </div>
+                        <div class="group" [ngClass]="{invalid: submitted && (zipcode.invalid || address.invalid)}">
+                            <input 
+                                name="zipcode" 
+                                #zipcode="ngModel"
+                                type="text"
+                                [(ngModel)]="model.zipcode" 
+                                placeholder="Zip Code *" 
+                                required
+                                [pattern]="zipcodeRegex"
+                                [textMask]="{mask: zipcodeMask}" />
+                        </div>
+                        <div class="validation-summary text-left" *ngIf="submitted && address.invalid">
+                            Please enter a valid address.
+                        </div>
+                    </div>
+                </fieldset> -->
+            <!-- Country-->
+            <div class="group" [ngClass]="{invalid: submitted && country.invalid}">
+                    <span class="ij icon pindrop-white"></span>
+                    <input 
+                        name="country" 
+                        #country="ngModel" 
+                        type="text"
+                        required
+                        [ngModel]="model.country | titlecase"
+                        (ngModelChange)="model.country=$event"
+                        placeholder="Country *" 
+                        minlength="2"                                      
+                        maxlength="128" />
+
+                </div>
+              
+        
+                <p class="group required-desc">* Denotes a required field.</p>
+                
+                <div *ngIf="errors" class="group signup-errors">
+                    <ul>
+                        <li *ngFor="let error of errors">{{error}}</li>
+                    </ul>
+                </div>
+
+                <div *ngIf="submitted && f.invalid" class="validation-summary text-center">
+                    Please correct the errors above before continuing.
+                </div>
+        
+                <footer class="group">
+                    <button type="button" (click)="onCancel()" class="secondary">Cancel</button>
+                    <input type="submit" class="primary" value="Submit" />
+                </footer>
+            </form>
+        </section>
+    </div>
+</div>
+<div id="bg"><img src="../assets/images/bg.jpg?v=1" alt=""></div>

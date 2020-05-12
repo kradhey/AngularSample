@@ -1,0 +1,27 @@
+<div class="orgHeader">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-4">
+        <div class="logo pull-left">
+          <a [routerLink]="['/organization/home']">
+            <img src="../../assets/images/ij.png" />
+          </a>
+        </div>
+        <div class="pull-left">
+          <a (click)="onClick($event,'Alumni')" id="alumni" class="btn btn-warning">Alumni</a>
+          <a (click)="onClick($event,'student')" id="student" class="btn btn-warning active">Students</a>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-4 text-center" *ngIf="model?.organisationprofilePic">
+        <img src="{{getThumbnailImageUrl()}}" class="centerImg" />
+      </div>
+      <div class="col-xs-12 col-sm-4 text-center" *ngIf="!model?.organisationprofilePic">
+        <a class="menu-item" style="text-decoration: none" href="jacasvript:void(0)" (click)="Redirect()">Add Logo</a>
+      </div>
+      <div class="col-xs-12 col-sm-4 text-right">
+        <a class="menu-item" href="jacasvript:void(0)" (click)="Redirect()">Profile</a>
+        <a (click)="logOut()" href="jacasvript:void(0)" class="menu-item l50">Log Off</a>
+      </div>
+    </div>
+  </div>
+</div>

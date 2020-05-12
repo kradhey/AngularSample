@@ -1,0 +1,78 @@
+@import '../../styles/variables/all';
+@import '../styles/common';
+
+.custom-dialog ::ng-deep .ui-dialog {
+    max-width: 700px;
+
+    .ui-dialog-titlebar {
+        border-top: 8px solid @primary-orange-light;
+    }
+    
+    .ui-dialog-content {
+        header {
+            ij-dialog-header {
+                margin: 0 auto;
+            }
+        }
+    }
+}
+
+input[type="submit"] {
+    background: @primary-orange-light;
+}
+
+footer {
+    #verify-id-container {
+        margin-bottom: @dialog-row-spacing;
+    }
+
+    #verify-id {
+        justify-content: center;
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+        
+        .or {
+            margin: 0 1em;
+            letter-spacing: .03em;
+            color: #868686;
+        }
+
+        .button {
+            color: #fff;
+            border: 0;
+            padding: 10px 12px;
+            width: 215px;
+            border-radius: 5px;
+            cursor: pointer;
+    
+            i {
+                font-size: 20px;
+                margin-right: 5px;
+            }
+        }
+
+        .button-fb {
+            background: @primary-blue-dark;
+        }
+    
+        .button-ij {
+            width: 215px;
+            background: @primary-blue;
+        }
+    }
+
+    .review:disabled {
+        opacity: 0.6;
+    }
+
+    .ij-white {
+        position: relative;
+        top: 2px;
+        margin-right: 5px;
+    }
+
+    a:hover {
+        text-decoration: none;
+    }
+}

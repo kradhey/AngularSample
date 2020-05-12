@@ -1,0 +1,192 @@
+<ng-container *ngIf="dialogVisible">
+    <p-dialog autoAlign="true" blockScroll="true" modal="true" ngClass="custom-dialog" [closable]="false" [resizable]="false"
+        [(visible)]="dialogVisible">
+        <p-header ngClsass="popup-header">
+            <h2>{{dialogTitle}}</h2>
+            <span class="ij icon x-icon" (click)="close()"></span>
+        </p-header>
+        <article class="dialog-container">
+            <header *ngIf="model.header">
+                <ij-dialog-header [model]="model.header"></ij-dialog-header>
+            </header>
+            <div class="dialog-body" *ngIf="model.header.budgetStatus == budgetStatusTypes.Upgraded">
+                <h4 *ngIf="model.header.defaultBudget != budgetLevel.UltraLowBudget">
+                    You've unlocked a new Budget Level!</h4>
+                <h4 *ngIf="model.header.defaultBudget == budgetLevel.UltraLowBudget">
+                    Your profile is now visible to the public!</h4>
+                <ng-container>
+                    <div class="text-center">
+                        <ul *ngIf="model.header.defaultBudget == budgetLevel.UltraLowBudget">
+                            <li>Ultra Low Budget
+                                <span>
+                                    <img src="../../../assets/images/check-mark-button.png" alt="">
+                                </span>
+                            </li>
+                            <li>Low Budget
+                                <p>({{model.budgetLevel.lowBudgetText}})</p>
+                            </li>
+                            <li>Industry Scale
+                                <p>({{model.budgetLevel.industryScaleBudgetText}})</p>
+                            </li>
+                            <li>Union
+                                <p>({{model.budgetLevel.unionRateBudgetText}})</p>
+                            </li>
+                        </ul>
+
+                        <ul *ngIf="model.header.defaultBudget == budgetLevel.LowBudget">
+                            <li>Ultra Low Budget
+                                <span>
+                                    <img src="../../../assets/images/check-mark-button.png" alt="">
+                                </span>
+                            </li>
+                            <li>Low Budget
+                                <span>
+                                    <img src="../../../assets/images/check-mark-button.png" alt="">
+                                </span>
+                            </li>
+                            <li>Industry Scale
+                                <p>({{model.budgetLevel.industryScaleBudgetText}})</p>
+                            </li>
+                            <li>Union
+                                <p>({{model.budgetLevel.unionRateBudgetText}})</p>
+                            </li>
+                        </ul>
+
+                        <ul *ngIf="model.header.defaultBudget == budgetLevel.IndustryScale">
+                            <li>Ultra Low Budget
+                                <span>
+                                    <img src="../../../assets/images/check-mark-button.png" alt="">
+                                </span>
+                            </li>
+                            <li>Low Budget
+                                <span>
+                                    <img src="../../../assets/images/check-mark-button.png" alt="">
+                                </span>
+                            </li>
+                            <li>Industry Scale
+                                <span>
+                                    <img src="../../../assets/images/check-mark-button.png" alt="">
+                                </span>
+                            </li>
+                            <li>Union
+                                <p>({{model.budgetLevel.unionRateBudgetText}})</p>
+                            </li>
+                        </ul>
+
+                        <ul *ngIf="model.header.defaultBudget == budgetLevel.UnionRates">
+                            <li>Ultra Low Budget
+                                <span>
+                                    <img src="../../../assets/images/check-mark-button.png" alt="">
+                                </span>
+                            </li>
+                            <li>Low Budget
+                                <span>
+                                    <img src="../../../assets/images/check-mark-button.png" alt="">
+                                </span>
+                            </li>
+                            <li>Industry Scale
+                                <span>
+                                    <img src="../../../assets/images/check-mark-button.png" alt="">
+                                </span>
+                            </li>
+                            <li>Union
+                                <span>
+                                    <img src="../../../assets/images/check-mark-button.png" alt="">
+                                </span>
+                            </li>
+                        </ul>
+                    </div>
+                </ng-container>
+            </div>
+            <div class="dialog-body" *ngIf="model.header.budgetStatus == budgetStatusTypes.Downgraded">
+                <h4 *ngIf="model.header.defaultBudget != budgetLevel.InvisibleToPublic">
+                    You've been downgraded to a lower Budget Level!</h4>
+                <h4 *ngIf="model.header.defaultBudget == budgetLevel.InvisibleToPublic">
+                    Your profile is almost visible to the public!</h4>
+                <ng-container>
+                    <div class="text-center">
+                        <ul *ngIf="model.header.defaultBudget == budgetLevel.InvisibleToPublic">
+                            <li>Ultra Low Budget
+                                <p>({{model.budgetLevel.ultraLowBudgetText}})</p>
+                            </li>
+                            <li>Low Budget
+                                <p>({{model.budgetLevel.lowBudgetText}})</p>
+                            </li>
+                            <li>Industry Scale
+                                <p>({{model.budgetLevel.industryScaleBudgetText}})</p>
+                            </li>
+                            <li>Union
+                                <p>({{model.budgetLevel.unionRateBudgetText}})</p>
+                            </li>
+                        </ul>
+
+                        <ul *ngIf="model.header.defaultBudget == budgetLevel.UltraLowBudget">
+                            <li>Ultra Low Budget
+                                <span>
+                                    <img src="../../../assets/images/check-mark-button.png" alt="">
+                                </span>
+                            </li>
+                            <li>Low Budget
+                                <p>({{model.budgetLevel.lowBudgetText}})</p>
+                            </li>
+                            <li>Industry Scale
+                                <p>({{model.budgetLevel.industryScaleBudgetText}})</p>
+                            </li>
+                            <li>Union
+                                <p>({{model.budgetLevel.unionRateBudgetText}})</p>
+                            </li>
+                        </ul>
+
+                        <ul *ngIf="model.header.defaultBudget == budgetLevel.LowBudget">
+                            <li>Ultra Low Budget
+                                <span>
+                                    <img src="../../../assets/images/check-mark-button.png" alt="">
+                                </span>
+                            </li>
+                            <li>Low Budget
+                                <span>
+                                    <img src="../../../assets/images/check-mark-button.png" alt="">
+                                </span>
+                            </li>
+                            <li>Industry Scale
+                                <p>({{model.budgetLevel.industryScaleBudgetText}})</p>
+                            </li>
+                            <li>Union
+                                <p>({{model.budgetLevel.unionRateBudgetText}})</p>
+                            </li>
+                        </ul>
+
+                        <ul *ngIf="model.header.defaultBudget == budgetLevel.IndustryScale">
+                            <li>Ultra Low Budget
+                                <span>
+                                    <img src="../../../assets/images/check-mark-button.png" alt="">
+                                </span>
+                            </li>
+                            <li>Low Budget
+                                <span>
+                                    <img src="../../../assets/images/check-mark-button.png" alt="">
+                                </span>
+                            </li>
+                            <li>Industry Scale
+                                <span>
+                                    <img src="../../../assets/images/check-mark-button.png" alt="">
+                                </span>
+                            </li>
+                            <li>Union
+                                <p>({{model.budgetLevel.unionRateBudgetText}})</p>
+                            </li>
+                        </ul>
+                    </div>
+                </ng-container>
+            </div>
+            <footer>
+                <input (click)="close()" type="submit" value="Close" />
+                <div class="mar-20 alert alert-danger" *ngIf="showSaveErrored">
+                    <ul>
+                        <li *ngFor="let error of errors">{{error}}</li>
+                    </ul>
+                </div>
+            </footer>
+        </article>
+    </p-dialog>
+</ng-container>

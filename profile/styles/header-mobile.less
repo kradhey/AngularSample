@@ -1,0 +1,122 @@
+@import './header-common';
+@import './dropdown';
+
+@ver-spacing: 20px;
+
+#profile-header-mobile {
+  .header-common();
+  z-index: -1;
+  text-align: center;
+
+  .avatar {
+    margin-top: @ver-spacing;
+    width: @profile-pic-md-width;
+    height: @profile-pic-md-height;
+    border-radius: 50%;
+    position: relative;
+  }
+
+  .who {
+    h1 {
+      .font-regular();
+      margin-top: 10px;
+      font-size: 30px;
+    }
+
+    h2 {
+      margin-top: 5px;
+      font-size: 20px;
+    }
+  }
+
+  p {
+    margin-top: 5px;
+  }
+
+  .industryscore {
+    .num {
+      .font-bold();
+      font-size: @scale-img-width;
+      color: @primary-orange-light;
+      height: @scale-img-width;
+      line-height: 44px;
+      margin: 0;
+      letter-spacing: 0;
+      vertical-align: top;
+    }
+  }
+
+  footer {
+    &:before {
+      content: '';
+    }
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: @ver-spacing;
+    padding: 10px 0;
+    color: #dedede;
+    border-top: 1px solid #6D8691;
+
+    .industryscore {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+
+    .budget,
+    .industryscore {
+      margin: 0 1em;
+      text-align: center;
+    }
+  }
+}
+
+.actions {
+    @gap: 1px;
+    list-style-type: none;
+    column-count: 2;
+    column-gap: @gap;
+    margin-top: @gap;
+
+    .action {
+        margin-bottom: @gap;
+
+        text-align: center;
+        height: 50px;
+        width: 100%;
+    }
+}
+
+.header-action-buttons{
+    .actions {
+        column-count: 1;
+    }
+}
+
+.imageInsta{
+    position: absolute;
+    margin-left: -32px;
+    margin-top: 80px;
+    height: 15px;
+    width: auto;
+}
+.mobcover{
+  background-color: #54718F;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  filter: blur(3px);
+  z-index: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform: scale(1.1);
+  background-image: url('../../assets/images/profile/profile-bg-blur.jpg');
+}
+.pstn{
+  position:relative;
+}

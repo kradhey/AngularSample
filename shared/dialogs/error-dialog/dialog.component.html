@@ -1,0 +1,18 @@
+<ng-container *ngIf="dialogVisible">
+    <p-dialog autoAlign="true" blockScroll="true" modal="true" width="auto" ngClass="custom-dialog sm" [resizable]="false" [closable]="false" [(visible)]="dialogVisible">
+        <p-header ngClsass="popup-header">
+            <h2>{{title}}</h2>
+            <span class="ij icon x-icon" (click)="hideDialog()"></span>
+        </p-header>
+        <article class="dialog-container">
+            <div class="dialog-body">
+                {{message}}
+                <br>
+                <br>
+            </div>
+        </article>
+        <p-footer>
+            <button type="button" pButton label="Close" (click)="hideDialog()"></button>
+        </p-footer>
+    </p-dialog>
+</ng-container>

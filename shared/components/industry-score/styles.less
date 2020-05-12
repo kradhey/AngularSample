@@ -1,0 +1,39 @@
+@import '../../styles/variables/all';
+@import '../../styles/mixins/all';
+
+:host {
+    display: inline-block;
+    text-align: center;
+
+    .score {
+        .font-bold();
+        color: @primary-orange-light;
+        
+        line-height: 1em;
+        letter-spacing: 0;
+
+        &.large {
+            font-size: 85px;
+        }
+
+        &.small {
+            font-size: 60px;
+        }
+        .on-mini-small-mobile({
+            display: none;
+        });
+    }
+
+    label {
+        .font-regular();
+        display: block;
+        margin:0;
+        font-size:16px;
+        .on-mini-small-mobile({
+            display: none;
+        });
+    }
+
+    
+}
+#profile-header-desktop { :host { .ind-score{margin:-18px 0 0} } }

@@ -1,0 +1,167 @@
+@import './common';
+.item {
+    text-align: center;
+    height: 40px;
+}
+
+.carousel:hover {
+    .carousel-control{
+        display: block;
+    }  
+}
+/*
+
+
+
+*/
+
+.lastCell .thumbnail{
+    padding: 0;
+    border: none;
+    margin:20px 0 0 auto;
+    width:100%;max-width:130px
+}
+.dataCell .carousel-control.left, .dataCell  .carousel-control.right, .thumbnail{
+    background: none!important;
+    color: #aaa;
+    text-shadow: none;top:-7px
+}
+.lastCell{display: table;width:85%;margin: 22px 0 10px}
+.lastCell .dataCell{display:table-cell;margin: 0;}
+.dataCell .carousel-indicators{left:32%}
+.dataCell .carousel-indicators li{background-color:#b7d8f4!important;border-color:#b7d8f4;width:10px;height: 10px;border:none }
+.dataCell  .carousel-indicators li.active{background-color:#4392EF!important}
+.dataCell  .carousel-indicators{bottom:0px;margin-bottom: 0}
+
+.dataCell  .carousel-control{
+    display: none;
+}
+.dataCell .carousel-control.left{left:-7px}
+.dataCell .carousel-control.right{right:-7px}
+.dataCell .carousel-caption{text-shadow: none;left:7px;right:0%;padding: 0;text-align:left;}
+.dataCell .carousel-inner{
+ margin-top: 5px;
+ .imgLeft{position: static}
+ 
+ .imgLeft .imgspan{float: left;padding: 5px 7px!important;display: inline-block;width:60px;text-align: center}
+ .imgLeft p{padding: 10px 7px 5px 7px!important;display: inline-block;}
+ 
+}
+.university-text{
+  display: inline-block;
+  
+}
+
+.left50{left:50%!important;top:29px}
+.lastRow1 .carousel-inner{margin-top:0px!important}
+h2 {
+    margin: 0;
+    color: #888;
+    padding-top: 80px;
+    font-size: 30px;
+}
+.carousel{
+    p{
+        color:#333;text-shadow: none;
+        font-family: 'Lato', sans-serif;
+        font-weight: 400;
+        font-size: 14px
+    }
+    li{
+    background: blue;
+    }
+}
+.pT22 {
+  padding-top: 22px;
+}
+#about {
+  display: flex;
+  justify-content: space-between;
+  margin: 55px 0;
+
+  .budgets {
+    width: @profile-pic-lg-width;
+    text-align: center;
+
+    .default-budget {
+      img {
+        margin-right: .5em;
+        width: 31px;
+      }
+
+      user-select: none;
+
+
+      .img-container {
+        text-align: left;
+        margin-left: 15%;
+        display: table;
+    width: 100%;
+        img{width: auto;height:22px}
+                  
+        .budget-text{
+          vertical-align: bottom;
+          line-height: 2.3;
+        }
+        span {
+          display: table-cell;
+          vertical-align: middle;
+          padding: 5px 7px;
+          position: relative;
+
+         img{     max-width: 90%;
+          height: auto;
+          width: auto;
+          margin: auto;}
+          .thumbnail {
+            margin: 0;
+            padding: 0;
+            border: none;
+            position: absolute;
+            left: 0;
+            top: 5px;
+            width: 100%;
+        }
+        }
+        span.firstCell {
+          width: 60px;
+          height: 45px;
+          text-align: center;
+      }
+      
+        .union-text {
+          vertical-align: middle;
+        }
+
+        .university-text {
+          vertical-align: middle;
+        }
+      }
+      .lastRow{top:-2px;position: relative}
+        
+    }
+  }
+
+  .bio {
+    width: 50%;
+    padding-top: 7px;
+
+    ol.todo {
+      padding: 0;
+      margin: 1em;
+    }
+  }
+
+  .scores {
+    display: inline-block;
+
+    label {
+      margin-left: 1em;
+      .font-regular();
+    }
+
+    p {
+      margin-bottom: .5em;
+    }
+  }
+}

@@ -1,0 +1,28 @@
+<p class="page-desc-light">Please enter your invitation code</p>
+
+<section class="form-widget">
+    <form #f="ngForm" (ngSubmit)="onNext(f.form)" novalidate autocomplete="off">
+        <div class="group" [ngClass]="{invalid: this.submitted && c.invalid}">
+            <span class="ij icon password-white"></span>
+            <input
+                [ij-focus]="true"
+                type="text" 
+                #c="ngModel" 
+                [(ngModel)]="model.betaCode" 
+                name="c" 
+                placeholder="Beta Code *" 
+                required
+                maxlength="25" />
+            <div class="validation-summary text-left" *ngIf="submitted && badCode">
+                <span>The beta code is invalid.</span>
+            </div>
+        </div>
+        <div class="text-center group">
+            <a routerLink="/signup/request">Request beta code.</a>
+        </div>
+        <footer class="group">
+            <button type="button" (click)="onCancel()" class="secondary">Cancel</button>
+            <input type="submit" class="primary" value="Next >>" />
+        </footer>
+    </form>
+</section>

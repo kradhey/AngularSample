@@ -1,0 +1,106 @@
+@import './common';
+
+.area-title {
+    .new-project {
+        .new-button();
+    }
+}
+
+.area-footer {
+    text-align: center !important; 
+    button.more {
+        .more();
+    }
+    .on-mobile({
+        margin: @area-gap 0;
+    })
+}
+
+@media only screen and (min-width: 1200px) {
+    .area-footer { 
+        margin-right: 50px !important;
+    }
+}
+
+.no-projects {
+    .no-results();
+}
+
+.card.project {
+    position: relative;
+    // width
+    width: @desktop-card-width;
+    height:272px;
+    // end width
+    
+    margin: 0 @card-gap @card-gap 0;
+
+    .on-tablet({
+        width: @tablet-card-width;
+        margin: 0 @card-gap-tab @card-gap 0;
+        height: 232px;
+    });
+    
+    .on-mobile({
+        width: @desktop-card-width;
+        height: 272px;
+    });
+
+    .on-mini-small-mobile({
+        width: @mobile-card-width;
+    });
+
+    &:nth-child(even) {
+        margin-right: 0;
+    }
+
+    .favorite {
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+
+    img.thumb {
+        width: @desktop-card-width;
+        height: @desktop-thumbnail-height;
+        display: inline-block;
+        
+        .on-tablet({
+            width: @tablet-card-width;
+            height: @tablet-thumbnail-height;
+        });
+
+        .on-mobile({
+            width: @desktop-card-width;
+            height: @desktop-thumbnail-height;
+        });
+
+        .on-mini-small-mobile({
+            width: @mobile-card-width;
+        });
+    }
+
+    footer {
+        padding: 20px 15px;
+
+        .top {
+            display: flex;
+            justify-content: space-between;
+                        
+            .title {
+                font-size: 16px;
+                color: @card-name-color;
+                letter-spacing: 0;
+                margin-bottom: 9px;
+
+                white-space: nowrap;
+                width: 16em;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+        }
+    }
+    .video-unavailable {
+        pointer-events: none;
+    }
+}

@@ -1,0 +1,85 @@
+<div class="gradient">
+    <div class="container show-on-desktop">
+        <ij-profile-header-desktop></ij-profile-header-desktop>
+    </div>
+
+    <ij-profile-header-mobile class="hide-on-desktop"></ij-profile-header-mobile>
+
+    <header class="container filter">
+    </header>
+
+    <section class="container reviews">
+        <ul>
+            <li *ngIf="!hasReviews">
+                <article class="well">
+                    No reviews have been written, yet.
+                </article>
+            </li>
+            <li *ngFor="let review of model.reviews.cards; trackBy: trackCard">
+                <div *ngIf="review.status == reviewStatusTypes.Invisible" class="invisible-banner">Review reported. This review is invisible to the public.</div>
+                <article class="review">
+                    <div class="by-container">
+                        <div class="by">
+                            <!--TODO:Change-->
+                            <a [routerLink]="review.reviewer.link">
+                                <img 
+                                    class="avatar" 
+                                    src="{{review.reviewer.profileImageUrl}}" 
+                                    alt="{{review.reviewer.fullName}}" />
+                            </a>
+
+                            <div class="reviewer">
+                                <p class="meta" [ngClass]="{'text-orange': !review.isGeneralReview}">{{review.isGeneralReview ? 'General Review by :' : 'Verified Review by:'}}</p>
+                                <!--TODO:Change-->
+                                <a [routerLink]="review.reviewer.link" class="name">{{review.reviewer.fullName}}</a>
+                                <p class="role">{{review.reviewer.crewRoles}}</p>
+                                <p class="project">{{review.projectName}}</p>
+                            </div>
+                        </div>
+                        <button class="contact" (click)="onContactClicked(review.reviewer)">Reference Check</button>
+                    </div>
+
+                    <div class="scores">
+                        <p>
+                            <ij-rating [rating]="review.scores.reliability"></ij-rating>
+                            <label>Reliability</label>
+                        </p>
+
+                        <p>
+                            <ij-rating [rating]="review.scores.craftsmanship"></ij-rating>
+                            <label>Craftsmanship</label>
+                        </p>
+
+                        <p>
+                            <ij-rating [rating]="review.scores.communication"></ij-rating>
+                            <label>Communication</label>
+                        </p>
+
+                        <p>
+                            <ij-rating [rating]="review.scores.attitude"></ij-rating>
+                            <label>Attitude</label>
+                        </p>
+                    </div>
+
+                    <div class="comment">
+                        <h1>"{{review.title}}"</h1>
+                        <label>Summary:</label>
+                        <blockquote>{{review.comments}}</blockquote>
+                    </div>
+                    <div class="actions ij-dropdown">
+                                <button type="button" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <img src="../../assets/images/profile/icon-info.png" />
+                                </button>
+                                <div class="pointer dropdown-menu dropdown-menu-right">
+
+                                    <a (click)="onReportClicked(review)">Report</a>
+                                </div>
+                        </div>
+                </article>
+            </li>
+        </ul>
+        <footer *ngIf="hasMoreReviews" class="area-footer">
+            <button (click)="onViewMoreClicked()" class="more">View More</button>
+        </footer>
+    </section>
+</div>

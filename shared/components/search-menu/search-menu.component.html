@@ -1,0 +1,10 @@
+<div class="ij-dropdown btn-group">
+    <a [ngClass]="{'text-white':isWhiteColor}" class="dropdown-toggle search" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+       Search
+   </a> 
+    <ul class="dropdown-menu dropdown-menu-right">
+        <li ><a (click)="onToggleQuickSearch()">Search Name</a></li>
+        <li role="separator" class="divider" style="cursor:default"></li>
+        <li><a routerLink="/search">Search Position</a></li>
+    </ul>
+</div>

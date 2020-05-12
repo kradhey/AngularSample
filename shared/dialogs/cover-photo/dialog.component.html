@@ -1,0 +1,32 @@
+
+<ng-container *ngIf="dialogVisible">
+    <p-dialog appendTo="body" modal="true" styleClass="custom-img-dialog cover-image" width="auto" [resizable]="false" [(visible)]="dialogVisible">
+        <article class="dialog-container">
+            <p>
+              <label class="dlgheader">select a cover photo (Minimum photo width:1200px) </label>
+            </p>
+            <input type="file" (change)="onFileChange($event)" />
+
+            <div class="croppertwo" min-height= "297px">
+                <image-cropper class="crp"
+                    [imageChangedEvent]="imageChangedEvent" 
+                    [maintainAspectRatio]="true"
+                    [aspectRatio]="1200 / 297"
+                    [imageQuality]="100"
+                    format="jpeg" 
+                    (imageCroppedBase64)="imageCropped($event)" 
+                    (imageLoaded)="imageLoaded()" 
+                    (loadImageFailed)="loadImageFailed()"></image-cropper>
+            </div>
+           
+            <footer>
+                <input type="submit" value="Save" (click)="onSave($event)" />
+                <div class="mar-20 alert alert-danger" *ngIf="showSaveErrored">{{errors}}</div>
+            </footer>
+            <ul *ngIf="errorList">
+                <li class="mar-20 alert alert-danger" *ngFor="let error of coverSceneErrors">{{error}}</li>
+            </ul>
+        </article>
+    </p-dialog>
+</ng-container>
+<!-- <ngx-spinner></ngx-spinner> -->

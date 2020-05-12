@@ -1,0 +1,60 @@
+<org-header (navigationEvent)="handleNavigation($event)"></org-header>
+<div class="container orgAdmin">
+  <div class="row">
+    <div class="col-xs-12 col-sm-6">
+      <div class="result-count">{{countModel}} total results for <strong>{{Type}}</strong></div>
+    </div>
+    <div class="col-xs-12 col-sm-6 text-right">
+      <div class="searchStudents">
+        <input *ngIf="true" class="form-control searchBar" [(ngModel)]="searchText" placeholder="search text goes here">
+        <span class="searchStud"><i class="fa fa-search"></i></span> <button class="btn btn-primary" (click)="exportCsv()">Export
+          CSV</button>
+
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <!-- ********************************************************************
+        ************************** Organizational Admin Panel *******************
+        ********************************************************************** -->
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <!--<th class="firstCol"></th>-->
+              <th>Date Joined</th>
+              <th>Full Name</th>
+              <th>Listed Roles</th>
+              <th class="indscore">Industry Score</th>
+              <th>Allow Badge</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let x of model | myfilter : searchText">
+              <!--<td class="firstCol"></td>-->
+              <td>{{x.creationDate}}</td>
+              <td class="blueColorText">
+                <a target="_blank" [routerLink]="['/profile', x.userProfileUrlDisplayName]">{{x.fullName}}</a>
+              </td>
+              <td>{{x.crewRoles}}</td>
+              <td class="indscore">{{x.industryScore}}</td>
+              <td>
+                <label class="switch">
+                  <input (change)="allowBadge(x.allowBadge,x.badgeId)" class="switch-input" type="checkbox" [(ngModel)]="x.allowBadge" />
+                  <span class="switch-label" data-on=" " data-off=" "></span>
+                  <span class="switch-handle"></span>
+                </label>
+              </td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+      <!-- ********************************************************************
+        ************************** Organizational Admin Panel *******************
+        ********************************************************************** -->
+
+    </div>
+  </div>
+</div>

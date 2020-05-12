@@ -1,0 +1,57 @@
+<div class="container fh" role="main">
+    <div class="abscenter">
+        <header class="sm welcome">
+            <a [routerLink]="['/']">
+                <img src="../assets/images/ij-large-white.png" alt="Industry Jump" />
+            </a>
+        </header>
+        
+        <ng-container [ngSwitch]="currentStep">
+            <ij-timeline *ngIf="showTimeline && freelancer" [step]="currentStepNumber"></ij-timeline>
+            <ij-timeline-company *ngIf="showTimeline && company" [step]="currentStepNumber"></ij-timeline-company>
+
+            <ij-betacode-step
+                *ngSwitchCase="stepType.BetaCode"
+                [model]="betaCodeStep" 
+                (onStepChanged)="onStepChanged($event)">
+            </ij-betacode-step>
+            <ij-su-profile-choice-step
+              *ngSwitchCase="stepType.ProfileChoice" 
+              [model]="profileChoiceStep" 
+              (onStepChanged)="onStepChanged($event)">
+            </ij-su-profile-choice-step>
+            <ij-profile-step
+                *ngSwitchCase="stepType.Freelancer" 
+                [model]="profileStep" 
+                (onStepChanged)="onStepChanged($event)">
+            </ij-profile-step>
+            <ij-su-profile-company-step
+                *ngSwitchCase="stepType.Company" 
+                [model]="profileCompanyStep" 
+                (onStepChanged)="onStepChanged($event)">
+            </ij-su-profile-company-step>
+            <ij-portfolio-company-step
+                *ngSwitchCase="stepType.CompanyPortfolio" 
+                [model]="companyPortfolioStep" 
+                (onCompanySignupClicked)="onCompanySignup($event)"
+                (onStepChanged)="onStepChanged($event)">
+            </ij-portfolio-company-step>
+            <ij-portfolio-step
+                *ngSwitchCase="stepType.Portfolio" 
+                [model]="portfolioStep" 
+                (onSignupClicked)="onSignup($event)"
+                (onStepChanged)="onStepChanged($event)">
+            </ij-portfolio-step>
+            <ij-account-confirm-step *ngSwitchCase="stepType.AccountConfirm"></ij-account-confirm-step>
+        </ng-container>
+    </div>
+</div>
+<div id="bg"><img src="../assets/images/bg.jpg?v=1" alt=""></div>
+<ij-sign-up-terms-dialog></ij-sign-up-terms-dialog>
+<ij-private-policy-dialog></ij-private-policy-dialog>
+<ngx-spinner
+    bdColor = "rgba(51, 51, 51, 0.8)"
+    size = "default"
+    color = "#fff"
+    type = "ball-beat"
+></ngx-spinner>

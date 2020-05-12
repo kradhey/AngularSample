@@ -1,0 +1,50 @@
+@import '../../styles/variables/all';
+@import '../../styles/mixins/all';
+@import '../styles/common';
+
+article {
+    display: flex;
+    justify-content: center;
+
+    img {
+        width: @profile-pic-md-width;
+        height: @profile-pic-md-height;
+        border-radius: 100%;
+        margin-right: @profile-pic-spacing;
+        display: inline-block;
+    }
+
+    .details {
+        max-width: 18em;
+
+        h1 {
+            color: @primary-blue;
+            .font-bold();
+            
+            margin: 0;
+            font-size: 19px;
+            letter-spacing: 0;
+            text-align: left !important;
+        }
+
+        .roles {
+            color: @roles-color;
+            .font-bold();
+
+            margin: 5px 0 0;
+            letter-spacing: 0;
+        }
+
+        .budgets,
+        .loc {
+            margin: 0;
+            letter-spacing: 0;
+        }
+    }
+}
+
+.dialog-container header {
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}

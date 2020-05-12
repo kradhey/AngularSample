@@ -1,0 +1,38 @@
+@import './common';
+
+@header-bg-height: 297px;
+
+.header-common {    
+    background-color: #54718F;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: #fff;
+
+    h1, h2 {
+        letter-spacing: 0;
+        .font-light(); 
+    }
+}
+
+button.action {
+    font-size: 16px;
+    color: #fff;
+    letter-spacing: 0.4px;
+    
+    &.refer {
+        background: @btn-refer-color;
+    }
+
+    &.availability {
+        background: @btn-availability-color;
+    }
+
+    &.contact {
+        background: @primary-orange-light;
+    }
+
+    &.hire {
+        background: @btn-hire-color;
+    }
+}

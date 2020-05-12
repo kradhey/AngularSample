@@ -1,0 +1,173 @@
+<ng-container *ngIf="dialogVisible">
+    <p-dialog autoAlign="true" blockScroll="true" modal="true" ngClass="custom-dialog" [resizable]="false" [(visible)]="dialogVisible" [closable]="false">
+        <p-header ngClsass="popup-header">
+            <h2>Please Review</h2>
+            <span class="ij icon x-icon" (click)="hideDialog()"></span>
+        </p-header>
+        <article class="dialog-container">
+            <form ij-form-validation #f="ngForm" (ngSubmit)="onSubmit(f)" (keydown.enter)="$event.preventDefault()" novalidate>
+                <header *ngIf="model.header">
+                    <ij-dialog-header class="center" [model]="model.header"></ij-dialog-header>
+                </header>
+
+                <div class="dialog-body">
+                    <div class="reviewing-project row" *ngIf="model.projects.length == 0">
+                        <label for="project">Please review {{model.header?.firstName}} for the project below:</label>
+                        <div class="col-sm-8 col-sm-offset-2 alert alert-warning">
+                            General Review | All Projects
+                        </div>
+                    </div>
+                    <div class="ratings">
+                        <div class="rating">
+                            <p-rating
+                                #focusable
+                                tabindex="1"
+                                #reliability="ngModel" 
+                                name="reliability" 
+                                [cancel]="false" 
+                                required 
+                                [(ngModel)]="model.reliability">
+                            </p-rating>
+                            <label>Reliability</label>
+                            <div class="validation-summary" *ngIf="submitted && reliability.invalid">Please give a rating.</div>
+                        </div>
+
+                        <div class="rating">
+                            <p-rating 
+                                #craftsmanship="ngModel" 
+                                name="craftsmanship" 
+                                [cancel]="false" 
+                                required 
+                                [(ngModel)]="model.craftsmanship">
+                            </p-rating>
+                            <label>Craftsmanship</label>
+                            <div class="validation-summary" *ngIf="submitted && craftsmanship.invalid">Please give a rating.</div>
+                        </div>
+
+                        <div class="rating">
+                            <p-rating 
+                                #communication="ngModel" 
+                                name="communication" 
+                                [cancel]="false" 
+                                required 
+                                [(ngModel)]="model.communication">
+                            </p-rating>
+                            <label>Communication</label>
+                            <div class="validation-summary" *ngIf="submitted && communication.invalid">Please give a rating.</div>
+                        </div>
+
+                        <div class="rating">
+                            <p-rating 
+                                #attitude="ngModel" 
+                                name="attitude" 
+                                [cancel]="false" 
+                                required 
+                                [(ngModel)]="model.attitude">
+                            </p-rating>
+                            <label>Attitude</label>
+                            <div class="validation-summary" *ngIf="submitted && attitude.invalid">Please give a rating.</div>
+                        </div>
+                    </div>
+                    <div class="container-fluid">
+                        <label>What three words can be used to describe {{model.header?.firstName}}?</label>
+
+                        <div class="row">
+                            <div class="col-sm-4 form-group">
+                                <input 
+                                    name="adjective1" 
+                                    type="text" 
+                                    class="form-control" 
+                                    required 
+                                    maxlength="32" 
+                                    [ij-input-validation]="'Please enter a word.'"
+                                    [ngModel]="model.adjective1 | titlecase"
+                                    (ngModelChange)="model.adjective1=$event" />
+                            </div>
+
+                            <div class="col-sm-4 form-group">
+                                <input 
+                                    name="adjective2" 
+                                    type="text" 
+                                    class="form-control" 
+                                    required 
+                                    maxlength="32" 
+                                    [ij-input-validation]="'Please enter a word.'"
+                                    [ngModel]="model.adjective2 | titlecase"
+                                    (ngModelChange)="model.adjective2=$event" />
+                            </div>
+
+                            <div class="col-sm-4 form-group">
+                                <input 
+                                    name="adjective3" 
+                                    type="text" 
+                                    class="form-control" 
+                                    required 
+                                    maxlength="32" 
+                                    [ij-input-validation]="'Please enter a word.'"
+                                    [ngModel]="model.adjective3 | titlecase"
+                                    (ngModelChange)="model.adjective3=$event" />
+                            </div>
+                        </div>
+
+                        <div class="row" *ngIf="model.projects.length > 0">
+                            <div class="col-sm-12 form-group">
+                                <label for="project">What project did you two work on?</label>
+                                <select id="project" name="project" class="form-control" required [ij-input-validation]="'Please select a project.'" [(ngModel)]="model.projectId">
+                                    <option 
+                                        *ngFor="let p of model.projects" 
+                                        [ngValue]="p.value">{{p.label}}</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12 form-group">
+                                <label for="comments">Share your experience working with {{model.header?.firstName}}:</label>
+                                <textarea 
+                                    id="comments" 
+                                    name="comments" 
+                                    class="form-control" 
+                                    rows="5" 
+                                    required 
+                                    maxlength="256" 
+                                    [ij-input-validation]="'Please enter a comment.'"
+                                    [(ngModel)]="model.comments" #comments></textarea>
+                                    <ij-character-counter [element]="comments"></ij-character-counter>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <label for="crew_roles">What was your role?</label>
+                                <p-autoComplete 
+                                    id="crew_roles" 
+                                    name="crewRoles" 
+                                    #crewRoles="ngModel" 
+                                    placeholder="Director, Producer..." 
+                                    autoHighlight="true"
+                                    required="true" 
+                                    dropdown="true" 
+                                    forceSelection="true" 
+                                    [ij-input-validation]="'Please select a role.'"
+                                    [(ngModel)]="model.reviewerCrewRoles" 
+                                    [suggestions]="crewRoleSuggestions" 
+                                    (completeMethod)="onCrewRolesKeyDown($event)"
+                                    [multiple]="true">
+                                </p-autoComplete>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <footer>
+                    <input [disabled]="disableSubmit" type="submit" value="Review" />
+                    <div class="mar-20 alert alert-danger" *ngIf="showSaveErrored">
+                        <ul>
+                            <li *ngFor="let error of errors">{{error}}</li>
+                        </ul>
+                    </div>
+                </footer>
+            </form>
+        </article>
+    </p-dialog>
+</ng-container>

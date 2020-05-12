@@ -1,0 +1,24 @@
+.ij-submitted-invalid .ij-input.ng-invalid,
+.ij-submitted-invalid .ij-input.ng-invalid .ui-inputtext,
+.ij-submitted-invalid .ij-input.ng-invalid .ui-autocomplete-multiple-container,
+.ij-input.ng-invalid.ng-touched,
+.ij-input.ng-invalid.ng-touched .ui-inputtext,
+.ij-input.ng-invalid.ng-touched .ui-autocomplete-multiple-container {
+    border-color: @primary-orange !important;
+    box-shadow: none !important;
+}
+
+.ij-input-invalid-tooltip {
+    font-size: .9em;
+    .font-name();
+    .font-regular();
+
+    .tooltip-inner {
+        background-color: @primary-orange;
+        padding: .75em 1em;
+    }
+
+    .tooltip-arrow {
+        border-top-color: @primary-orange !important;
+    }
+}

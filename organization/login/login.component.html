@@ -1,0 +1,38 @@
+<div class="container fh" role="main">
+  <div class="abscenter">
+    <header class="welcome">
+      <a routerLink="/">
+        <img src="../assets/images/ij-large-white.png" alt="Industry Jump" />
+        <h1>FILM SCHOOL AND ORGANIZATION LOGIN</h1>
+      </a>
+    </header>
+
+
+    <section id="login-container" class="form-widget mar-top">
+      <form #f="ngForm" (ngSubmit)="login(f.form.valid)" novalidate autocomplete="off">
+        <div class="group" [ngClass]="{invalid: this.submitted && email.invalid}">
+          <span class="ij icon email-white"></span>
+          <input [ij-focus]="true" #email="ngModel" name="email" [(ngModel)]="credentials.email" 
+            placeholder="Email" email required maxlength="256" />
+        </div>
+
+        <div class="group" [ngClass]="{invalid: this.submitted && password.invalid}">
+          <span class="ij icon password-white"></span>
+          <input #password="ngModel" type="password" name="password" [(ngModel)]="credentials.password" placeholder="Password"
+            required maxlength="100" />
+        </div>
+
+        <footer class="group no-mar-top">
+          <input type="submit" id="login-btn" value="Login" />
+          <div class="alert-danger">
+            <span>{{error}}</span>
+          </div>
+        </footer>
+      </form>
+    </section>
+  </div>
+</div>
+<div id="bg">
+  <div class="upperlayer"></div>
+  <img src="assets/images/bg.jpg" alt="">
+</div>

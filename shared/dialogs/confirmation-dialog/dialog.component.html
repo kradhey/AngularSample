@@ -1,0 +1,17 @@
+    <p-dialog appendTo="body" modal="true" modal="modal" width="auto" styleClass="custom-confirm-dialog" [resizable]="false" [closable]="false" [(visible)]="dialogVisible">
+            <p-header ngClsass="popup-header">
+                <h2>{{model.title}}</h2>
+                <span class="ij icon x-icon" (click)="hideDialog()"></span>
+            </p-header>
+            <article class="dialog-container">
+                <div class="dialog-body">
+                    {{model.confirmMessage}}<br><br>
+                    <span class="externalurl">{{model.message}}</span>
+                </div>
+            </article>
+            <p-footer>
+                <button type="button" pButton label="Yes" (click)="onAccept()"></button>
+                <button type="button" pButton label="No" (click)="hideDialog()"></button>
+            </p-footer>
+    </p-dialog>
+    

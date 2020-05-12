@@ -1,0 +1,75 @@
+@import './variables/all';
+@import './mixins/all';
+
+.dialog-container {
+    padding: 0 @dialog-desktop-spacing @dialog-desktop-spacing @dialog-desktop-spacing;
+
+    .on-mobile({
+        padding: 0 @dialog-mobile-spacing @dialog-mobile-spacing @dialog-mobile-spacing !important;
+    });
+
+    .alert.alert-danger {
+        margin-bottom: 0;
+        text-align: center;
+    }
+
+    header {
+        margin-bottom: @dialog-desktop-spacing;
+        
+        flex-flow: wrap;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        
+        h1 {
+            margin: 0 0 @dialog-desktop-spacing;
+            font-size: 1.8em;
+            letter-spacing: 0;
+            text-align: center;
+            width: 100%;
+        }
+    }
+
+    ij-dialog-header.center {
+        margin: 0 auto;
+    }
+
+    .dialog-body {
+        margin-bottom: @dialog-desktop-spacing;
+
+        label {
+            .font-bold();
+            color: @dialog-label-color;
+            margin-bottom: 8px;
+        }
+
+        .form-control {
+            color: @dialog-label-color;
+        }
+
+       .row:not(:last-of-type):not(.tight) {
+            margin-bottom: 10px;
+        }
+
+        textarea {
+            resize: none;
+        }
+    }
+
+    footer {
+        text-align: center;
+
+        input[type="submit"] {
+            color: #fff;
+            border: 0;
+            padding: 10px 25px;
+            border-radius: 5px;
+        }
+    }
+
+    .help-text {
+        margin: 5px 0 0;
+        font-size: .8em;
+        color: @dialog-help-color;
+    }
+}

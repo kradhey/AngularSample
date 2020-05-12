@@ -1,0 +1,32 @@
+@import '../../styles/variables/all';
+@import '../../styles/mixins/all';
+
+article {
+    .font-light();
+    text-align: center;
+    transition: opacity 0.2s ease-in-out;
+    .check {
+        opacity: 0;
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 120px;
+        height: 110px;
+        transform: scale(2);
+        background: #71c341;
+        color: #fff;
+        font-size: 4em;
+        border-radius: 100%;
+        transition: transform 0.2s 0.25s cubic-bezier(0.31, 0.25, 0.5, 1.5), opacity 0.1s 0.25s ease-in-out;
+    }
+
+    .comein {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    .message {
+        font-size: 2rem;
+    }
+}

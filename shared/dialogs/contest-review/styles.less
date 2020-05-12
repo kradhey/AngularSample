@@ -1,0 +1,32 @@
+@import '../styles/common';
+
+.custom-dialog ::ng-deep .ui-dialog {
+    max-width: 625px;
+    .ui-dialog-titlebar {
+        border-top: 8px solid #3F93F5;
+    }
+}
+
+input[type="submit"] {
+    background: @btn-hire-color;
+}
+
+header h3 {
+    color: @primary-orange;
+    font-size: 1.2em;
+    margin-left: @profile-pic-md-width + @profile-pic-spacing;
+    margin-top: 0;
+}
+
+.original {
+    label { margin-bottom: 5px !important; }
+
+    .comments {
+        color: #737373;
+        margin-bottom: 20px;
+
+        .quote {
+            font-size: 1.2em;
+        }
+    }
+}

@@ -1,0 +1,45 @@
+@input-width: 24em;
+@input-width: 24em;
+@input-height: 40px;
+
+@group-spacing: 30px;
+@rails-height: 20px;
+@rails-padding: 5px;
+
+@bground-avg-color: #2D4A60;
+@active-color: #FF930D;
+@error-color: #FFC17A;
+@error-background: transparent;
+@placeholder-color: #fff;
+@font-color: #fff;
+@link-color: #fff;
+
+@input-border: 1px solid rgba(255, 255, 255, .6);
+@error-border: 1px solid @error-color !important;
+
+.button-defaults {
+    display: inline-block;
+    width: 113px;
+    height: 42px;
+    padding: 0;
+    font-weight: 400;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+.inline-rails-defaults {
+    .group {
+        margin-bottom: @group-spacing - @rails-height + @rails-padding;
+
+        .inline-rails {
+            visibility: hidden;
+            height: @rails-height;
+            padding: @rails-padding 0 0 @rails-padding;
+            text-align: left;
+
+            &.visible {
+                visibility: visible;
+            }
+        }
+    }
+}

@@ -1,0 +1,70 @@
+@import '../../styles/variables/all';
+@import '../../styles/mixins/all';
+
+@profile-pic-spacing: 15px;
+
+.validation-summary {
+    color: @primary-orange;
+}
+
+.ratings {
+    margin-bottom: @dialog-row-spacing;
+
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+
+    label {
+        .font-regular();
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .ratings {
+        flex-direction: column;
+
+        ::ng-deep .ui-rating {
+            font-size: 1.3em;
+            letter-spacing: .1em;
+        }
+
+        .rating:not(:last-of-type) {
+            margin-bottom: 1em;
+        }
+    }
+}
+
+.custom-dialog ::ng-deep .ui-dialog {
+    border: none;
+
+    .ui-dialog-titlebar {
+        padding: 0px;
+        border-radius: 0px;
+
+        h2 {
+            .font-bold();
+            margin-bottom: @dialog-desktop-spacing;
+            color: @dialog-label-color;
+            text-align: center;
+        }
+
+        .x-icon {
+            cursor: pointer;
+            position: absolute;
+            right: .5em;
+            top: .7em;
+        }
+    }
+
+    .alert-warning{
+        background-color: #ff930d52;
+        border: none;
+        color: #222222;
+    }
+
+    .reviewing-project {
+        text-align: center;
+        font-size: 1.2em;
+        margin-bottom: @dialog-row-spacing;
+    }
+}

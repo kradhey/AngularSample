@@ -1,0 +1,10 @@
+<header class="container auth-container" [ngClass]="{ 'loggedIn': isLoggedIn }">
+    <!--TODO:Change-->
+    <a class="no-outline" routerLink="/">
+        <img src="/assets/images/ij.png" alt="Industry Jump" />
+        <br/>
+        <label class="beta-version">Beta</label>
+    </a>
+    <ij-site-menu (quickSearchEvent)="onToggleQuickSearch()"></ij-site-menu>
+</header>
+<ij-quick-search class="moveup" #quicksearch *ngIf="showQuickSearch" (onSelected)="onSelected()"></ij-quick-search>

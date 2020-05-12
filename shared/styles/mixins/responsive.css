@@ -1,0 +1,14 @@
+.show-on-desktop {
+  display: block !important;
+}
+.hide-on-desktop {
+  display: none !important;
+}
+@media screen and (max-width: 1024px) {
+  .show-on-desktop {
+    display: none !important;
+  }
+  .hide-on-desktop {
+    display: block !important;
+  }
+}

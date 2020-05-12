@@ -1,0 +1,31 @@
+<div *ngIf="showNotificationMessage" class="container show-on-desktop">
+    <div class="header-notifications">
+        {{notificationMessage}}
+    </div>
+</div>
+
+<div *ngIf="showNotificationMessage" class="hide-on-desktop">
+    <div class="header-notifications">
+        {{notificationMessage}}
+    </div>
+</div>
+
+<div class="gradient">
+    <div class="container show-on-desktop">
+        <ij-profile-header-desktop></ij-profile-header-desktop>
+        <ij-profile-overview-about></ij-profile-overview-about>
+    </div>
+</div>
+
+<ij-profile-header-mobile class="hide-on-desktop"></ij-profile-header-mobile>
+
+<div class="gradient">
+    <div class="area container">
+        <div class="col-md-8">
+            <ij-profile-overview-projects></ij-profile-overview-projects>
+        </div>
+        <div class="col-md-4 col-reviews">
+            <ij-profile-overview-reviews></ij-profile-overview-reviews>
+        </div>
+    </div>
+</div>

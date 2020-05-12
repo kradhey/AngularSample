@@ -1,0 +1,56 @@
+<ij-site-search-header-ui menuWhiteColor="true" #siteHeader mode="mini" showSearch="true" title="HIRE YOUR DREAM TEAM"></ij-site-search-header-ui>
+<div class="container">
+    <h2 class="subtitle">
+        {{ page.showFeaturedMembers ? 'Featured Members' : 'Search Results' }}
+    </h2>
+    <ng-container *ngIf="hasData">
+        <div *ngIf="showSummary" class="results-summary">
+            Showing {{cardCount}} of {{page.pager.totalResults}} results for 
+
+            <!-- hide role if not present -->
+            <ng-container *ngIf="page.request.crewRole">
+                <span class="filtered">{{page.request.crewRole}}</span>
+                /
+            </ng-container>
+            <ng-container *ngIf="page.request.budget">
+                <span class="filtered">{{page.request.budget}}</span>
+                /
+            </ng-container>
+            <ng-container *ngIf="page.request.location">
+                <span class="filtered">Located in {{page.request.location}}</span>
+                {{page.request.organizationName =='null' || page.request.organizationName == null ?'':'/'}}
+            </ng-container>
+            <span class="filtered">{{page.request.organizationName =='null' || page.request.organizationName == null ?'':page.request.organizationName}}</span>
+        </div>
+
+        <section class="results">
+            <section *ngIf="errored" class="alert alert-danger" [ngClass]="{'nodata': cardCount == 0 }">
+                <p>An unexpected error occurred, please try again.</p>
+            </section>
+
+            <ng-container *ngFor="let card of page.cards; trackBy: trackCard">
+                <ij-search-card *ngIf="card.locationType == locationType.CurrentLocation || card.locationType == 0" class="card" (onRefer)="onRefer($event)" [card]="card"></ij-search-card>
+            </ng-container>
+
+
+            <div *ngIf="showWorkingCityResults" class="results-summary">
+                Below is the list of users who live in different cities but work in 
+                <ng-container *ngIf="page.request.location">
+                    <span class="filtered"> {{page.request.location}}</span>
+                </ng-container>
+            </div>
+
+            <ng-container *ngFor="let card of page.cards; trackBy: trackCard">
+                <ij-search-card *ngIf="card.locationType == locationType.WorkingLocation" class="card" (onRefer)="onRefer($event)" [card]="card"></ij-search-card>
+            </ng-container>
+        </section>
+
+        <footer>
+            <button [hidden]="!page.pager.hasMore" class="more" (click)="onViewMoreClicked()">View More</button>
+        </footer>
+    </ng-container>
+</div>
+
+<ij-refer-profile-dialog></ij-refer-profile-dialog>
+<ij-reqhire-profile-dialog></ij-reqhire-profile-dialog>
+<ij-site-footer></ij-site-footer>

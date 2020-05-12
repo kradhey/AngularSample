@@ -1,0 +1,80 @@
+.ul-nav-defaults() {
+    .no-mar();
+    
+    list-style-type: none;
+
+    li {
+        display: inline-block;
+
+        a {
+            color: @nav-color;
+            letter-spacing: 0;
+        }
+    }
+}
+
+.select-arrow {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    -webkit-border-radius: 0px;
+    background-repeat: no-repeat;
+    text-overflow: '';
+
+    &::-ms-expand { 
+        display: none; 
+    }
+}
+
+.select-arrow-black(@background-color: #fff) {
+    .select-arrow();
+    background: url('/assets/images/select-arrow-black.png')
+                no-repeat 95% 50% @background-color;
+}
+
+.select-arrow-white(@background-color: transparent) {
+    .select-arrow();
+    background: url('/assets/images/select-arrow-white.png')
+                no-repeat 95% 50% @background-color;
+}
+
+.inline-list() {
+    list-style-type: none;
+
+    li {
+        display: inline-block;
+    }
+}
+
+.beta-version {
+    padding: 3px 4px;
+    margin-top: 3px;
+    color: #fff;
+    border-radius: 10px;
+    background: #f28c35;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-size: 10px;
+    font-family: 'Lato';
+}
+
+a.no-outline {
+    outline: 0;
+    text-decoration: none;
+
+    &:hover,
+    &:focus,
+    &:active {
+        outline: 0;
+        text-decoration: none;
+    }
+}
+
+.no-select {
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}

@@ -1,0 +1,133 @@
+<h1 class="area-title">
+    <span *ngIf="!model.isOwnProfile">Reviews 
+        (<span class="count">{{model.reviews.pager.totalResults}}</span>)</span>
+    <span *ngIf="model.isOwnProfile && !requestReview">Request A Review 
+        (<span class="count">{{model.reviews.pager.totalResults}}</span>)</span>
+    <span *ngIf="requestReview">Review Requests (
+        <span class="count">{{requests.length}}</span>)</span>
+
+    <button *ngIf="review" type="button" (click)="onReview()" class="new-review">
+        <span>+</span>
+    </button>
+
+    <div *ngIf="model.isOwnProfile" class="actions review-dropdown">
+        <div class="ij-dropdown btn-group">
+            <button type="button" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <img src="../../assets/images/orange_drop_down.png" />
+            </button>
+            <ul class="pointer dropdown-menu dropdown-menu-right">
+                <li>
+                    <a (click)="onSeeReviews()">Reviews</a>
+                </li>
+                <li>
+                    <a (click)="onSeeReviewRequests()">Review Requests</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</h1>
+
+<section class="cards reviews">
+    <ng-container *ngIf="hasReviews && review">
+        <article *ngFor="let review of model.reviews.cards; trackBy: trackCard" class="card review" [ngClass]="{'invisible-card': review.status == reviewStatusTypes.Invisible}">
+            <!-- <div *ngIf="review.status == reviewStatusTypes.Invisible" class="invisible-banner">Invisible To Public</div> -->
+            <div *ngIf="review.status == reviewStatusTypes.Invisible" class="invisible-banner">Invisible To Public</div>
+            <div class="card-body">
+                <header>
+                    <!--TODO:Change-->
+                    <a [routerLink]="['/profile',review.reviewer.userProfileUrlDisplayName]">
+                        <img class="avatar" src="{{review.reviewer.profileImageUrl}}" alt="{{review.reviewer.fullName}}" />
+                    </a>
+                    <div class="reviewer">
+
+                        <p class="meta" [ngClass]="{'text-orange': !review.isGeneralReview}">{{review.isGeneralReview ? 'General Review by :' : 'Verified Review by:'}}</p>
+                        <!--TODO:Change-->
+                        <a [routerLink]="['/profile',review.reviewer.userProfileUrlDisplayName]" class="name">{{review.reviewer.fullName}}</a>
+                        <p class="role">{{review.reviewer.crewRoles}}</p>
+                        <p class="project role">{{review.projectName}}</p>
+                    </div>
+
+                    <div class="actions">
+                        <div class="ij-dropdown btn-group">
+                            <button type="button" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <img src="../../assets/images/profile/icon-info.png" />
+                            </button>
+                            <ul class="pointer dropdown-menu dropdown-menu-right">
+                                <li>
+                                    <!-- <a [routerLink]="['/profile', model.profileSysId, 'reviews']">See More</a> -->
+                                    <!--TODO:Change-->
+                                    <a [routerLink]="['/profile', model.userProfileUrlDisplayName, 'reviews']">See More</a>
+                                </li>
+                                <li role="separator" class="divider"></li>
+                                <li>
+                                    <a (click)="onReport(review)">Report</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </header>
+
+                <div class="body">
+                    <label class="role">{{review.reviewee.crewRoles}}</label>
+                    <ij-rating [rating]="review.scores.average"></ij-rating>
+                </div>
+
+                <footer>
+                    <p class="subject">"{{review.title | limitTo : 35}}"</p>
+                    <p class="protip block-with-text">
+                        <label>Summary:</label>
+                        <span class="show-on-desktop">{{review.comments | limitTo: 110 }}</span>
+                        <span class="hide-on-desktop">{{review.comments | limitTo: 65 }}</span>
+                    </p>
+
+                    <!-- <p class="protip block-with-text hide-on-desktop">
+                        <label>Summary:</label>{{review.comments | limitTo: 65 }}</p> -->
+                    <!-- <a *ngIf="review.comments.length > 40" href="profile/{{model.profileSysId}}/reviews"> -->
+                    <a *ngIf="review.comments.length > 40" href="profile/{{model.userProfileUrlDisplayName}}/reviews">
+                        <small>See more</small>
+                    </a>
+                </footer>
+            </div>
+        </article>
+        <footer class="area-footer">
+            <!--TODO:Change-->
+            <button *ngIf="model.reviews.pager.hasMore" [routerLink]="['/profile', model.userProfileUrlDisplayName, 'reviews']" class="more">View More</button>
+            <!-- <button *ngIf="model.reviews.pager.hasMore" [routerLink]="['/profile', model.profileSysId, 'reviews']" class="more">View More</button> -->
+        </footer>
+    </ng-container>
+
+    <ng-container *ngIf="!hasReviews && review">
+        <article class="no-reviews">
+            No reviews have been written, yet.
+        </article>
+    </ng-container>
+
+    <ng-container *ngIf="requestReview && requests.length < 1">
+        <article class="no-reviews">
+            No reviews have been requested, yet.
+        </article>
+    </ng-container>
+
+    <ng-container *ngFor="let request of requests">
+        <article *ngIf="requestReview" class="no-reviews delete">
+            Review requested from
+            <strong *ngIf="request.overviewUrl">
+                <!--TODO:Change-->
+                <a [routerLink]="request.userProfileUrlDisplayName">{{request.requestToFullName}}</a>
+            </strong>
+            <strong *ngIf="!request.overviewUrl">
+                {{request.requestToFullName}}
+            </strong>
+            for your work.
+            <button class="deletebtn" (click)="onDeleteRequest(request.id)">
+                <i class="fa fa-minus" aria-hidden="true"></i>
+            </button>
+            <button type="button" class="refresh" (click)="onResendRequest(request.id)">
+                <i class="fa fa-repeat" aria-hidden="true"></i>
+            </button>
+            <span class="timestamp">{{request.dateTime}}</span>
+        </article>
+    </ng-container>
+</section>
+<p-confirmDialog acceptLabel="Yes" appendTo="body"></p-confirmDialog>
+<ij-confirmation-dialog (onAcceptEvent)="onResendAccept($event)"></ij-confirmation-dialog>

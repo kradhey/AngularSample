@@ -1,0 +1,90 @@
+@breakpoint-small-down: 575px;
+@breapoint-phone-down: 767px;
+@breakpoint-tablet-down: 991px;
+@breakpoint-desktop-down: 1199px;
+@breakpoint-small-up: 576px;
+@breapoint-phone-up: 768px;
+@breakpoint-tablet-up: 992px;
+@breakpoint-desktop-up: 1200px;
+@breakpoint-desktop-large-up: 1800px;
+@breapoint-phone-min-down: 759px;
+@breakpoint-mini-small: 420px;
+@breakpoint-mini-small-mobile: 425px;
+@breakpoint-some-mini-small-mobile: 376px;
+@breakpoint-extra-mini-small-mobile: 320px;
+@breakpoint-tablet-landscape-up: 1024px;
+
+.responsive-max(@maxWidth; @rules) {
+    @media only screen and (max-width: @maxWidth) {
+        @rules();
+    }
+}
+
+.responsive-min(@maxWidth; @rules) {
+    @media only screen and (min-width: @maxWidth) {
+        @rules();
+    }
+}
+
+.on-desktop(@rules) {
+    .responsive-min(@breakpoint-desktop-down, @rules);
+}
+
+.on-large-screen(@rules) {
+    .responsive-min(@breapoint-phone-up, @rules);
+}
+
+.on-desktop-screen(@rules) {
+    .responsive-min(@breakpoint-tablet-down, @rules);
+}
+
+.on-large-desktop-screen(@rules) {
+    .responsive-min(@breakpoint-desktop-large-up, @rules);
+}
+
+.on-tablet-down(@rules) {
+    .responsive-max(@breapoint-phone-up, @rules);
+}
+
+.on-tablet(@rules) {
+    .responsive-max(@breakpoint-desktop-up, @rules);
+}
+
+.on-mobile(@rules) {
+    .responsive-max(@breakpoint-tablet-up, @rules);
+}
+.on-mini-small-mobile(@rules){
+    .responsive-max(@breakpoint-tablet-up, @rules);
+}
+
+.on-ipad(@rules) {
+    .responsive-max(@breakpoint-tablet-landscape-up, @rules);
+}
+
+.on-mobile-down(@rules) {
+    .responsive-max(@breapoint-phone-min-down, @rules);
+}
+.on-small-mobile(@rules) {
+    .responsive-max(@breakpoint-small-up, @rules);
+}
+.on-mini-small-mobile-px(@rules) {
+    .responsive-max(@breakpoint-mini-small-mobile, @rules);
+}
+
+.on-extra-mini-small-mobile(@rules){
+    .responsive-max(@breakpoint-extra-mini-small-mobile,@rules)
+}
+
+
+.on-some-mini-small-mobile(@rules){
+    .responsive-max(@breakpoint-some-mini-small-mobile,@rules)
+}
+
+.show-on-desktop { display: block !important; }
+.hide-on-desktop { display: none !important; }
+
+@media screen and (max-width: @breakpoint-tablet-landscape-up) {
+    .show-on-desktop { display: none !important; }
+    .hide-on-desktop { display: block !important; }
+}
+

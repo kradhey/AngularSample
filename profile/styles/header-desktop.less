@@ -1,0 +1,150 @@
+@import './header-common';
+
+@header-padding: 40px;
+@tabs-height: 50px;
+@action-spacing: 10px;
+@action-btn-height: 50px;
+.ui-widget-overlay{
+    background: red!important;
+}
+#profile-header-desktop {
+    .header-common();
+
+    label {
+        margin-top: -20px !important;
+    }
+
+    height: @header-bg-height;
+    padding: 0 @header-padding @header-padding 0;
+
+    // background-image: url("../../assets/images/profile/profile-bg.jpg");
+
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+
+    .who {
+        top: @header-padding;
+        position: relative;
+        width: 25em;
+
+        flex-grow: 2;
+        margin-left: 23px;
+
+        h1 { margin-bottom: 15px; font-size: 2.5em; }
+        h2 { margin-bottom: 10px; font-size: 1.8em; }
+        p  { margin-bottom: 15px; }
+
+        .review-count { margin-left: .6em; }
+    }
+
+    .avatar {
+        @border: 1px solid #fff;
+        width: @profile-pic-lg-width;
+        height: @profile-pic-lg-height;
+        border-top: @border;
+        border-right: @border;
+        
+        top: (@tabs-height + @header-padding);
+        position: relative;
+    }
+
+    .misc {
+        text-align: right;
+        
+        /*
+            <ul class="actions">
+                <li><button/></li>
+            </ul>
+        */
+        
+        .profile-score-section {
+            position: relative;
+            left: 15px;
+            top: 25px;
+        }
+
+        .actions {
+            .inline-list();
+
+            margin-top: @action-spacing;
+
+            li:not(:last-of-type) {
+                margin-right: @action-spacing;
+            }
+
+            button.action {
+                height: @action-btn-height;
+                border-radius: 5px;
+                padding: 0 25px;
+
+                /*
+                .on-tablet({
+                    padding: 0 0.3em;
+                    height: 3em;
+                });
+                */
+            }
+        }
+    }
+}
+
+/*
+    <nav class="tabs">
+        <ul>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Industry Score</a></li>
+            <li><a class="active" href="#">Our Team</a></li>
+            <li><a href="#">Contact Us</a></li>
+        </ul>
+    </nav>
+*/
+.imageInsta
+{
+    position: absolute;
+    width: 22px;
+    right: 5px;
+    bottom: 5px;
+
+}
+
+.imgAvatar
+{
+ display:inline-block;
+ position: relative;
+ top:90px
+}
+#profile-header-desktop .imgAvatar img.avatar{top:0}
+
+#profile-tabs {
+    @border: 1px solid #EBEBEB;
+
+    margin-left: @profile-pic-lg-width;
+    height: @tabs-height;
+
+    border-right: @border;
+    border-bottom: @border;
+    background: #fff;
+
+    ul {
+        .ul-nav-defaults();
+
+        li {
+            a {
+                .font-regular();
+                
+                display: inline-block;
+                padding: 1em 1.5em;
+                color: #949494;
+                outline: 0;
+
+                &.active,
+                &:hover {
+                    color: @primary-orange;
+                    border-bottom: .2em solid @primary-orange;
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+}

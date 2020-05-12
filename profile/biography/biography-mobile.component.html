@@ -1,0 +1,34 @@
+<div class="gradient">
+
+    <ij-profile-header-mobile class="hide-on-desktop"></ij-profile-header-mobile>
+    <div class="text-center bio-panel">
+        <h3 class="main-heading name">BIOGRAPHY</h3>
+        <div>
+            <div *ngIf="model.biography; then bio else nobio"></div>
+        </div>
+
+        <ng-template #bio>
+            <p class="biography">{{ model.biography}} </p>
+        </ng-template>
+
+        <ng-template #nobio>
+            <div *ngIf="model.isOwnProfile">
+                <p>In order to bring your profile public, you must complete each of the following:</p>
+                <ol class="todo text-left">
+                    <li>Create a biography. You can do this on the
+                        <a routerLink="/profile/settings">settings page</a>.</li>
+                    <li>Add 2 portfolio pieces.</li>
+                    <li>Receive one review.</li>
+                </ol>
+                <p>Once all of these are complete, your profile will then be visible in public search results for filmmakers
+                    to find and hire you.</p>
+            </div>
+            <div *ngIf="!model.isOwnProfile">
+                The user has not created a bio, yet.
+            </div>
+        </ng-template>
+    </div>
+</div>
+<div class="margin-upper">
+    <ij-profile-overview-projects></ij-profile-overview-projects>
+</div>

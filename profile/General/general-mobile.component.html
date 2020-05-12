@@ -1,0 +1,66 @@
+<div class="gradient">
+
+    <ij-profile-header-mobile class="hide-on-desktop"></ij-profile-header-mobile>
+
+    <div class="budgets cellContentbudgets">
+             <h1 class="center">GENERAL</h1>
+             <div class="default-budget" *ngIf="model.defaultBudget">
+               <div class="img-container cellContent">
+                 <span class="firstCell">
+                   <img src="../assets/images/icon-budget.png" alt="{{model.defaultBudget}}" />
+                 </span>
+                 <span>{{model.defaultBudget}}</span>
+               </div>
+
+               <div *ngIf="loginFreelancer" class="img-container cellContent">
+                 <span class="firstCell">
+                   <img [src]="model.unionImgSrc" alt="{{model.unionTypeName}}" />
+                 </span>
+                 <span class="union-text">{{model.unionTypeName ? model.unionTypeName : 'Non-Union'}}</span>
+               </div>
+               <div *ngIf="loginCompany" class="img-container cellContent">
+                 <span class="firstCell">
+                   <img [src]="model.specialityImgSrc" alt="{{model.speciality}}" />
+                 </span>
+                 <span class="union-text">{{model.speciality ? model.speciality : 'Production'}}</span>
+               </div>
+               <div class="img-container cellContent lastRow" [class.lastRow1]="loginFreelancer">
+                 <span class="firstCell" *ngIf="loginCompany && model.organizations.length>0">
+                   <img class="universityLogo" src="../../assets/images/Organizational Icon.png" />
+                 </span>
+                 <span class="lastRow2">
+                   <!--start(Organization slider)-->
+                   <div class="thumbnail dataCell">
+                     <div id="DemoCarousel" class="carousel slide" data-ride="carousel" data-interval="5000">
+                       <ol class="carousel-indicators " [class.left50]="loginFreelancer" *ngIf="model.organizations.length > 1">
+                         <li data-target="#DemoCarousel" data-slide-to="0" class="active"></li>
+                         <li data-target="#DemoCarousel" data-slide-to="1"></li>
+                         <li data-target="#DemoCarousel" *ngIf="model.organizations.length >= 3" data-slide-to="2"></li>
+                       </ol>
+                       <div class="carousel-inner">
+                         <div *ngFor="let x of model.organizations;let count=index" class="item" [class.active]="count==0">
+                           <div class="carousel-caption" [class.imgLeft]="loginFreelancer">
+                             <div class="imgspan" *ngIf="loginFreelancer">
+                               <img *ngIf="!x.type" class="universityLogo" src="../../assets/images/male-university-graduate-silhouette-with-the-cap.png" />
+                               <img *ngIf="x.type" class="universityLogo" src="../../assets//images//Organizational Icon.png" />
+                             </div>
+                             <p>{{x.organizationName}}</p>
+                           </div>
+                         </div>
+
+                       </div>
+                     </div>
+                   </div>
+
+                   <!--End-->
+                 </span>
+               </div>
+
+             </div>
+    </div>  
+
+
+
+     
+    </div>
+<!-- </div> -->

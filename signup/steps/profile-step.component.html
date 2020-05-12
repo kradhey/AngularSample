@@ -1,0 +1,189 @@
+<section style="max-width:340px" id="fields" class="form-widget">
+    <form #f="ngForm" (ngSubmit)="onNext(f.form)" novalidate autocomplete="off">
+        
+        <div class="group" [ngClass]="{invalid: submitted && fullName.invalid}">
+                <span class="ij icon user-white"></span>
+                <input
+                    #fullName="ngModel"
+                    name="fullName" 
+                    type="text" 
+                    [ngModel]="model.fullName | titlecase" 
+                    (ngModelChange)="model.fullName=$event"
+                    [ij-focus]="true"
+                    placeholder="Full Name *" 
+                    required
+                    maxlength="32"
+                    [pattern]="nameRegex" /> 
+        </div>
+     
+        <!-- email -->
+        <div class="group" [ngClass]="{invalid: (submitted && email.invalid) || emailExists }">
+            <span class="ij icon email-white"></span>
+            <input 
+                type="email" 
+                name="email" 
+                #email="ngModel" 
+                [(ngModel)]="model.email" 
+                placeholder="Email *" 
+                required 
+                email
+                (blur)="checkEmailExists()"
+                maxlength="64" />
+            <div class="validation-summary text-left" *ngIf="submitted && email.errors?.email && !email.errors.required">
+                <span>Please enter a valid email address.</span>
+            </div>
+        </div>
+
+        <div class="group">
+                <span class="ij icon pindrop-white"></span>
+                <input 
+                    ngx-google-places-autocomplete 
+                    [options]="{types: []}" 
+                    placeholder="Address" 
+                    ngClass="custom-google-autocomplete"
+                    class="inputCtrl city-textbox" 
+                    maxlength="256"
+                    styleClass="ij-google-autocomplete" 
+                    required
+                    name="address"
+                    [ij-input-validation]="'Please enter address.'"
+                    [(ngModel)]="model.formattedAddress" 
+                    (onAddressChange)="handleAddressChange($event)"/>  
+        </div>
+
+        <div class="group" [ngClass]="{invalid: submitted && dOB.invalid}">
+                <!-- <span class="ij icon user-white"></span> -->
+                <span class="fa fa-calendar ij icon"></span>
+                <input
+                    #dOB="ngModel"
+                    name="dOB" 
+                    type="text" 
+                    [(ngModel)]="model.dOB" 
+                    placeholder="Date of Birth *" 
+                    required
+                    [textMask]="{mask: dateMask, pipe: autoCorrectedDatePipe, keepCharPositions: true}"
+                    date
+                    [maxDate]="minBirthDate"
+                     />
+                <div class="coach-marks">
+                    <span>Month &emsp; Day &emsp; Year</span>
+                </div>
+                     <!-- {{dOB.errors}} -->
+                <div class="validation-summary text-left" *ngIf="submitted && dOB.errors?.maxDate">
+                    <span>You must be 18 years of age or older.</span>
+                </div>
+        </div>
+     
+        <!-- roles -->
+        <div class="group"  [ngClass]="{invalid: submitted && roles.invalid}">
+            <p-autoComplete
+                #roles="ngModel"
+                id="roles"
+                name="roles"
+                placeholder="Roles *"
+                autoHighlight="true"
+                required="true"
+                forceSelection="true"
+                dropdown="true"
+                styleClass="wrap"
+                [ngClass]="'ac-signup'"
+                [(ngModel)]="model.roles"
+                [suggestions]="roleSuggestions"
+                (completeMethod)="onRolesKeyDown($event)"
+                [multiple]="true">
+            </p-autoComplete>
+            <div class="coach-marks">Only the top 3 roles you want to be hired for.</div>
+        </div>
+
+        <div class="group" [ngClass]="{invalid: this.submitted && !isValidPhoneNumber}">
+            <input type="text"
+                ng2TelInput 
+                [ng2TelInputOptions]="{initialCountry: 'us'}"
+                (hasError)="phoneErrorEvt($event)"
+                (ng2TelOutput)="getNumber($event)"
+                (intlTelInputObject)="telInputObject($event)"
+                />
+        </div>
+
+        <!-- profile pic & gender -->
+        <div class="inline-group">
+            <div class="group" [ngClass]="{invalid: submitted && model.profilePic == ''}">
+                <button type="button" class="btn-transparent" (click)="onProfilePicClicked($event)">
+                    <span class="ij icon avatar-white"></span>
+                    <span>Profile Picture</span>
+                </button>
+                <div class="coach-marks">
+                    <span *ngIf="!model.profilePic">Click to upload.</span>
+                    <span *ngIf="model.profilePic">&#10004; Picture selected.</span>
+                </div>
+            </div>
+            <div class="group" [ngClass]="{invalid: submitted && gender.invalid}">
+                <select required name="gender" #gender="ngModel" [(ngModel)]="model.gender">
+                    <option
+                        *ngFor="let g of genders"
+                        [disabled]="g.value == ''" 
+                        [ngValue]="g.value">{{g.name}}</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- password -->
+        <div class="group" [ngClass]="{invalid: submitted && password.invalid}">
+            <span class="ij icon password-white"></span>
+            <input 
+                type="password" 
+                #password="ngModel" 
+                [(ngModel)]="model.password" 
+                name="password" 
+                placeholder="Password *" 
+                required
+                [pattern]="passwordRegex"
+                minlength="6" 
+                maxlength="100" />
+            <div class="coach-marks">
+                <ul>
+                    <li>Minimum 6 characters.</li>
+                    <li>Must contain upper and lowercase characters.</li>
+                    <li>Requires a number; special character optional.</li>
+                </ul>
+            </div>
+        </div>
+        <div class="group" [ngClass]="{invalid: submitted && confirmPassword.invalid}">
+            <span class="ij icon password-white"></span>
+            <input 
+                type="password" 
+                #confirmPassword="ngModel" 
+                [(ngModel)]="model.confirmPassword" 
+                name="confirmPassword" 
+                placeholder="Re-type Password *" 
+                required
+                [pattern]="passwordRegex"
+                minlength="6" 
+                maxlength="100"
+                [equalTo]="password" />
+
+            <div class="validation-summary text-left" *ngIf="submitted && confirmPassword.errors?.equalTo">
+                <span>The passwords do not match.</span>
+            </div>
+        </div>
+
+        <!-- <p class="group required-desc">* Denotes a required field.</p> -->
+        <!-- <p class="group required-desc">If you are a filmmaker that resides outside of the USA,  <a routerLink="/signup/request">click here.</a></p> -->
+        <div *ngIf="submitted && (f.invalid || !model.profilePic)" class="validation-summary text-center">
+            Please correct the errors above before continuing.
+        </div>
+
+        <div *ngIf="model.errors" class="group signup-errors">
+            <ul>
+                <li *ngFor="let error of model.errors">{{error}}</li>
+            </ul>
+        </div>
+
+        <footer class="group">
+            <button type="button" (click)="onCancel()" class="secondary"><< Back</button>
+            <input type="submit" class="primary" value="Next >>" />
+        </footer>
+    </form>
+    <ij-profilepic-dialog (onSaved)="onProfilePicSaved($event)"></ij-profilepic-dialog>
+</section>
+

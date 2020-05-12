@@ -1,0 +1,186 @@
+@import './vars';
+@import '../utils';
+@import '../mixins/widgets';
+
+#fields {
+    margin-top: 25px;
+}
+
+.signup-errors {
+    margin-top: @group-spacing;
+    color: @error-color;
+    background: @error-background;
+    font-weight: bold;
+    
+    ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+}
+
+/* login & signup widget */
+.form-widget {
+    display: flex;
+    margin: 0 auto; 
+    align-items: center;
+    justify-content: center;
+        
+    a {
+        color: @link-color;
+    }
+
+    select {
+        .select-arrow-white();
+    }
+
+    .required-desc {
+        font-size: .9em;
+        margin: 0;
+        padding: 0;
+        text-align: left;
+    }
+    
+    .validation-summary {
+        font-weight: 400;
+        background-color: @error-background;
+        padding: 5px;
+        color: @error-color;
+    }
+    
+    form > footer {
+        margin-top: 40px;
+        white-space: nowrap;
+
+        button,
+        input[type=button]:not(:last-of-type) {
+            margin:0 17px;
+        }
+    }
+
+    .inline-group {
+        display: flex;
+        justify-content: space-between;
+        flex-flow: row wrap;
+
+        .validation-summary {
+            width: 1em;
+            margin-top: -@group-spacing;
+            margin-bottom: @group-spacing;
+            flex-basis: 100%;
+        }
+
+        .group {
+            select,
+            button.btn-transparent,
+            input:not([type=submit]):not([type=button]) {
+                width: (@input-width / 2) - 1
+            }
+
+            &:not(:first-of-type) {
+                select,
+                input:not([type=submit]):not([type=button]) {
+                    padding-left: 0.2em;
+                }
+            }
+        }
+    }
+
+    .group {
+        position: relative; 
+        margin-bottom: @group-spacing;
+
+        .icon {
+            position: absolute;
+            left: .4em;
+            top: .65em;
+        }
+
+        ::ng-deep .intl-tel-input{
+            input{
+                padding-left: 50px !important;
+              }
+            .flag-container{
+                li{
+                    span{
+                        color: #4A4A4A;
+                    }
+                }
+
+                .highlight{
+                    background: #4392EF;
+                    span{
+                        color: #fff;
+                    }
+                }
+            }
+        }
+
+        & select,
+        & button.btn-transparent,
+        & input:not([type=submit]):not([type=button]) {
+            outline: 0;
+            background-color: transparent;
+            display: block;
+            font-size: 14px;
+            padding: 0.625em 0.625em 0.725em 2.5em;
+            border: none;
+            
+            width: @input-width;
+            border-bottom: @input-border;
+        }
+
+        button.btn-transparent {
+            text-align: left;
+        }
+        
+        & > select option {
+            color: #000;
+        }
+
+        &.invalid {
+            select,
+            button.btn-transparent,
+            input:not([type=submit]):not([type=button]):not(.ui-widget) {
+                border-bottom: @error-border;
+            }
+        }
+
+        /* below input fields */
+        .coach-marks {
+            padding: 5px 0 0 5px;
+            text-align: left;
+            font-size: .9em;
+
+            ul {
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+
+                li { display: block; }
+            }
+        }
+
+        /* to the right of input fields */
+        .rails {
+            display: block;
+            position: absolute;
+            width: 13em;
+            top: .4em;
+            left: @input-width + 1em;
+            text-align: left;
+        }
+    }
+
+    input.ng-invalid.ng-dirty:not([type=submit]):not([type=button]) {
+        border-bottom: @error-border;
+    }
+
+    input:focus {
+        outline: none;
+    }
+
+    input::placeholder {
+        color: @placeholder-color;
+    }
+}

@@ -1,0 +1,321 @@
+@import './common';
+
+@review-card-color: #484848;
+@card-padding: 15px;
+@title-offset: 20px;
+@mini-small-mobile-width:100% !important;
+
+.area-title {
+    float: none;
+    text-align: left;
+    width: auto!important;
+    .review-dropdown
+    {
+        display: inline;
+        position: relative;
+        top: -1px;
+    }
+    .review-dropdown img {
+        height: 27px;
+        width: 27px;
+    }
+    .request-margin{
+        margin-left: 5px;
+    }
+    a{
+        text-decoration: none;
+        color: #656565;
+    }
+
+    // width
+    .on-desktop({
+        width: @desktop-card-width;
+    });
+        
+    .on-tablet({
+        width: @tablet-card-width;
+    });
+
+    .on-mobile({
+        text-align: inherit;
+        width: 100%;
+    });
+    .on-mini-small-mobile({
+        width:@mini-small-mobile-width;
+     });
+    // end width
+    
+    .new-review {
+        .new-button();
+
+        span {
+            display: block;
+            width: 25px;
+            height: 25px;
+            line-height: 25px;
+            font-family: initial;
+        }
+    }
+}
+
+.area-footer {
+    text-align: center !important;
+    margin-left: auto !important;
+
+    button.more {
+        .more();
+    }
+
+    .on-mobile({
+        margin: @area-gap 0;
+    })
+}
+
+.reviews {
+    .on-mobile({
+        text-align: inherit;
+    });
+
+    .invisible-banner {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: -15px;
+        text-align: center;
+        letter-spacing: 0.3px;
+        color: #fff;
+        text-transform: uppercase;
+        background: @primary-orange;
+    }
+}
+
+.no-reviews {
+    .no-results();
+    clear: both;
+    display: block;
+
+    .on-mobile-down({
+        margin: 0 auto!important;
+    });
+    .on-tablet({
+        max-width: @desktop-card-width;
+    });
+
+    .on-mobile({
+        max-width: @desktop-card-width;
+    });
+    .on-mini-small-mobile({
+        max-width:250px;
+        width:100%
+     });
+}
+
+.delete {
+    clear: both;
+    display: block;
+    position: relative;
+    text-align: left;
+    min-height: 20px;
+    padding: 12px;
+    background-color: #f5f3f3;
+    margin-top: 1em;
+    margin-bottom: 2em !important;
+
+    .timestamp {
+        position: absolute;
+        right: 0;
+        bottom: -1.7em;
+        text-align: right;
+        font-size: .9em;
+        color: #777;
+    }   
+    
+    .refresh{
+        line-height: 0px;
+        background-color: #4392ef;
+        right: -55px;
+        i{
+            font-size: 12px;
+        }
+    }
+
+    .deletebtn{
+        line-height: 5px;
+        i{
+            font-size: 12px;
+        }
+    }
+}
+
+.delete button {
+    user-select: none;
+    position: absolute;
+    right: -30px;
+    bottom: 30%;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    background-color: red;
+    color: #fff;
+    border-radius: 100%;
+    cursor: pointer;
+    font-size: 22px;
+    line-height: 18px;
+        
+    .on-mini-small-mobile({
+        right:-25px
+    });
+}
+
+
+
+.card.review {
+    position: relative;
+
+    margin-bottom: @card-gap;
+    color: @review-card-color;
+
+    border: 1px solid #E6E5E5;
+    height: 272px;
+    padding: 15px;
+
+    // width
+    width: @desktop-card-width;
+    
+    .on-tablet({
+        margin-bottom: 50px;
+        width: @tablet-card-width;
+        height: 232px;
+        padding: 10px;
+    });
+
+    @media (max-width:706px) {
+        &.invisible-card {
+            margin-top: 15px !important;
+        }
+    }
+    
+    .on-mobile({
+        width: @desktop-card-width;
+    });
+
+    .on-mini-small-mobile({
+        width: @mobile-card-width;
+    });
+    // end width
+    
+    header {
+        position: relative;
+        display: flex;
+
+        img.avatar {
+            width: @avatar-size;
+            height: @avatar-size;
+            margin-right: 10px;
+            display: inline-block;
+        }
+
+        .reviewer {
+            .meta {
+                font-size: 13px;
+                color: #828282;
+            }
+
+            .text-orange{
+                color: @orange;
+            }
+
+            .name {
+                .font-bold();
+                margin-top: 5px;
+                font-size: 18px;
+                color: @card-name-color;
+            }
+
+            .project {
+                font-style: italic;
+            }
+
+            .role{
+                width: calc(@desktop-card-width - @role-width-difference);
+                text-overflow: ellipsis;
+                overflow: hidden;
+                white-space: nowrap;
+
+                .on-mobile({
+                    width: calc(@desktop-card-width - @role-width-difference);
+                });
+            
+                .on-mini-small-mobile({
+                    width: calc(@mobile-card-width - @role-width-difference);
+                });
+
+                .on-tablet({
+                    width: calc(@tablet-card-width - @role-width-difference);
+                });
+            }
+        }
+
+        .actions {
+            position: absolute;
+            right: 0;
+        }
+    }
+
+    .body {
+        margin-top: 10px;
+
+        .role {
+            .font-bold();
+            font-style: italic;
+            font-size: 16px;
+            display: block;
+            margin-bottom: 5px;
+        }
+    }
+
+    footer {
+        margin-top: 0px;
+        .ng-star-inserted {color:#2392ec;cursor: pointer}
+        
+        .subject {
+            .font-bold();
+            font-style: italic;
+            font-size: 16px;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .protip {
+            margin-top: 5px;
+            display: inline;
+
+            @media (min-width: 900px) {
+                .show-on-desktop{
+                    display: inline !important;
+                }
+
+                .hide-on-desktop{
+                    display: none !important;
+                }
+            };
+
+            @media (max-width: 900px) {
+                .show-on-desktop{
+                    display: none !important;
+                }
+                .hide-on-desktop{
+                    display: inline !important;
+                }
+            };
+            
+            label {
+                .font-regular();
+                color: #4495F1;
+                font-style: italic;
+                margin-right: .3em;
+            }
+        }
+    }
+}

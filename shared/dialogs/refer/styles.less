@@ -1,0 +1,53 @@
+@import '../../styles/variables/all';
+@import '../../styles/mixins/all';
+@import '../styles/common';
+
+.custom-dialog ::ng-deep .ui-dialog {
+    max-width: 575px;
+
+    .ui-dialog-titlebar{
+        border-top: 8px solid @btn-refer-color;
+    }
+}
+
+input[type="submit"] {
+    background: @btn-hire-color;
+}
+
+/* divider */
+.divider {
+    width: 100%;
+    margin: 12px 0;
+    text-align: center;
+}
+
+.divider .line,
+.divider .txt {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.divider .line {
+    width: 20%;
+    height: 1px;
+    background: #000;
+    opacity: .35;
+}
+
+.divider .txt {
+    margin: 0 7px;
+    .font-light;
+    font-size: 1.5em;
+}
+/* end divider */
+header{
+    .on-mini-small-mobile({
+      justify-content: center;
+    });
+}
+
+footer{
+    .refferal-btn{
+        background: @btn-refer-color;
+    }
+}

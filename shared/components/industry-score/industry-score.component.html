@@ -1,0 +1,3 @@
+<ng2-odometer *ngIf="showAnimation" [number]="score" class="score {{size}}"></ng2-odometer>
+<span *ngIf="!showAnimation" class="score {{size}}">{{score}}</span>
+<label [style.color]="color" class="ind-score">Industry Score</label>

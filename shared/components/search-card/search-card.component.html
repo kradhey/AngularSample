@@ -1,0 +1,41 @@
+<article class="search-card">
+    <header>
+       <img [src]="card.profileImageUrl" alt="{{card.fullName}}" [routerLink]="['/profile', card.userProfileUrlDisplayName]" /> 
+        <div>
+            <!--TODO:Change-->
+            <h1><a [routerLink]="['/profile', card.userProfileUrlDisplayName]" >{{card.fullName}}</a></h1>
+            <p class="roles">
+                <ij-see-more
+                    [data]="card.crewRoles">
+                </ij-see-more>
+            </p>
+            <p class="budgets">
+                <ij-see-more 
+                    separator=" / "
+                    [data]="card.budgets">
+                </ij-see-more>
+            </p>
+            <p>{{card.location}}</p>
+        </div>
+    </header>
+    <div class="search-card-body">
+        <div class="left">
+            <ij-rating [rating]="card.reliability" label="Reliability" class="stars"></ij-rating>
+            <ij-rating [rating]="card.craftsmanship" label="Craftsmanship" class="stars"></ij-rating>
+            <ij-rating [rating]="card.communication" label="Communication" class="stars"></ij-rating>
+            <ij-rating [rating]="card.attitude" label="Attitude" class="stars"></ij-rating>
+        </div>
+        <div class="right">
+            <div class="score">
+                <p class="num">{{card.industryScore}}</p>
+                <p class="desc">Industry Score</p>
+            </div>
+            <div class="actions">
+                <!--TODO:Change-->
+                <a [routerLink]="['/profile', card.userProfileUrlDisplayName]" class="btn-view">View</a>
+                <button (click)="onRefer(card.profileSysId)" class="btn-refer">Refer</button>
+            </div>
+        </div>
+    </div>
+    <p-confirmDialog ngClass="custom-confirm" acceptLabel="Ok" appendTo="body"></p-confirmDialog>
+</article>

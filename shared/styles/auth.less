@@ -1,0 +1,15 @@
+.auth-container {
+  .hide-when-loggedOut {
+    display: none !important;
+  }
+    
+  &.loggedIn {
+    .hide-when-loggedIn {
+      display: none !important;
+    }
+    
+    .hide-when-loggedOut {
+      display: inline-block !important;
+    }
+  }
+}

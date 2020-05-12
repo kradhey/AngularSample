@@ -1,0 +1,569 @@
+@size: 22px;
+
+// common
+.ui-widget,
+.ui-widget input,
+.ui-chkbox-label,
+.ui-button-text {
+  .font-name();
+}
+
+.ui-inputtext.ui-state-focus,
+.ui-inputtext:focus {
+  border-color: #66afe9 !important;
+  outline: 0;
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,.6);
+}
+
+.ui-dialog-mask {
+  background: rgba(0,0,0,0.9);
+  opacity: .50;
+  top: 0;
+  left: 0;
+}
+
+
+
+.croppertwo image-cropper > div > div.cropper {
+  width: 1200px !important;
+  height: 297px !important;
+  overflow: hidden !important;
+}
+
+
+// mobile dialogs
+@media only screen and (max-width: 992px) {
+  .custom-dialog:not(.sm) .ui-dialog {
+    overflow-y: scroll !important;
+    max-width: 100% !important;
+    height: 100% !important;
+    width: 100% !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    top: 0 !important;
+  }
+}
+// end
+
+// confirmation dialogs
+.custom-confirm .ui-dialog {
+  border: 0;
+
+  .ui-dialog-titlebar {
+    border-top: 8px solid #3F93F5;
+  }
+}
+
+// checkbox
+.ui-chkbox-label {
+  user-select: none;
+}
+
+#search-budget-autocomplete > span {
+  margin-bottom: 3px !important;
+}
+
+#search-state-autocomplete > span {
+  margin-bottom: 3px !important;
+}
+
+#search-budget-autocomplete > span {
+  border-right: 1px solid #c9d8dd;
+}
+
+
+#search-organization-autocomplete > span > button {
+  background: #fff !important;
+  border: #fff !important;
+  color: #333;
+  border-radius: 0px;
+}
+
+.ui-chkbox {
+  .ui-chkbox-box {
+    height: @size;
+    width: @size;
+    border-radius: 50%;
+    user-select: none;
+
+    .ui-chkbox-icon {
+      display: inline-block;
+      line-height: (@size - 2px);
+      height: @size;
+    }
+
+    &.ui-state-active {
+      background: @primary-blue;
+      border: 1px solid @primary-blue;
+    }
+  }
+}
+// end checkbox
+
+// radiobutton
+.ui-radiobutton-box {
+  width: @size;
+  height: @size;
+
+  &.ui-state-active {
+    background: @primary-blue;
+    border: 1px solid @primary-blue;
+  }
+
+  .ui-radiobutton-icon {
+    font-size: .8em;
+    margin-top: 3px;
+  }
+}
+
+.ui-radiobutton-label {
+  margin-bottom: 0;
+  user-select: none;
+  cursor: pointer;
+}
+// end radiobutton
+
+// all buttons
+.ui-button {
+  background: @primary-blue !important;
+  border: 1px solid @primary-blue !important;
+}
+// end all buttons
+
+// toggle button
+.ui-togglebutton.ui-button.ui-state-active,
+.ui-selectbutton .ui-button.ui-state-active {
+  background: @primary-blue;
+  border: 1px solid @primary-blue;
+}
+// end toggle button
+
+
+// autocomplete
+.ui-autocomplete-input {
+  padding: 9px;
+  width: 100%;
+}
+
+.ui-autocomplete {
+  width: 100%;
+
+  &.wrap {
+    ul.ui-autocomplete-multiple-container {
+      flex-wrap: wrap;
+
+      .ui-autocomplete-token {
+        margin-top: .05em;
+      }
+    }
+  }
+
+  .ui-autocomplete-multiple-container {
+    padding: 6px;
+    display: flex;
+    width: 100%;
+
+    .ui-autocomplete-token {
+      font-size: 1em;
+      padding: .225em .5em;
+      border: 1px solid @primary-blue;
+      background: @primary-blue;
+      overflow: initial;
+
+      .ui-autocomplete-token-label {
+        margin-right: 1.2em;
+      }
+    }
+  }
+}
+
+.ui-autocomplete-panel .ui-autocomplete-list-item {
+  padding: .3em .313em;
+
+  &.ui-state-highlight {
+    border: 1px solid @primary-blue;
+    background: @primary-blue;
+  }
+}
+
+// end autocomplete
+
+// dialog
+.ui-dialog-titlebar.ui-widget-header {
+  background: #fff !important;
+}
+
+.ui-dialog:not(.ui-confirmdialog) .ui-dialog-content {
+  padding: 0 !important;
+
+  @media (max-width: 750px) {
+    height: auto !important;
+  }
+}
+
+
+.custom-confirm-dialog {
+  border: none;
+
+  .ui-dialog-titlebar {
+    border-top: 8px solid @primary-blue;
+    ;
+    padding: 0px;
+    border-radius: 0px;
+
+    h2 {
+      .font-bold();
+      margin-bottom: @dialog-mobile-spacing;
+      color: @dialog-label-color;
+      text-align: center;
+    }
+
+    .x-icon {
+      cursor: pointer;
+      position: absolute;
+      right: .5em;
+      top: .7em;
+    }
+  }
+
+  .ui-dialog-content {
+
+    header {
+      margin-left: 31%;
+    }
+
+    .dialog-container {
+      padding: 0 40px 0px 40px;
+      text-align: center;
+
+      .dialog-body {
+        margin-bottom: 10px;
+      }
+    }
+  }
+}
+// end dialog
+
+// rating
+.ui-rating a {
+  &:active,
+  &:focus,
+  &:hover {
+    text-decoration: none !important;
+  }
+
+  .fa {
+    color: @primary-orange !important;
+    font-size: 1.5em !important;
+  }
+}
+// end rating
+
+// calendar
+.ui-calendar {
+  width: 100%;
+
+  > .ui-inputtext {
+    padding: 9px 12px;
+    width: 100%;
+  }
+}
+
+.ui-datepicker.ui-widget .ui-datepicker-calendar td a {
+  padding: .2em !important;
+}
+// end calendar
+
+//tool tip
+.ui-tooltip-text.ui-shadow.ui-corner-all {
+  background-color: #f3f3f3;
+  color: #898a8a;
+  border: 2px #ebebeb solid;
+  font-size: 16px;
+  border-radius: 0px;
+}
+
+.ui-tooltip-arrow {
+  display: none;
+}
+//end tool tip
+
+
+// file upload
+.ui-fileupload-choose {
+  .ui-button-text {
+    max-width: 15em;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+}
+// end file upload
+
+/* signup autocomplete */
+
+.invalid .ac-signup .ui-autocomplete-dd {
+  border-bottom: 1px solid #FFC17A !important;
+}
+
+.ac-signup .ui-autocomplete-dd {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.6) !important;
+
+  button.ui-autocomplete-dropdown {
+    background: transparent !important;
+    border: none !important;
+  }
+}
+
+.ac-signup .ui-inputtext {
+  box-shadow: none !important;
+  border: none !important;
+  background: transparent !important;
+  border-radius: 0;
+  max-width: 336px;
+
+  .ui-autocomplete-token {
+    background: #fff;
+    border: 0;
+    color: #1b75bd;
+  }
+
+  .ui-autocomplete-input-token {
+    input[type=text] {
+      .font-light;
+      color: #fff;
+      @placeholder-color: #fff;
+
+      &:placeholder {
+        color: @placeholder-color;
+      }
+
+      &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+        color: @placeholder-color;
+      }
+
+      &::-moz-placeholder { /* Firefox 19+ */
+        color: @placeholder-color;
+      }
+
+      &:-ms-input-placeholder { /* IE 10+ */
+        color: @placeholder-color;
+      }
+
+      &:-moz-placeholder { /* Firefox 18- */
+        color: @placeholder-color;
+      }
+    }
+  }
+}
+/* end */
+
+.ui-autocomplete-dd {
+  display: flex;
+  height: 100% !important;
+
+  button.ui-autocomplete-dropdown.ui-button {
+    height: auto !important;
+  }
+}
+
+/* quicksearch autocomplete */
+.ac-profile .ui-inputtext {
+  box-shadow: none !important;
+  border: 0 !important;
+  height: 60px;
+  background: #fff;
+  @placeholder-color: #333;
+
+  &:placeholder {
+    color: @placeholder-color;
+  }
+
+  &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    color: @placeholder-color;
+  }
+
+  &::-moz-placeholder { /* Firefox 19+ */
+    color: @placeholder-color;
+  }
+
+  &:-ms-input-placeholder { /* IE 10+ */
+    color: @placeholder-color;
+  }
+
+  &:-moz-placeholder { /* Firefox 18- */
+    color: @placeholder-color;
+  }
+}
+
+.ac-profile-item {
+  display: flex;
+  align-items: center;
+
+  img {
+    margin-right: 10px;
+    border-radius: 100%;
+    width: @profile-pic-sm-width;
+    height: @profile-pic-sm-height;
+  }
+
+  p {
+    margin: 0 0 5px
+  }
+
+  ;
+
+  .name {
+    font-weight: bold;
+  }
+
+  ;
+
+  .roles {
+    font-size: .9em;
+  }
+}
+/* end */
+
+/* site header */
+#search-state-autocomplete > span > button {
+  background: #fff !important;
+  border: #fff !important;
+  color: #333;
+  border-radius: 0px;
+}
+
+#search-state-autocomplete > span > input {
+  border: none !important;
+  border-radius: 0px !important;
+}
+
+#search-budget-autocomplete > span > button {
+  background: #fff !important;
+  border: #fff !important;
+  color: #333;
+  border-radius: 0px;
+}
+
+#search-organization-autocomplete.error .ui-button,
+#search-state-autocomplete.error .ui-button,
+#search-budget-autocomplete.error .ui-button,
+#search-state-autocomplete.error .ui-inputtext,
+#search-organization-autocomplete.error .ui-inputtext,
+#search-budget-autocomplete.error .ui-inputtext {
+  background: #ffd4d4 !important;
+}
+
+#search-budget-autocomplete > span > input {
+  border: none !important;
+  border-radius: 0px !important;
+}
+
+.homeFrmCtrl .inputCtrl span input {
+  padding: 14px 0 14px 40px;
+  border-radius: 5px !important
+}
+
+.homeFrmCtrl #hero-fsearch-body p, .homeFrmCtrl #hero-fsearch-body p span, .homeFrmCtrl #hero-fsearch-body p span input {
+  display: block;
+  width: 100% !important;
+  border-radius: 0px
+}
+
+.homeFrmCtrl #hero-fsearch-body .inputCtrl > span > input {
+  border: none !important;
+  border-radius: 5px 0 0 5px !important;
+}
+
+.homeFrmCtrl #hero-fsearch-body .inputCtrl > span > button {
+  border-radius: 0 5px 5px 0 !important;
+}
+
+.homeFrmCtrl #hero-fsearch-body .inputCtrl, .homeFrmCtrl #hero-fsearch-body .inputCtrl > span {
+  border: none !important
+}
+
+
+/* end */
+
+
+.pac-container {
+  z-index: 1020;
+
+  .pac-item {
+    color: #4A4A4A;
+    font-size: 10px;
+    font-weight: 200;
+
+    .pac-icon {
+      display: none;
+    }
+
+    .pac-item-query {
+      color: #4A4A4A;
+      font-size: 12px;
+      font-weight: 600;
+    }
+  }
+
+  .pac-item:hover {
+    background: #4392EF;
+    color: #ffffff;
+
+    .pac-matched {
+      color: #ffffff;
+    }
+
+    .pac-item-query {
+      color: #ffffff;
+    }
+  }
+}
+
+
+.custom-img-dialog {
+  max-height: 100% !important;
+  overflow-y: auto;
+}
+
+.custom-img-dialog.cover-image {
+  min-width: 80% !important;
+}
+
+.custom-img-dialog.behind-The-Scene {
+  min-width: 350px  !important;
+}
+.ui-fileupload-choose .ui-button-text{
+
+}
+p-galleria ul li .ui-panel-images {
+  height: 100% !important;
+  width: 100% !important;
+}
+
+@media only screen and (max-width: 750px) {
+  .ui-fileupload-choose .ui-button-text {
+    max-width: 100% !important;
+  }
+
+    div.ui-dialog-content.ui-widget-content > article > div > p-galleria > div,
+    div.ui-dialog-content.ui-widget-content > article > div > p-galleria > div > ul,
+    div.ui-dialog-content.ui-widget-content > article > div > p-galleria > div > ul > li {
+      width: 100% !important;
+    }
+  }
+.floatRight {
+  float: right !important;
+}
+
+ij-profile > ij-profile-overview > .gradient{
+  position:relative !important;
+}
+
+ij-profile > ij-site-subheader > header {
+  background: #fff !important;
+  margin-bottom: 0 !important;
+  margin-top: 0 !important;
+  padding-top: 35px !important;
+  padding-bottom: 35px !important;
+}

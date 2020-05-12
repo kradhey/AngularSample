@@ -1,0 +1,6 @@
+<div *ngIf="isLoggedIn" class="ij-dropdown btn-group">
+    <button type="button" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <!--TODO:Change-->
+        <img class="avatar" [routerLink]="profileUrl" src="{{getThumbnailImageUrl()}}" />
+    </button>
+</div>

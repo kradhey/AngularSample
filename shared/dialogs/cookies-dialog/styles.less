@@ -1,0 +1,99 @@
+.cookies-eu {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    width: 529px;
+    z-index: 10000;
+    line-height: 24px;
+    height: 89px;
+    background-image: -webkit-gradient(linear, left bottom, left top, from(#f5f5fa), to(#fff));
+    background-image: linear-gradient(to top, #f5f5fa, #fff);
+    -webkit-box-shadow: 0 5px 15px 0 rgba(37, 44, 97, 0.15), 0 2px 4px 0 rgba(93, 100, 148, 0.2);
+    box-shadow: 0 5px 15px 0 rgba(37, 44, 97, 0.15), 0 2px 4px 0 rgba(93, 100, 148, 0.2);
+    padding: 16px 30px 16px 40px;
+    border-radius: 100px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    .cookies-eu-message {
+        color: #9B9B9B;
+        font-size: 16px;
+        a {
+            color: #4A90E2;
+            text-decoration: none;
+            background-color: transparent;
+        }
+    }
+    .js-cookies-eu-ok {
+        background-color: #f8f8fb;
+        color: #3f93f4;
+        width: 49px;
+        height: 49px;
+        // background-image: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#e4e4e9));
+        // background-image: linear-gradient(to bottom, #fff, #e4e4e9);
+        -webkit-box-shadow: 0 7px 11px -3px rgba(45, 35, 66, 0.2), 0 2px 4px 0 rgba(45, 35, 66, 0.4), inset 0 -3px 0 0 #f8f8fb;
+        box-shadow: 0 7px 11px -3px rgba(45, 35, 66, 0.2), 0 2px 4px 0 rgba(45, 35, 66, 0.4), inset 0 -3px 0 0 #f8f8fb;
+        float: right;
+        margin-left: 20px;
+        border-radius: 100%;
+        cursor: pointer;
+        font-weight: bold;
+        // color: #5D6494;
+        text-shadow: 0 1px 1px rgba(255, 255, 255, 0.5);
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        border: none;
+        -ms-flex-negative: 0;
+        flex-shrink: 0;
+        font-size: 14px;
+    }
+    // .js-cookies-eu-ok:hover,
+    // .cookies-eu .js-cookies-eu-ok:focus {
+    //     background-image: -webkit-gradient(linear, left top, left bottom, from(#f2f2f2), to(#d6d6de));
+    //     background-image: linear-gradient(to bottom, #f2f2f2, #d6d6de);
+    // }
+}
+
+@media (max-width: 760px) {
+    .cookies-eu {
+        padding-top: 1.8em;
+        position: relative;
+        top: 0;
+        left: 0;
+        right: 0;
+        border-radius: 0;
+        height: auto;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        width: auto;
+        .js-cookies-eu-ok {
+            text-align: center;
+            margin: 1.5em auto 1em;
+            width: 200px;
+            border-radius: 100px;
+        }
+    }
+}
+
+[styleClass="custom-cookie"] {
+    ::ng-deep .cookie-law {
+        .cookie-law-wrapper {
+            background: transparent !important;
+            .copy {
+                padding: 0 !important;
+                .dismiss {
+                    display: none !important;
+                }
+            }
+        }
+    }
+}

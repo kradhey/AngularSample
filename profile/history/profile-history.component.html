@@ -1,0 +1,95 @@
+<div class="gradient">
+    <div class="container show-on-desktop">
+        <ij-profile-header-desktop></ij-profile-header-desktop>
+    </div>
+
+    <ij-profile-header-mobile class="hide-on-desktop"></ij-profile-header-mobile>
+    <section class="container reviews">
+        <article class="history">
+            <div class="history-container">
+                <ul class="list-group">
+                    <li class="list-group-item" *ngFor="let history of model.profileHistory.items">
+                        <div *ngIf="history.historyType ==  historyTypes.Referral">
+                            <div class="pull-left">
+                                <span class="event-date">{{history.createdDate}}</span>
+                                <span class="hired-by-img">
+                                    <img [src]="getImageUrl(history.referalSenderProfileImageUrl)" alt="{{model.referalSenderProfileName}}">
+                                </span>
+                            </div>
+                            <div class="referral-div pull-left">
+                                <div>
+                                    <img class="referral-img" [src]="getImageUrl(history.referredProfileImageUrl)" alt="{{model.referredProfileName}}">
+                                </div>
+                                <span class="label label-history-types label-referral">Referral</span>
+                            </div>
+                            <div class="pull-left">
+                                <span class="hired-by-img" *ngFor="let recieverImages of history.referalRecieverProfileImageUrlList">
+                                    <img [src]="getImageUrl(recieverImages)">
+                                </span>
+                                <span *ngIf="history.referalRecieverProfileImageUrlList.length == 0" class="hired-by-img">
+                                    <img src="../assets/images/avatars/avatar-lg.png">
+                                </span>
+                            </div>
+                            <div class="history-text">
+                                <span class="hired-info">
+                                    <span class="text-bold">{{history.referalSenderProfileName}}</span>
+                                    <span> referred </span>
+                                    <span class="text-bold">{{history.referredProfileName}}</span>
+                                    <span> to </span>
+                                    <a *ngIf="history.recipientProfileEmail" [attr.href]="'mailto:'+ history.recipientProfileEmail">
+                                        <span class="text-bold">{{history.recipientProfileName}}.</span>
+                                    </a>
+                                    <span *ngIf="!history.recipientProfileEmail" class="text-bold">{{history.recipientProfileName}}.</span>
+                                </span>
+                            </div>
+                        </div>
+                        <div *ngIf="history.historyType ==  historyTypes.Hired">
+                            <div class="pull-left">
+                                <span class="event-date">{{history.createdDate}}</span>
+                                <span class="hired-by-img">
+                                    <img [src]="getImageUrl(history.hireByProfileImageUrl)" alt="{{history.hiredByProfileName}}">
+                                </span>
+                            </div>
+                            <div class="hired-div pull-left">
+                                <span class="label label-history-types label-hired">Hired</span>
+                            </div>
+                            <div class="pull-left">
+                                <span class="hired-by-img">
+                                    <img [src]="getImageUrl(history.hiredProfileImageUrl)" alt="{{history.hiredProfileName}}">
+                                </span>
+                            </div>
+                            <div class="history-text">
+                                <span class="hired-info">
+                                    <span class="text-bold">{{history.hiredProfileName}}</span>
+                                    <span> hired as a </span>
+                                    <span class="text-bold">{{history.hiredProfileCrewRoles}}</span>
+                                    <span> on the </span>
+                                    <span class="text-bold">{{history.projectType | split}},</span>
+                                    <span *ngIf="history.songTitle"> "{{history.songTitle}}" </span>
+                                    <span *ngIf="history.episodeTitle"> "{{history.episodeTitle}}" </span>
+                                    <span *ngIf="history.projectName"> "{{history.projectName}}" </span>
+                                    <span>by</span>
+                                    <span class="text-bold">{{history.hiredByProfileName}}</span>
+                                </span>
+                            </div>
+                        </div>
+                        <div style="clear: both"></div>
+                    </li>
+                    <li class="list-group-item">
+                        <span class="event-date">{{model.joinDate}}</span>
+                        <span class="hired-by-img">
+                            <img [src]="getImageUrl(model.profileImageUrl)" alt="{{model.fullName}}">
+                        </span>
+                        <span class="hired-info">
+                            <span class="text-bold">{{model.fullName}}</span>
+                            <span> joined Industry Jump.</span>
+                        </span>
+                    </li>
+                </ul>
+            </div>
+        </article>
+        <footer *ngIf="hasMoreHistory" class="area-footer">
+            <button (click)="onViewMoreClicked()" class="more">View More</button>
+        </footer>
+    </section>
+</div>
